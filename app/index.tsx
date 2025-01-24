@@ -5,7 +5,7 @@ export default function Index() {
     <View
       className="flex flex-col items-center justify-center h-screen bg-red-900"
     >
-      <Text className="bg-primary btn-disabled">TESTESTEST</Text>
+      <Text className="bg-primary btn-p">TESTESTEST</Text>
     </View>
   );
 }
