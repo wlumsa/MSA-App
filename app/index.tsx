@@ -1,4 +1,4 @@
-import { Text, View, Pressable } from "react-native";
+import { Text, View, Pressable, ScrollView } from "react-native";
 import Octicons from '@expo/vector-icons/Octicons';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import EventCard from "./components/EventCard";
@@ -9,8 +9,8 @@ import * as Linking from 'expo-linking';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 export default function Index() {
   return (
-    <View
-      className="flex flex-col items-center h-screen bg-[#F8F5FF] px-6  pt-12 "
+    <ScrollView
+      className="flex flex-col  h-screen bg-[#F8F5FF] px-6  pt-12 "
     >
       <View className="mx-4 items-center ">
       <View className="flex flex-row justify-between  w-full px-4 py-8">
@@ -53,6 +53,6 @@ export default function Index() {
         <Text className="text-[#ffffff]  text-center font-bold ">Donate to the MSA</Text>
       </Pressable>
       </View>
-    </View>
+    </ScrollView>
   );
 }
