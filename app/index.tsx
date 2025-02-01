@@ -34,20 +34,20 @@ export default function Index() {
      
       <View className="flex flex-row items-center justify-center gap-8 py-4 mt-8 space-x-8 ">
      <View className="items-center text-center">
-      <Pressable className="items-center w-16 h-16 p-4 text-center shadow-md shadow-slate-200 bg-base-100 rounded-xl" onPress={() => alert("clicked")}>
+      <Pressable className="items-center w-16 h-16 p-4 text-center shadow-md shadow-slate-200 bg-[#F9FAFB] rounded-xl" onPress={() => alert("clicked")}>
       <FontAwesome6 name="location-dot" size={24} color="#9055FF" />        
       </Pressable>
         <Text className="my-2 text-center ">Halal Food </Text>
      </View>
       <View className="items-center justify-center text-center ">
-      <Pressable className="shadow-md shadow-slate-200   bg-[#ffffff] text-center items-center p-4 rounded-xl h-16 w-16" onPress={() => alert("clicked")}>
+      <Pressable className="shadow-md shadow-slate-200   bg-[#F9FAFB] text-center items-center p-4 rounded-xl h-16 w-16" onPress={() => alert("clicked")}>
       <Ionicons name="time" size={24} color="#9055FF" />  
       </Pressable>
         <Text className="my-2 text-center ">Prayer Times </Text>
      </View>
 
      <View className="items-center text-center">
-      <Pressable className="items-center w-16 h-16 p-4 text-center shadow-md shadow-slate-200 bg-base-100 rounded-xl" onPress= { () => Linking.openURL('https://www.wlumsa.org/')}>
+      <Pressable className="items-center w-16 h-16 p-4 text-center shadow-md shadow-slate-200 bg-[#F9FAFB]  rounded-xl" onPress= { () => Linking.openURL('https://www.wlumsa.org/')}>
         <Octicons name="link" size={24} color="#9055FF" />       
         </Pressable>
         <Text className="my-2 text-center ">Website</Text>
