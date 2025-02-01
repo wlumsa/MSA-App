@@ -1,4 +1,5 @@
 import { Text, View, Pressable, ScrollView } from "react-native";
+import { Stack } from "expo-router";
 import Octicons from '@expo/vector-icons/Octicons';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import EventCard from "./components/EventCard";
@@ -10,16 +11,22 @@ import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 export default function Index() {
   return (
     <ScrollView
-      className="flex flex-col  h-screen bg-[#F8F5FF] px-6  pt-12 "
+      className="flex flex-col  h-screen bg-[#F8F5FF] px-6  pt-4 "
     >
+       {/* <Stack.Screen
+        options={{
+          headerLeft: () => <Text className="font-bold">logo</Text>,
+          title: "Home",
+          headerRight: () => <Pressable> <Ionicons name="menu-outline" size={32} color="black" /> </Pressable>,
+
+  
+        }}
+      /> */}
       <View className="mx-4 items-center ">
-      <View className="flex flex-row justify-between  w-full px-4 py-8">
-        <Text className="text-3xl font-bold text-[#2E046D]">
+      <View className="flex flex-row justify-between  w-full px-4 ">
+        <Text className="text-3xl font-bold text-[#2E046D] pb-2 ">
           WLU MSA
         </Text>
-        <Pressable>
-        <Ionicons name="menu-outline" size={32} color="black" />       
-         </Pressable>
       </View>
       <PrayerCard />
       <AyahCard />
@@ -36,7 +43,7 @@ export default function Index() {
       <Pressable className="shadow-md shadow-slate-200   bg-[#ffffff] text-center items-center p-4 rounded-xl h-16 w-16" onPress={() => alert("clicked")}>
       <Ionicons name="time" size={24} color="#9055FF" />  
       </Pressable>
-        <Text className=" text-center my-2  ">Prayer Times </Text>
+        <Text className=" text-center my-2 ">Prayer Times </Text>
      </View>
 
      <View className="text-center items-center">
