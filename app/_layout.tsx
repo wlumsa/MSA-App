@@ -7,6 +7,7 @@ import { DrawerContentScrollView } from "@react-navigation/drawer";
 import "../global.css";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { DrawerItemList } from "@react-navigation/drawer";
+
 import { Drawer } from "expo-router/drawer";
 
 export default function RootLayout() {
@@ -29,11 +30,13 @@ export default function RootLayout() {
             <DrawerContentScrollView {...props}>
             <SafeAreaView>
             
-                <View className="flex flex-row items-center justify-center  gap-4 w-full px-4 py-6">
-                 <Image source={MSA_Logo} style={{ width: 50, height: 50 }} />
-                  <Text className="text-4xl font-bold text-[#2E046D] pb-2 ">
+                <View className="flex flex-row  gap-4 w-full px-4 py-6">
+               <View className="flex flex-row items-center gap-4">
+                  <Image source={MSA_Logo} style={{ width: 50, height: 50 }} />
+                  <Text className="text-4xl font-bold text-[#2E046D] pb-2 flex items-start justify-center ">
                     WLU MSA
                   </Text>
+                </View>
                   <Pressable onPress={props.navigation.closeDrawer}>
                   </Pressable>
                 </View>
@@ -66,7 +69,7 @@ export default function RootLayout() {
                     <Text className=" text-[#696573] font-semibold">Donate to the MSA</Text>
                   </Pressable>
                   <Pressable  className=" flex flex-row  items-center gap-4 p-4 rounded-xl my-4 w-full  " onPress= { () => Linking.openURL('https://www.wlumsa.org/contact')}>
-                    <Ionicons name="mail" size={20} color="#5636A7"  className="w-8"/>
+                    {/* <Ionicons name="mail" size={20} color="#5636A7"  className="w-8"/> */}
                     <Text className=" text-[#696573] font-semibold  ">Contact Us</Text>
                   </Pressable>
                </View>
