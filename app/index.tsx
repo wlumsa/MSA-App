@@ -1,6 +1,7 @@
 import { Text, View, Pressable, ScrollView } from "react-native";
 import { Stack } from "expo-router";
 import Octicons from '@expo/vector-icons/Octicons';
+import { Clock3, Globe, MapPin } from "lucide-react-native";
 import Ionicons from '@expo/vector-icons/Ionicons';
 import EventCard from "./components/EventCard";
 import PrayerCard from "./components/PrayerCard";
@@ -34,21 +35,21 @@ export default function Index() {
      
       <View className="flex flex-row items-center justify-center gap-8 py-4 mt-8 space-x-8 ">
      <View className="items-center text-center">
-      <Pressable className="items-center w-16 h-16 p-4 text-center shadow-md shadow-slate-200 bg-[#F9FAFB] rounded-xl" onPress={() => alert("clicked")}>
-      <FontAwesome6 name="location-dot" size={24} color="#9055FF" />        
+      <Pressable className=" justify-center items-center w-16 h-16 p-4 text-center shadow-md shadow-slate-200 bg-[#F9FAFB] rounded-xl" onPress={() => alert("clicked")}>
+      <MapPin  size={24} color="#9055FF" strokeWidth={2.5}/>        
       </Pressable>
         <Text className="my-2 text-center ">Halal Food </Text>
      </View>
       <View className="items-center justify-center text-center ">
-      <Pressable className="shadow-md shadow-slate-200   bg-[#F9FAFB] text-center items-center p-4 rounded-xl h-16 w-16" onPress={() => alert("clicked")}>
-      <Ionicons name="time" size={24} color="#9055FF" />  
+      <Pressable className="shadow-md shadow-slate-200 justify-center   bg-[#F9FAFB] text-center items-center p-4 rounded-xl h-16 w-16" onPress={() => alert("clicked")}>
+      <Clock3  size={24} color="#9055FF" strokeWidth={2.5}/>  
       </Pressable>
         <Text className="my-2 text-center ">Prayer Times </Text>
      </View>
 
      <View className="items-center text-center">
-      <Pressable className="items-center w-16 h-16 p-4 text-center shadow-md shadow-slate-200 bg-[#F9FAFB]  rounded-xl" onPress= { () => Linking.openURL('https://www.wlumsa.org/')}>
-        <Octicons name="link" size={24} color="#9055FF" />       
+      <Pressable className=" w-16 h-16 p-4 text-center shadow-md shadow-slate-200 bg-[#F9FAFB]  justify-center items-center rounded-xl" onPress= { () => Linking.openURL('https://www.wlumsa.org/')}>
+        <Globe  size={24} color="#9055FF" strokeWidth={2.5}/>      
         </Pressable>
         <Text className="my-2 text-center ">Website</Text>
      </View>

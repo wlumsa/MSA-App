@@ -1,5 +1,5 @@
 import { Text, View, Pressable } from "react-native";
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import {ChevronRight} from "lucide-react-native";
 import { LinearGradient } from "expo-linear-gradient";
 const EventCard = () => {
   return (
@@ -14,7 +14,7 @@ const EventCard = () => {
         <Pressable>
             <View className="flex flex-row items-center justify-end p-2 rounded bg-violet-100">
             <Text className="  text-[#5636A7]  ">All events </Text>
-            <MaterialIcons name="keyboard-arrow-right" size={18} color="#5636A7" />
+            <ChevronRight size={18} color="#5636A7" />
             </View>
         </Pressable>
       </View>
