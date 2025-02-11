@@ -19,8 +19,6 @@ export default function Index() {
           headerLeft: () => <Text className="font-bold">logo</Text>,
           title: "Home",
           headerRight: () => <Pressable> <Ionicons name="menu-outline" size={32} color="black" /> </Pressable>,
-
-  
         }}
       /> */}
       <View className="items-center mx-4 ">
