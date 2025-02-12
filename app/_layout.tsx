@@ -1,8 +1,9 @@
 import React from "react";
 import { StatusBar, View, Text, Pressable, SafeAreaView,  Linking, Image } from "react-native";
-import MSA_Logo from "../assets/images/MSA_Logo.png";  
+import { useState } from "react";
+import MSA_Logo from "../assets/images/MSA_Logo.png"; 
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
-import {MessageCircle, Globe, Banknote, CircleUser, Pencil, House, Link, MapPin, ChevronRight, TvMinimalPlay} from "lucide-react-native";
+import {MessageCircle, Globe, Banknote, CircleUser, Pencil, House, Link, MapPin, ChevronRight, TvMinimalPlay, AlignJustify, AlignStartHorizontal} from "lucide-react-native";
 import { DrawerContentScrollView } from "@react-navigation/drawer";
 import "../global.css";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
@@ -12,22 +13,26 @@ export default function RootLayout() {
     <>
       <StatusBar backgroundColor="#F8F5FF" barStyle="dark-content" />
       <GestureHandlerRootView style={{ flex: 1,  backgroundColor: '#F8F5FF' }}>
-      <Drawer  
+      <Drawer 
+      
       
         screenOptions={{
-          
+          drawerLabel: () => <AlignJustify size={24} color="#5636A7" />, 
+          drawerIcon: () => <AlignJustify size={24} color="#5636A7" />, 
+          drawerHideStatusBarOnOpen: true,
           drawerType: "front",
           drawerStyle: {
             backgroundColor: "#F8F5FF",
             width: "80%",
           }
+          
         }}
         drawerContent={(props) => {
           return (
             <DrawerContentScrollView {...props}>
             <SafeAreaView>
             
-                <View className="flex flex-row   w-full px-4 py-6">
+                <View className="flex flex-row   w-full px-4 pb-6">
                <View className="flex flex-row items-center gap-4">
                   <Image source={MSA_Logo} style={{ width: 50, height: 50 }} />
                   <Text className="text-4xl font-bold text-[#2E046D] pb-2 flex items-start justify-center ">
@@ -51,7 +56,7 @@ export default function RootLayout() {
                     <ChevronRight size={20} color="#5636A7" strokeWidth={2.5} />
                     </Pressable>
 
-                  <Pressable onPress={() => props.navigation.navigate("index")}  className={`flex flex-row items-center gap-4 p-4 justify-between border-b border-gray-200 ${props.state.routeNames[props.state.index] === "#" ? "bg-[#ededed] rounded-xl  " : ""}`}>
+                  <Pressable onPress={() => props.navigation.navigate("index")} className={`flex flex-row items-center gap-4 p-4 justify-between border-b border-gray-200 ${props.state.routeNames[props.state.index] === "#" ? "bg-[#ededed] rounded-xl  " : ""} `}>
                   <View className="flex flex-row items-center gap-4">
                     <House size={20} color="#5636A7" strokeWidth={2.5} />
                     <Text className=" text-[#696573] text-md "> Prayer Timings</Text>
@@ -156,7 +161,7 @@ export default function RootLayout() {
         }
         }
       >
-       
+     
       </Drawer>
     </GestureHandlerRootView>
       {/* <GestureHandlerRootView style={{ flex: 1 }}>

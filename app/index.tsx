@@ -8,11 +8,10 @@ import PrayerCard from "./components/PrayerCard";
 import AyahCard from "./components/AyahCard";
 import * as Linking from 'expo-linking';
 
-import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 export default function Index() {
   return (
     <ScrollView
-      className="flex flex-col  h-screen px-6 pt-4 bg-base-100 "
+      className="flex flex-col  h-screen px-6 pt-4 bg-[#F8F5FF] "
     >
        {/* <Stack.Screen
         options={{
