@@ -1,14 +1,13 @@
 import { Text, View, Pressable, ScrollView } from "react-native";
-import { Stack } from "expo-router";
-import Octicons from '@expo/vector-icons/Octicons';
 import { Clock3, Globe, MapPin } from "lucide-react-native";
-import Ionicons from '@expo/vector-icons/Ionicons';
 import EventCard from "./components/EventCard";
 import PrayerCard from "./components/PrayerCard";
 import AyahCard from "./components/AyahCard";
 import * as Linking from 'expo-linking';
-
+import { NavigationState } from "@react-navigation/native";
 export default function Index() {
+  
+
   return (
     <ScrollView
       className="flex flex-col  h-screen px-6 pt-4 bg-[#F8F5FF] "

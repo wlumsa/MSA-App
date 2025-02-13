@@ -1,21 +1,21 @@
 import React from "react";
-import { StatusBar, View, Text, Pressable, SafeAreaView,  Linking, Image } from "react-native";
-import { useState } from "react";
+import { StatusBar, View, Text, Pressable, SafeAreaView, Image } from "react-native";
 import MSA_Logo from "../assets/images/MSA_Logo.png"; 
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
-import {MessageCircle, Globe, Banknote, CircleUser, Pencil, House, Link, MapPin, ChevronRight, TvMinimalPlay, AlignJustify, AlignStartHorizontal} from "lucide-react-native";
+import {MessageCircle, Globe, Banknote, CircleUser, Pencil, House, Link, MapPin, ChevronRight, TvMinimalPlay, AlignJustify, AlignStartHorizontal, Clock3} from "lucide-react-native";
 import { DrawerContentScrollView } from "@react-navigation/drawer";
 import "../global.css";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { ButtonComponent } from "./components/ButtonComponent";
 import { Drawer } from "expo-router/drawer";
+import ScreenButtonComponent from "./components/ScreenButtonComponent";
 export default function RootLayout() {
+
   return (
     <>
       <StatusBar backgroundColor="#F8F5FF" barStyle="dark-content" />
       <GestureHandlerRootView style={{ flex: 1,  backgroundColor: '#F8F5FF' }}>
       <Drawer 
-      
-      
         screenOptions={{
           drawerLabel: () => <AlignJustify size={24} color="#5636A7" />, 
           drawerIcon: () => <AlignJustify size={24} color="#5636A7" />, 
@@ -44,42 +44,37 @@ export default function RootLayout() {
                 </View>
                 
                 <View className="flex flex-col  gap-4  p-4 rounded-lg my-4 w-full bg-white  shadow-md shadow-slate-200 ">
-               
-                    <Pressable 
-                    onPress={() => props.navigation.navigate("index")} 
-                    className={`flex flex-row items-center gap-4 p-4 justify-between border-b border-gray-200 ${props.state.routeNames[props.state.index] === "index" ? "bg-[#ededed] rounded-xl  " : ""}`}
-                    >
-                    <View className="flex flex-row items-center gap-4">
-                      <House size={20} color="#5636A7" strokeWidth={2.5} />
-                      <Text className=" text-[#696573] text-md"> Home</Text>
-                    </View>
-                    <ChevronRight size={20} color="#5636A7" strokeWidth={2.5} />
-                    </Pressable>
 
-                  <Pressable onPress={() => props.navigation.navigate("index")} className={`flex flex-row items-center gap-4 p-4 justify-between border-b border-gray-200 ${props.state.routeNames[props.state.index] === "#" ? "bg-[#ededed] rounded-xl  " : ""} `}>
-                  <View className="flex flex-row items-center gap-4">
-                    <House size={20} color="#5636A7" strokeWidth={2.5} />
-                    <Text className=" text-[#696573] text-md "> Prayer Timings</Text>
-                  </View>
-                    <ChevronRight size={20} color="#5636A7" strokeWidth={2.5} />
-
-                  </Pressable>
-                  <Pressable onPress={() => props.navigation.navigate("index")}  className={`flex flex-row items-center gap-4 p-4 justify-between border-b border-gray-200 ${props.state.routeNames[props.state.index] === "#" ? "bg-[#ededed] rounded-xl  " : ""}`}>
-                   <View className="flex flex-row items-center gap-4">
-                      <Link size={20} color="#5636A7" strokeWidth={2.5} />
-                      <Text className=" text-[#696573] text-md">Events</Text>
-                   </View>
-                    <ChevronRight size={20} color="#5636A7" strokeWidth={2.5} />
-
-                  </Pressable>
-                  <Pressable onPress={() => props.navigation.navigate("index")}  className={`flex flex-row items-center gap-4 p-4 justify-between  ${props.state.routeNames[props.state.index] === "#" ? "bg-[#ededed] rounded-xl  " : ""}`}>
-                    <View className="flex flex-row items-center gap-4">
-                    <MapPin size={20} color="#5636A7" strokeWidth={2.5} />
-                    <Text className=" text-[#696573] text-md">Halal Food Directory</Text>
-                    </View>
-                    <ChevronRight size={20} color="#5636A7" strokeWidth={2.5} />
-
-                  </Pressable>
+                  <ScreenButtonComponent
+                    icon={<House size={20} color="#5636A7" strokeWidth={2.5} />}
+                    screenName="index"
+                    text="Home"
+                    navigation={props.navigation}
+                    state={props.state}
+                  />
+                  <ScreenButtonComponent
+                    icon={<Clock3 size={20} color="#5636A7" strokeWidth={2.5} />}
+                    screenName=""
+                    text="Prayer Timings"
+                    navigation={props.navigation}
+                    state={props.state}
+                  />
+                  <ScreenButtonComponent
+                    icon={<Link size={20} color="#5636A7" strokeWidth={2.5} />}
+                    screenName=""
+                    text="Events"
+                    navigation={props.navigation}
+                    state={props.state} 
+                  />
+                  <ScreenButtonComponent
+                    icon={<MapPin size={20} color="#5636A7" strokeWidth={2.5} />}
+                    screenName=""
+                    text="Halal Food Directory"
+                    navigation={props.navigation}
+                    state={props.state}
+                    lastItem={true}
+                  />
+ 
                 </View>
                   {/* External links */}
                <View>
@@ -87,42 +82,34 @@ export default function RootLayout() {
                   Quick Links
                 </Text>
                 <View className="bg-white rounded-lg gap-4 p-4  shadow-md shadow-slate-200 ">
-                <Pressable  className=" flex flex-row  justify-between items-center gap-4 p-4   border-b  border-gray-200" onPress= { () => Linking.openURL('https://www.wlumsa.org/contact')}>
-                 <View className="flex flex-row items-center gap-4">
-                    <Pencil size={20} color="#5636A7"  className="" strokeWidth={2.5}/>
-                    <Text className=" text-[#696573] - text-md ">Feedback Form</Text>
-                 </View>
-                   <View>
-                    <ChevronRight size={20} color="#5636A7" strokeWidth={2.5} />
-                   </View>
-                  </Pressable>
-                  <Pressable  className=" flex flex-row  justify-between items-center gap-4 p-4   border-b  border-gray-200" onPress= { () => Linking.openURL('https://www.wlumsa.org/contact')}>
-                 <View className="flex flex-row items-center gap-4">
-                    <CircleUser size={20} color="#5636A7"  className="" strokeWidth={2.5}/>
-                    <Text className=" text-[#696573] - text-md ">Become a General Member</Text>
-                 </View>
-                   <View>
-                    <ChevronRight size={20} color="#5636A7" strokeWidth={2.5} />
-                   </View>
-                  </Pressable>
-                <Pressable  className=" flex flex-row  justify-between items-center gap-4 p-4   border-b  border-gray-200" onPress= { () => Linking.openURL('https://www.wlumsa.org/contact')}>
-                 <View className="flex flex-row items-center gap-4">
-                    <Banknote size={20} color="#5636A7"  className="" strokeWidth={2.5}/>
-                    <Text className=" text-[#696573] - text-md ">Donate to the MSA</Text>
-                 </View>
-                   <View>
-                    <ChevronRight size={20} color="#5636A7" strokeWidth={2.5} />
-                   </View>
-                  </Pressable>
-                  <Pressable  className=" flex flex-row  justify-between items-center gap-4 p-4  w-full" onPress= { () => Linking.openURL('https://www.wlumsa.org/contact')}>
-                 <View className="flex flex-row items-center gap-4">
-                    <MessageCircle size={20} color="#5636A7"  className="" strokeWidth={2.5}/>
-                    <Text className=" text-[#696573] - text-md ">Contact Us</Text>
-                 </View>
-                   <View>
-                    <ChevronRight size={20} color="#5636A7" strokeWidth={2.5} />
-                   </View>
-                  </Pressable>
+                <ButtonComponent
+                  icon={<Pencil size={20} color="#5636A7"  /> }
+                  link="https://www.wlumsa.org/contact"
+                  text="Feedback Form"
+                  type="2"
+                />
+                <ButtonComponent
+                  icon={<CircleUser size={20} color="#5636A7"  /> }
+                  link="https://www.wlumsa.org/contact"
+                  text="Become a General Member"
+                  type="2"
+
+                />
+                  
+                <ButtonComponent
+                  icon={<Banknote size={20} color="#5636A7"  /> }
+                  link="https://www.wlumsa.org/contact"
+                  text="Donate to the MSA"
+                  type="2"
+                />
+                <ButtonComponent  
+                  icon={<MessageCircle size={20} color="#5636A7"  /> }
+                  link="https://www.wlumsa.org/contact"
+                  text="Contact Us"
+                  type="2"
+                  lastItem={true}
+                />
+                  
                   </View>
                </View>
 
@@ -132,24 +119,39 @@ export default function RootLayout() {
                   Follow us
                 </Text>
                 <View className="  gap-10 items-center  justify-center p-4 rounded-xl  w-full flex flex-row flex-wrap ">
-                  <Pressable onPress= { () => Linking.openURL('https://www.instagram.com/wlumsa/')} className="items-center w-14 h-14 p-4 text-center shadow-md shadow-slate-200 bg-[#F9FAFB] rounded-xl">
-                    <FontAwesome6 name="instagram" size={20} color="#5636A7" />
-                  </Pressable>
-                  <Pressable onPress= { () => Linking.openURL('https://www.facebook.com/wlumsa/')} className="items-center w-14 h-14 p-4 text-center shadow-md shadow-slate-200 bg-[#F9FAFB] rounded-xl">
-                    <FontAwesome6 name="facebook" size={20} color="#5636A7" />
-                  </Pressable>
-                  <Pressable onPress= { () => Linking.openURL('https://www.linkedin.com/company/wlu-msa/')} className="items-center w-14 h-14 p-4 text-center shadow-md shadow-slate-200 bg-[#F9FAFB] rounded-xl">
-                    <FontAwesome6 name="linkedin" size={20} color="#5636A7" />
-                  </Pressable>
-                  <Pressable onPress= { () => Linking.openURL('https://chat.whatsapp.com/BslJGlMMnAM7TRss3Y1Va0')} className="items-center w-14 h-14 p-4 text-center shadow-md shadow-slate-200 bg-[#F9FAFB] rounded-xl">
-                    <FontAwesome6 name="whatsapp" size={20} color="#5636A7" />
-                  </Pressable>
-                  <Pressable onPress= { () => Linking.openURL('https://wlumsa.org')} className="items-center justify-center w-14 h-14 p-4 text-center shadow-md shadow-slate-200 bg-[#F9FAFB] rounded-xl">
-                    <Globe size={20} color="#5636A7" />
-                  </Pressable>
-                  <Pressable onPress= { () => Linking.openURL('https://www.youtube.com/@WLUMSA')} className="items-center justify-center w-14 h-14 p-4 text-center shadow-md shadow-slate-200 bg-[#F9FAFB] rounded-xl">
-                    <TvMinimalPlay size={20} color="#5636A7"  />
-                  </Pressable>
+                <ButtonComponent
+                    icon={ <FontAwesome6 name="instagram" size={20} color="#5636A7" /> }
+                    type="1"
+                    link="https://www.instagram.com/wlumsa/"
+                  />
+    
+                  <ButtonComponent
+                    icon={ <FontAwesome6 name="facebook" size={20} color="#5636A7" /> }
+                    type="1"
+                    link="https://www.facebook.com/wlumsa/"
+                  />
+      
+                  <ButtonComponent
+                    icon={<FontAwesome6 name="linkedin" size={20} color="#5636A7" />}
+                    type="1"
+                    link="https://www.linkedin.com/company/wlu-msa/"
+                  />
+                  <ButtonComponent
+                    icon={<FontAwesome6 name="whatsapp" size={20} color="#5636A7" />}
+                    type="1"
+                    link="https://chat.whatsapp.com/BslJGlMMnAM7TRss3Y1Va0"
+                  />
+                  <ButtonComponent
+                    icon={<Globe size={20} color={"#5636A7"} /> }
+                    type="1"
+                    link="https://wlumsa.org"
+                  />
+                
+                <ButtonComponent
+                    icon={<TvMinimalPlay size={20} color="#5636A7"  /> }
+                    type="1"
+                    link="https://www.youtube.com/@WLUMSA"
+                  />
         
                 </View>
                </View>
