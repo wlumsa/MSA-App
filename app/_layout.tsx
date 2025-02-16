@@ -1,5 +1,5 @@
 import React from "react";
-import { StatusBar, View, Text, Pressable, SafeAreaView, Image } from "react-native";
+import { StatusBar, View, Text, Pressable, SafeAreaView, Image, TouchableOpacity } from "react-native";
 import MSA_Logo from "../assets/images/MSA_Logo.png"; 
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import {MessageCircle, Globe, Banknote, CircleUser, Pencil, House, Link, MapPin, ChevronRight, TvMinimalPlay, AlignJustify, AlignStartHorizontal, Clock3} from "lucide-react-native";
@@ -16,24 +16,26 @@ export default function RootLayout() {
       <StatusBar backgroundColor="#F8F5FF" barStyle="dark-content" />
       <GestureHandlerRootView style={{ flex: 1,  backgroundColor: '#F8F5FF' }}>
       <Drawer 
-        screenOptions={{
-          drawerLabel: () => <AlignJustify size={24} color="#5636A7" />, 
-          drawerIcon: () => <AlignJustify size={24} color="#5636A7" />, 
+        screenOptions={({ navigation }) => ({  
+          headerLeft: () => (
+              <TouchableOpacity onPress={() => navigation.toggleDrawer()}> 
+                  <AlignJustify size={24} color="#5636A7" style={{ marginLeft: 30 }} strokeWidth={2.5} /> 
+              </TouchableOpacity>
+          ),
           drawerHideStatusBarOnOpen: true,
           drawerType: "front",
           drawerStyle: {
-            backgroundColor: "#F8F5FF",
-            width: "80%",
-          }
-          
-        }}
+              backgroundColor: "#F8F5FF",
+              width: "80%",
+          },
+      })}
         drawerContent={(props) => {
           return (
             <DrawerContentScrollView {...props}>
             <SafeAreaView>
             
                 <View className="flex flex-row   w-full px-4 pb-6">
-               <View className="flex flex-row items-center gap-4">
+                <View className="flex flex-row items-center gap-4">
                   <Image source={MSA_Logo} style={{ width: 50, height: 50 }} />
                   <Text className="text-4xl font-bold text-[#2E046D] pb-2 flex items-start justify-center ">
                     WLU MSA
@@ -178,6 +180,7 @@ export default function RootLayout() {
           <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
         </Stack>
       </GestureHandlerRootView> */}
+     
     </>
   );
 }
