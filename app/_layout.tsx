@@ -49,7 +49,7 @@ export default function RootLayout() {
 
                   <ScreenButtonComponent
                     icon={<House size={20} color="#5636A7" strokeWidth={2.5} />}
-                    screenName="index"
+                    screenName="/(tabs)/index"
                     text="Home"
                     navigation={props.navigation}
                     state={props.state}
@@ -63,14 +63,14 @@ export default function RootLayout() {
                   />
                   <ScreenButtonComponent
                     icon={<Link size={20} color="#5636A7" strokeWidth={2.5} />}
-                    screenName=""
+                    screenName="events"
                     text="Events"
                     navigation={props.navigation}
                     state={props.state} 
                   />
                   <ScreenButtonComponent
                     icon={<MapPin size={20} color="#5636A7" strokeWidth={2.5} />}
-                    screenName=""
+                    screenName="halalfood"
                     text="Halal Food Directory"
                     navigation={props.navigation}
                     state={props.state}
@@ -165,7 +165,14 @@ export default function RootLayout() {
         }
         }
       >
-     
+      <Drawer.Screen name="(tabs)"
+          options={{
+            headerShown: false,
+          }}
+         />
+    
+
+  
       </Drawer>
     </GestureHandlerRootView>
       {/* <GestureHandlerRootView style={{ flex: 1 }}>
@@ -180,6 +187,7 @@ export default function RootLayout() {
           <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
         </Stack>
       </GestureHandlerRootView> */}
+
      
     </>
   );
