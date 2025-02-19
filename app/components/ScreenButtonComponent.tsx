@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Pressable, View, Text } from "react-native";
 import { ReactNode } from 'react'
 import { ChevronRight } from "lucide-react-native";
+import { router } from "expo-router";
 
 interface ButtonProps {
   icon: ReactNode;
@@ -28,7 +29,7 @@ export const ScreenButtonComponent:React.FC<ButtonProps> = ({icon, screenName, t
     <Pressable
       onPressIn={onPress}
       onPressOut={onPress}
-      onPress={() => navigation.navigate(screenName)}
+      onPress={() => router.push(screenName as any)}
       className={`flex-row items-center gap-4 p-4 justify-between ${
         (isCurrentScreen|| isPressed) ? 'bg-[#ededed] rounded-xl' : ''
       } ${!lastItem ? "border-b border-gray-200 ": "" } `}

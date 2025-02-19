@@ -49,28 +49,28 @@ export default function RootLayout() {
 
                   <ScreenButtonComponent
                     icon={<House size={20} color="#5636A7" strokeWidth={2.5} />}
-                    screenName="/(tabs)/index"
+                    screenName=""
                     text="Home"
                     navigation={props.navigation}
                     state={props.state}
                   />
                   <ScreenButtonComponent
                     icon={<Clock3 size={20} color="#5636A7" strokeWidth={2.5} />}
-                    screenName=""
+                    screenName="/prayertimes"
                     text="Prayer Timings"
                     navigation={props.navigation}
                     state={props.state}
                   />
                   <ScreenButtonComponent
                     icon={<Link size={20} color="#5636A7" strokeWidth={2.5} />}
-                    screenName="events"
+                    screenName="/events"
                     text="Events"
                     navigation={props.navigation}
                     state={props.state} 
                   />
                   <ScreenButtonComponent
                     icon={<MapPin size={20} color="#5636A7" strokeWidth={2.5} />}
-                    screenName="halalfood"
+                    screenName="/halalfood"
                     text="Halal Food Directory"
                     navigation={props.navigation}
                     state={props.state}
