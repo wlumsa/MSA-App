@@ -37,9 +37,9 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="halalfood"
+        name="Halalfood"
         options={{
-    
+          title: 'Halal Food',
           tabBarIcon: ({ color }) => <MapPin size={24}  color={color} strokeWidth={2.5} />,
         }}
       />
