@@ -1,5 +1,7 @@
 import { Text, View, Pressable } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import { Link } from 'expo-router';
+
 const PrayerCard = () => {
   return (
     
@@ -30,9 +32,11 @@ const PrayerCard = () => {
         </Text>
       </View>
       <Pressable>
+        <Link href="/prayertimes">
         <View className="flex flex-row  justify-end ">
           <Text className="text-white underline">View all timings</Text>
         </View>
+        </Link>
       </Pressable>
      </LinearGradient> 
     </View>
