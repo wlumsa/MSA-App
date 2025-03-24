@@ -1,7 +1,7 @@
 import { Text, View, Pressable } from "react-native";
 import {ChevronRight} from "lucide-react-native";
-import { fetchEvents } from "@/Utils/datafetching";
-import { useState } from "react";
+import { fetchTodaysEvents } from "@/Utils/datafetching";
+import { useState, useEffect } from "react";
 import { Link } from "expo-router";
 type EventInfoProps = {
   name: string
@@ -12,9 +12,12 @@ type EventInfoProps = {
 const EventCard= () => {
 
   const [events, setEvents] = useState<EventInfoProps[]>([])
-  fetchEvents().then((data) => {
-    setEvents(data)
-  })
+  useEffect(() => {
+    fetchTodaysEvents().then((data) => {
+      setEvents(data)
+    })
+  }, [])
+  
 
 
   return (
@@ -23,7 +26,7 @@ const EventCard= () => {
    
       <View className="flex flex-row items-center justify-between w-full font-bold ">
         <Text className="text-white ">
-        Today's Events
+        {events.length > 0 ? "Today's Events" : "No events today"}
         </Text>
         <Link href="/events">
           <Pressable>
