@@ -45,6 +45,13 @@ export const fetchTodaysEvents = async () => {
     
       
 //get ayah here
+export async function getDailyReminder(id:string) {
+    const { data, error } = await supabase.from('daily_reminders').select('*').eq('id', id).single()
+    if (error) {
+        throw error
+    }
+    return data
+}
 
 
 

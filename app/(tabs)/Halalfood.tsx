@@ -5,7 +5,7 @@ import { View, Text } from 'react-native'
 import { TextInput } from 'react-native'
 import { Search } from 'lucide-react-native'
 import { CircleX } from 'lucide-react-native'
-const HalalFood = () => {
+const halalFood = () => {
   return (
     <ScrollView className='flex flex-col  h-screen px-6 pt-4 bg-[#F8F5FF] '>
       <View className="items-center mx-4 ">
@@ -31,4 +31,4 @@ const HalalFood = () => {
   )
 }
 
-export default HalalFood
+export default halalFood

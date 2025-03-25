@@ -26,18 +26,19 @@ const PrayerCard = () => {
         <Text className="text-4xl font-bold text-white">6:00 AM</Text>
       </View>
       
-      <View className="" >
+      <View className="flex flex-row  justify-between" >
         <Text className="text-white ">
           in 1 hour 42 min
         </Text>
-      </View>
-      <Pressable>
+        <Pressable>
         <Link href="/prayertimes">
-        <View className="flex flex-row  justify-end ">
+        <View className=" ">
           <Text className="text-white underline">View all timings</Text>
         </View>
         </Link>
       </Pressable>
+      </View>
+     
      </LinearGradient> 
     </View>
   )

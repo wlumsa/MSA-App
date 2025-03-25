@@ -27,10 +27,11 @@ export const IconComponent:React.FC<ButtonProps> = ({icon, link, text}: ButtonPr
     <>
       
         <View className="items-center text-center">
-          <Link href={link as any}>
+          <Link href={link as any} asChild>
             <Pressable
             onPressIn={onPress}
             onPressOut={onPress}
+
             className={`items-center w-16 h-16 p-4 text-center shadow-md shadow-slate-200 bg-[#F9FAFB] justify-center  rounded-xl ${isPressed ? "bg-[#ededed]" : "bg-[#F9FAFB]"}`}>
                 {icon}
             </Pressable>

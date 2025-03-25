@@ -40,11 +40,13 @@ const HalalfoodCard:React.FC<Props> = ({name, description, location, link, image
       <View className='flex flex-row '>
         <Text className="text-lg font-semibold text-[#5636A7]"> {name} </Text>
       </View>
-        <View className='flex flex-col justify-between w-full py-4 font-bold'>
-            <Text className="text-md  text-gray-600 py-2 ">{description} </Text>
-            <Text className="text-md  text-gray-500">Category: {category} </Text>
-            <Text className="text-md  text-gray-500">Method: {method} </Text>
-            <Text className="text-md  text-gray-500">Location: {location} </Text>
+        <View className='flex flex-col justify-between w-full py-2 font-bold'>
+            <Text className="text-md  text-gray-600  ">{description} </Text>
+            <View className='py-2'>
+              <Text className="text-md  text-gray-500">Category: {category} </Text>
+              <Text className="text-md  text-gray-500">Method: {method} </Text>
+              <Text className="text-md  text-gray-500">Location: {location} </Text>
+            </View>
            <View className='flex flex-row justify-end'>
             {link && <Pressable className="bg-[#5636A7] w-36 p-2  rounded-xl text-center mt-2 flex flex-row items-center justify-center" onPress={() => Linking.openURL(link)}>
                         <Text className="text-white text-center font-semibold ">Order now</Text>

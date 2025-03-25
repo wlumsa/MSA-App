@@ -3,6 +3,8 @@ import {ChevronRight} from "lucide-react-native";
 import { fetchTodaysEvents } from "@/Utils/datafetching";
 import { useState, useEffect } from "react";
 import { Link } from "expo-router";
+import { useRouter } from 'expo-router';
+
 type EventInfoProps = {
   name: string
   date: string
@@ -17,6 +19,7 @@ const EventCard= () => {
       setEvents(data)
     })
   }, [])
+  const router = useRouter();
   
 
 
@@ -29,7 +32,7 @@ const EventCard= () => {
         {events.length > 0 ? "Today's Events" : "No events today"}
         </Text>
         <Link href="/events">
-          <Pressable>
+          <Pressable onPress={() => router.navigate('/events')} >
               <View className="flex flex-row items-center justify-end p-2 rounded bg-violet-100">
               <Text className="  text-[#5636A7]  ">All events </Text>
               <ChevronRight size={18} color="#5636A7" />
