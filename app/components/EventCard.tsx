@@ -42,7 +42,7 @@ const EventCard= () => {
       </View>
       {events.map((event) => (
         <View className="flex flex-row justify-between w-full py-2 font-bold">
-        <Text className="text-sm font-bold text-white">{event.name}</Text>
+        <Text className="sm:text-sm font-bold text-white break-words">{event.name}</Text>
         <Text className="text-sm font-bold text-white">{event.time}</Text>
       </View>
       ))

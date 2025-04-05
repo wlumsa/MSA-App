@@ -7,5 +7,6 @@ export default function getReminderId() {
     const month = today.getMonth();
     const year = today.getFullYear();
     const id = (date * month * year) % 98  ;
+    console.log("id", id);
     return id.toString();
 }

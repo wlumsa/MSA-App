@@ -32,9 +32,7 @@ const PrayerCard = () => {
         </Text>
         <Pressable>
         <Link href="/prayertimes">
-        <View className=" ">
-          <Text className="text-white underline">View all timings</Text>
-        </View>
+      
         </Link>
       </Pressable>
       </View>
