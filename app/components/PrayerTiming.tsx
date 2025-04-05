@@ -14,7 +14,6 @@ const PrayerTiming:React.FC<PrayerProps> = ({icon, name, athan, iqama}: PrayerPr
     <View className="flex flex-row justify-between w-full p-6 rounded-xl bg-white my-2 ">
             <View className="flex flex-row gap-4">
                 {icon}
-                 {/* <Sunrise color="#9055FF" strokeWidth={2.5} /> */}
                 <Text className="text-lg text-bold font-bold">{name}</Text>
              </View>
                     <View className="flex flex-row gap-8 ">
