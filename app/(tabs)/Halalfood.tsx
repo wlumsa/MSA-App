@@ -3,19 +3,18 @@ import HalalfoodCard from '../components/HalalfoodCard'
 import { Pressable, ScrollView } from 'react-native-gesture-handler'
 import { View, Text } from 'react-native'
 import { TextInput } from 'react-native'
-import { Search } from 'lucide-react-native'
-import { Dropdown } from 'react-native-element-dropdown';
+import { ArrowDown, ChevronDown, Search } from 'lucide-react-native'
 import { useState } from 'react'
 const halalFood = () => {
   const data = [
-    { label: 'Item 1', value: '1' },
-    { label: 'Item 2', value: '2' },
-    { label: 'Item 3', value: '3' },
-    { label: 'Item 4', value: '4' },
-    { label: 'Item 5', value: '5' },
-    { label: 'Item 6', value: '6' },
-    { label: 'Item 7', value: '7' },
-    { label: 'Item 8', value: '8' },
+    { label: 'Chinese', value: '1' },
+    { label: 'Persian', value: '2' },
+    { label: 'Shawarma', value: '3' },
+    { label: 'Burgers', value: '4' },
+    { label: 'Bangladeshi', value: '5' },
+    { label: 'Chicken', value: '6' },
+    { label: 'Pizza', value: '7' },
+    { label: 'Chicken and waffles', value: '8' },
   ];
 const locationData = [
   { label: 'On Campus', value: 'on-campus' },
@@ -38,31 +37,17 @@ const methodData = [
   const [locationValue, setLocationValue] = useState(null);
   const [cusineValue, setCuisineValue] = useState(null);
 
-  const [isFocusMethod, setIsFocusMethod] = useState(false);
-  const [isFocusLocation, setIsFocusLocation] = useState(false);
-  const [isFocusCuisine, setIsFocusCusine] = useState(false);
-
-  const renderMethodLabel = () => {
-    if (value || isFocusMethod) {
-      return (
-        <Text style={[ isFocusMethod && { color: 'blue' }]}>
-          Dropdown label
-        </Text>
-      );
-    }
-    return null;
-  };
-
-
+const [openFilters, setOpenFilters] = useState(false)
+const onFiltersPress = () => {
+  setOpenFilters(!openFilters);
+};
   
   return (
     <ScrollView className='flex flex-col  h-screen px-6 pt-4 bg-[#F8F5FF] '>
       <View className="items-center mx-4 ">
-            <View className="flex flex-row justify-between w-full px-4 ">
             
-            </View>
        <View className='w-full flex flex-row items-center justify-center gap-4 py-4 border border-gray-300 bg-white rounded-xl shadow-sm shadow-slate-200 px-4'>
-        <Search color="#A0AEC0" size={24} strokeWidth={1.5} className='mx-2' />
+        {/* <Search color="#A0AEC0" size={24} strokeWidth={1.5} className='mx-2' /> */}
           <TextInput
           className="items-center  w-full   "
           placeholder="Search for halal food"
@@ -72,116 +57,123 @@ const methodData = [
           onChangeText={(text) => handleSearch(text)}
           />
         </View> 
-        <View className='flex flex-col items-center justify-between w-full  py-4 '>
-          
-           
-          <Text className=" text-lg font-bold">Filter</Text>
-          <View className="flex flex-row gap-16 font-medium">
-              <Text className="text-lg ">Cuisine</Text>
-              <Text className="text-lg ">Location</Text>
-              <Text className="text-lg ">Method</Text>
+        <View className='flex flex-col  py-4 j'>
+          <View className='flex w-full justify-end'>
+            <Pressable onPress={onFiltersPress} className={`flex flex-row items-center justify-end gap-2 rounded-xl`}>
+            <View className='flex flex-row items-center gap-2 rounded-xl justify-end'>
+            <Text className='text-sm p-2 rounded-xl text-right'> Filters</Text>
+            <ChevronDown size={20} color="#A0AEC0" strokeWidth={1.5} className='mx-1' />
           </View>
-      <View className='flex flex-row gap-4 w-full py-4'>
-        <Dropdown
-          style={{
-            minWidth: 100, 
-            alignSelf: 'flex-start',
-            height: 40,
-            backgroundColor: '#5636A7',
-            borderRadius: 12,
-            paddingHorizontal: 4,
-            alignItems: 'center',
+          </Pressable>
+          </View>
         
-            
-          }}
+      <View className={`flex flex-col  gap-2  rounded-xl ${openFilters ? 'visible' : 'hidden'}`}> 
+      <View className='h-12'  >
+      <ScrollView horizontal 
+      showsHorizontalScrollIndicator={false}
+      contentContainerStyle={{
+    paddingHorizontal: 4}}> 
+        {data.map((cuisine) => (
+          <Pressable key={cuisine.value} className=''>
+        <View
+          className={`w-fit p-2 rounded-lg mx-2 ${
+        cusineValue === cuisine.value ? 'bg-[#5636A7]' : 'bg-violet-200'
+          }`}
+        >
+          <Text
+        className={`text-sm ${
+          cusineValue === cuisine.value ? 'text-white' : ''
+        }`}
+          >
+        {cuisine.label}
+          </Text>
+        </View>
+          </Pressable>
+        ))}
+      </ScrollView>
+      </View>
+
+
+<View className='  h-12 '>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}
+      contentContainerStyle={{
+    paddingHorizontal: 4}}> 
+          {methodData.map((method) => (
+            <Pressable key={method.value} className=''>
+              <View
+          className={`w-fit p-2 rounded-lg mx-2 ${
+            methodValue === method.value ? 'bg-[#5636A7]' : 'bg-violet-200'
+          }`}
+              >
+          <Text
+            className={`text-sm ${
+              methodValue === method.value ? 'text-white' : ''
+            }`}
+          >
+            {method.label}
+          </Text>
+              </View>
+            </Pressable>
+          ))}
+        </ScrollView>
+        </View>
+<View className=' h-20 '>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}
+      contentContainerStyle={{
+    paddingHorizontal: 4}} >
           
-          placeholderStyle= {{ color: '#fff', fontSize: 14 }}
-          selectedTextStyle={{ color: '#fff',fontSize: 14 }}
-          // selectedTextStyle={styles.selectedTextStyle}
-          // iconStyle={styles.iconStyle}
-          data={methodData}
-          maxHeight={300}
-          labelField="label"
-          valueField="value"
-          placeholder={!isFocusMethod ? 'Slaughter method' : '...'}
-          value={methodValue}
-          onFocus={() => setIsFocusMethod(true)}
-          onBlur={() => setIsFocusMethod(false)}
-          onChange={item => {
-            setMethodValue(item.value);
-            setIsFocusMethod(false);
-          }}
-          
-        />
-           <Dropdown
-             style={{
-              minWidth: 100, 
-              alignSelf: 'flex-start',
-              height: 40,
-              borderRadius: 12,
-              paddingHorizontal: 4,
-              alignItems: 'center',
-              backgroundColor: '#5636A7',
-              
-            }}
-            
-            placeholderStyle= {{ color: '#fff', fontSize: 14 }}
-            selectedTextStyle={{ color: '#fff', fontSize: 14 }}
-          
-          // placeholderStyle={styles.placeholderStyle}
-          // selectedTextStyle={styles.selectedTextStyle}
-          // iconStyle={styles.iconStyle}
-          data={data}
-          maxHeight={300}
-          labelField="label"
-          valueField="value"
-          placeholder={!isFocusCuisine ? 'Cuisine' : '...'}
-          value={cusineValue}
-          onFocus={() => setIsFocusCusine(true)}
-          onBlur={() => setIsFocusCusine(false)}
-          onChange={item => {
-            setCuisineValue(item.value);
-            setIsFocusCusine(false);
-          }}
-          
-        />
-           <Dropdown
-             style={{
-              minWidth: 100, 
-              alignSelf: 'flex-start',
-              height: 40,
-              borderRadius: 12,
-              paddingHorizontal: 4,
-              alignItems: 'center',
-              backgroundColor: '#5636A7',
-            }}
-            
-            placeholderStyle= {{ color: '#fff',fontSize: 14 }}
-            selectedTextStyle={{ color: '#fff',fontSize: 14 }}
-          
-          // placeholderStyle={styles.placeholderStyle}
-          // selectedTextStyle={styles.selectedTextStyle}
-          // iconStyle={styles.iconStyle}
-          data={locationData}
-          maxHeight={300}
-          labelField="label"
-          valueField="value"
-          placeholder={!isFocusLocation ? 'Location' : '...'}
-          value={locationValue}
-          onFocus={() => setIsFocusLocation(true)}
-          onBlur={() => setIsFocusLocation(false)}
-          onChange={item => {
-            setLocationValue(item.value);
-            setIsFocusLocation(false);
-          }}
-          
-        />
+          {locationData.map((location) => (
+            <Pressable key={location.value} className='mx-2'>
+              <View
+          className={`w-fit p-2 rounded-lg  mx-2 ${
+            locationValue === location.value ? 'bg-[#5636A7]' : 'bg-violet-200'
+          }`}
+              >
+          <Text
+            className={`text-sm ${
+              locationValue === location.value ? 'text-white' : ''
+            }`}
+          >
+            {location.label}
+          </Text>
+              </View>
+            </Pressable>
+          ))}
+        </ScrollView>
         </View>
         </View>
-            
-      <View className='flex flex-col gap-6 w-full py-8'>
+        </View>
+      <View className='flex flex-col gap-6 w-full '>
           
           <HalalfoodCard 
+          name='Auntys Kitchen'
+          description='They serve mainly Pakistani food and dessert but also have some continental options. They dont offer dine in.'
+          location='MSA Office'
+          category='Asian'
+          method='Hand'
+          link='https://www.google.com' />
+           <HalalfoodCard 
+          name='Auntys Kitchen'
+          description='They serve mainly Pakistani food and dessert but also have some continental options. They dont offer dine in.'
+          location='MSA Office'
+          category='Asian'
+          method='Hand'
+          link='https://www.google.com' />
+           <HalalfoodCard 
+          name='Auntys Kitchen'
+          description='They serve mainly Pakistani food and dessert but also have some continental options. They dont offer dine in.'
+          location='MSA Office'
+          category='Asian'
+          method='Hand'
+          link='https://www.google.com' />
+           <HalalfoodCard 
+          name='Auntys Kitchen'
+          description='They serve mainly Pakistani food and dessert but also have some continental options. They dont offer dine in.'
+          location='MSA Office'
+          category='Asian'
+          method='Hand'
+          link='https://www.google.com' />
+           <HalalfoodCard 
           name='Auntys Kitchen'
           description='They serve mainly Pakistani food and dessert but also have some continental options. They dont offer dine in.'
           location='MSA Office'
