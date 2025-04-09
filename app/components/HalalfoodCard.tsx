@@ -33,7 +33,7 @@ const HalalfoodCard:React.FC<Props> = ({name, description, location, link, image
       <View className=''>
        <Image
         style={{ width: "100%", height: 100, borderRadius: 10, marginTop: 10, marginBottom: 10 }}
-        source={ "https://plus.unsplash.com/premium_photo-1677528572912-20b0ef3c08a9?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"  }
+        source={ image  }
       />
       </View>
 

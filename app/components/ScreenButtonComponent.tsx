@@ -17,27 +17,25 @@ interface ButtonProps {
 
 export const ScreenButtonComponent:React.FC<ButtonProps> = ({icon, screenName, text, navigation, state, lastItem}: ButtonProps) => {
     const isCurrentScreen = state.routeNames[state.index] === screenName;
-    
-
     const [isPressed, setIsPressed] = useState(false);
     const onPress = () => {
       setIsPressed(!isPressed);
     };
 
-  
   return (
     <Pressable
       onPressIn={onPress}
       onPressOut={onPress}
       onPress={() => router.push(screenName as any)}
-      className="pt-2"
-    >
+      className="pt-2">
       <View className={`flex-row items-center  p-4  justify-between ${
         (isCurrentScreen|| isPressed) ? 'bg-[#ededed] rounded-xl' : ''
       } `}>
-      <View className={`flex-row items-center gap-4`}>
-        {icon} 
-        <Text className={`text-[#696573] text-md`}>{text}</Text> 
+      <View className={`flex flex-row items-center `}>
+       <View className="mr-4">
+       {icon} 
+       </View>
+        <Text className={`text-[#696573] text-md max-w-[90%]`}>{text}</Text> 
       </View>
       <ChevronRight size={20} color="#5636A7" strokeWidth={2.5} />
       </View>

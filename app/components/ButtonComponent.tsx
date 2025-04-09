@@ -51,9 +51,11 @@ export const ButtonComponent:React.FC<ButtonProps> = ({icon, type, link, text, l
            <View className={`flex-row items-center  p-4  justify-between ${
           isPressed ? 'bg-[#ededed] rounded-xl' : ''
       } `}>
-          <View className="flex flex-row items-center gap-4">
-             {icon}
-             <Text className=" text-[#696573]  text-md ">{text}</Text>
+          <View className="flex flex-row items-center  ">
+            <View className="mr-4">
+            {icon}
+            </View>
+             <Text className=" text-[#696573]  text-md max-w-[90%] ">{text}</Text>
           </View>
            
              <ChevronRight size={20} color="#5636A7" strokeWidth={2.5} />

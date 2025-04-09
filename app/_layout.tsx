@@ -48,28 +48,28 @@ export default function RootLayout() {
                 <View className="flex flex-col    px-4 py-2 rounded-lg my-3 w-full bg-white  shadow-md shadow-slate-200 ">
 
                   <ScreenButtonComponent
-                    icon={<House size={20} color="#5636A7" strokeWidth={2.5} />}
+                    icon={<House size={20} color="#5636A7"  />}
                     screenName=""
                     text="Home"
                     navigation={props.navigation}
                     state={props.state}
                   />
                   <ScreenButtonComponent
-                    icon={<Clock3 size={20} color="#5636A7" strokeWidth={2.5} />}
+                    icon={<Clock3 size={20} color="#5636A7"  />}
                     screenName="/prayertimes"
                     text="Prayer Timings"
                     navigation={props.navigation}
                     state={props.state}
                   />
                   <ScreenButtonComponent
-                    icon={<Link size={20} color="#5636A7" strokeWidth={2.5} />}
+                    icon={<Link size={20} color="#5636A7"  />}
                     screenName="/events"
                     text="Events"
                     navigation={props.navigation}
                     state={props.state} 
                   />
                   <ScreenButtonComponent
-                    icon={<MapPin size={20} color="#5636A7" strokeWidth={2.5} />}
+                    icon={<MapPin size={20} color="#5636A7" />}
                     screenName="/halalfood"
                     text="Halal Food Directory"
                     navigation={props.navigation}
@@ -118,7 +118,7 @@ export default function RootLayout() {
                <View>
                 {/* Socials */}
                 <Text className="text-sm  text-gray-500 p-4 ">
-                  Follow us
+                  Connect with us
                 </Text>
                 <View className="  gap-10 items-center  justify-center p-4 rounded-xl  w-full flex flex-row flex-wrap ">
                 <ButtonComponent

@@ -7,6 +7,7 @@ const PrayerCard = () => {
     
 
     <View className="flex flex-col w-full  shadow-md shadow-slate-200 justify-between   ">
+      <Link href="/prayertimes"> 
      <LinearGradient
 
       colors={[  '#8D6EDB', '#5636A7', '#5636A7']}
@@ -38,6 +39,7 @@ const PrayerCard = () => {
       </View>
      
      </LinearGradient> 
+     </Link>
     </View>
   )
 }

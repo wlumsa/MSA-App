@@ -54,6 +54,14 @@ export async function getDailyReminder(id:string) {
 }
 
 
+export async function fetchHalalDirectory() {
+    const { data, error } = await supabase.from('halal_directory').select('*')
+    if (error) {
+        throw error
+    }
+    console.log(data)
+    return data
+}
 
 
-
+ 

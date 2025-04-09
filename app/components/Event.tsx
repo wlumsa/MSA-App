@@ -39,19 +39,19 @@ const Event:React.FC<EventProps> = ({name, description, date, time,location, lin
       />}
       </View>
 
-      <View className='flex flex-row '>
-        <Text className="text-lg font-semibold text-gray-600  ">
-          {formattedDate}   |
+      <View className='flex flex-col '>
+        <Text className="text-lg font-semibold text-[#5636A7] ">{name} </Text>
+        <Text className="text-md text-gray-600  ">
+          {formattedDate}   
         </Text>
-        <Text className="text-lg font-semibold text-[#5636A7] px-2"> {name} </Text>
       </View>
         <View className='flex flex-col justify-between w-full py-4 font-bold'>
-            <Text className="text-md font-semibold text-gray-600  ">{description} </Text>
+            <Text className="text-md  text-gray-600  ">{description} </Text>
             <View className='flex flex-row justify-between w-full py-2 font-bold'>
-                <Text className="text-md font-semibold text-gray-500">{location} | {time}</Text>
+                <Text className="text-md  text-gray-500">{location} | {time}</Text>
             </View>
            <View className='flex flex-row justify-end'>
-            {link && <Pressable className="bg-[#5636A7] w-36 p-2  rounded-xl text-center mt-2 flex flex-row items-center justify-center" onPress={() => Linking.openURL(link)}>
+            {link && <Pressable className="bg-[#5636A7] w-fit p-2  rounded-xl text-center mt-2 flex flex-row items-center justify-center" onPress={() => Linking.openURL(link)}>
                         <Text className="text-white text-center font-semibold ">Register here</Text>
                         <ChevronRight size={18} color="#ffffff" strokeWidth={2.5}/>
                 </Pressable>}
