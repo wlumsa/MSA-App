@@ -3,17 +3,11 @@ import { useState } from "react";
 import { Pressable, View, Text } from "react-native";
 import { ReactNode } from 'react'
 import { Link } from "expo-router";
-interface ButtonProps {
-  icon: ReactNode;
-  link:string
-  text: string;
-
-}
+import { IconButtonProps } from "@/Utils/types";
 
 
 
-
-export const IconComponent:React.FC<ButtonProps> = ({icon, link, text}: ButtonProps) => {
+export const IconComponent:React.FC<IconButtonProps> = ({icon, link, text}: IconButtonProps) => {
 
 
     const [isPressed, setIsPressed] = useState(false);

@@ -1,15 +1,9 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 import { Sunrise } from 'lucide-react-native'
+import { Prayer } from '@/Utils/types'
 
-type PrayerProps = {
-  name: string
-  athan: string
-  iqama: string
-  icon: React.ReactNode
-}
-
-const PrayerTiming:React.FC<PrayerProps> = ({icon, name, athan, iqama}: PrayerProps) => {
+const PrayerTiming:React.FC<Prayer> = ({icon, name, athan, iqama}: Prayer) => {
   return (
     <View className="flex flex-row justify-between w-full p-6 rounded-xl bg-white my-2 ">
             <View className="flex flex-row gap-4">

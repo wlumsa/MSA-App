@@ -4,16 +4,10 @@ import { fetchTodaysEvents } from "@/Utils/datafetching";
 import { useState, useEffect } from "react";
 import { Link } from "expo-router";
 import { useRouter } from 'expo-router';
-
-type EventInfoProps = {
-  name: string
-  date: string
-  time: string
-}
-
+import { EventInfo } from "@/Utils/types";
 const EventCard= () => {
 
-  const [events, setEvents] = useState<EventInfoProps[]>([])
+  const [events, setEvents] = useState<EventInfo[]>([])
   useEffect(() => {
     fetchTodaysEvents().then((data) => {
       setEvents(data)

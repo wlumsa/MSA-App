@@ -6,17 +6,9 @@ import MSA_Logo from '../assets/MSA_Logo.png'
 import { getImageByID } from '@/Utils/datafetching';
 import { useEffect } from 'react';
 import React from 'react'
-type EventProps = {
-  name: string
-  description: string
-  date: string
-  time: string
-  location:string
-  link?: string
-  image_id?:string
-}
+import { Event as EventType } from '@/Utils/types'
 
-const Event:React.FC<EventProps> = ({name, description, date, time,location, link, image_id}) => {
+const Event:React.FC<EventType> = ({name, description, date, time,location, link, image_id}) => {
   const [image, setImage] = React.useState<string | null>(null)
   if(image_id) {
     useEffect(() => {

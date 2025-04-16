@@ -5,17 +5,9 @@ import { Image } from 'expo-image';
 import { getImageByID } from '@/Utils/datafetching';
 import { useEffect } from 'react';
 import React from 'react'
-type Props = {
-  name: string
-  description: string
-  location:string
-  category:string
-  method:string
-  link?: string
-  image_id?:string
-}
+import { Place } from '@/Utils/types'
 
-const HalalfoodCard:React.FC<Props> = ({name, description, location, link, image_id, method, category}) => {
+const HalalfoodCard:React.FC<Place> = ({name, description, location, link, image_id, method, category}) => {
   const [image, setImage] = React.useState<string | null>(null)
   if(image_id) {
     useEffect(() => {

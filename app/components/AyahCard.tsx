@@ -2,13 +2,7 @@ import { Text, View } from "react-native";
 import getReminderId from "@/Utils/utils";
 import { getDailyReminder } from "@/Utils/datafetching";
 import { useState, useEffect } from "react";
-type Reminder = {
-  id: string
-  english: string
-  arabic: string
-  reference: string
-
-}
+import { Reminder } from "@/Utils/types";
 const reminderId =  getReminderId();
 
 const AyahCard = () => {

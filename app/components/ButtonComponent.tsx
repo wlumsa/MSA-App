@@ -4,17 +4,7 @@ import { Pressable, View, Text } from "react-native";
 import { ReactNode } from 'react'
 import { ChevronRight } from "lucide-react-native";
 import { Linking } from "react-native";
-
-
-interface ButtonProps {
-  icon: ReactNode;
-  type: string;
-  link:string
-  text?: string;
-  lastItem?: boolean;
-
-
-}
+import { ButtonProps } from "@/Utils/types";
 
 
 
