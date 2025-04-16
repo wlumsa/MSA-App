@@ -6,13 +6,29 @@ import {MessageCircle, Globe, Banknote, CircleUser, Pencil, House, Link, MapPin,
 import { DrawerContentScrollView } from "@react-navigation/drawer";
 import "../global.css";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { ButtonComponent } from "./components/ButtonComponent";
+import { ButtonComponent } from "./components/ButtonComponent/ButtonComponent";
 import { Drawer } from "expo-router/drawer";
-import ScreenButtonComponent from "./components/ScreenButtonComponent";
+import ScreenButtonComponent from "./components/ScreenButtonComponent/ScreenButtonComponent";
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+import { useReactQueryDevTools } from '@dev-plugins/react-query';
+
+
+
+const queryClient = new QueryClient()
+
 export default function RootLayout() {
+
+  useReactQueryDevTools(queryClient);
 
   return (
     <>
+      <QueryClientProvider client={queryClient}>
       <StatusBar backgroundColor="#F8F5FF" barStyle="dark-content" />
       <GestureHandlerRootView style={{ flex: 1,  backgroundColor: '#F8F5FF' }}>
       <Drawer 
@@ -188,7 +204,7 @@ export default function RootLayout() {
         </Stack>
       </GestureHandlerRootView> */}
      
-
+</QueryClientProvider>
      
     </>
   );

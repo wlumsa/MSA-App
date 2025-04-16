@@ -1,10 +1,10 @@
 import { Text, View, Pressable, ScrollView } from "react-native";
 import { Clock3, Globe, MapPin } from "lucide-react-native";
-import EventCard from "../components/EventCard";
-import PrayerCard from "../components/PrayerCard";
-import AyahCard from "../components/AyahCard";
+import EventCard from "../components/EventCard/EventCard";
+import PrayerCard from "../components/PrayerCard/PrayerCard";
+import AyahCard from "../components/AyahCard/AyahCard";
 import * as Linking from 'expo-linking';
-import IconComponent from "../components/Icon";
+import IconComponent from "../components/Icon/Icon";
 import { useState } from "react";
 export default function Index() {
   

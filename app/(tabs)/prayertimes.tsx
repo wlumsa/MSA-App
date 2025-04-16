@@ -1,9 +1,9 @@
 import { View, Text, ScrollView } from 'react-native'
 import { ChevronLeft, ChevronRight, Calendar, Sunrise, Moon, Sunset, Sun } from "lucide-react-native"
 import { Pressable } from 'react-native'
-import PrayerCard from '../components/PrayerCard'
+import PrayerCard from '../components/PrayerCard/PrayerCard'
 import React from 'react'
-import PrayerTiming from '../components/PrayerTiming'
+import PrayerTiming from '../components/PrayerTiming/PrayerTiming'
 const prayertimes = () => {
   return (
         <ScrollView className='flex flex-col  h-screen px-6 pt-4 bg-[#F8F5FF] '>

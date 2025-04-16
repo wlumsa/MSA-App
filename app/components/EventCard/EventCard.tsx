@@ -5,16 +5,39 @@ import { useState, useEffect } from "react";
 import { Link } from "expo-router";
 import { useRouter } from 'expo-router';
 import { EventInfo } from "@/Utils/types";
+import { useQuery } from "@tanstack/react-query";
 const EventCard= () => {
-
-  const [events, setEvents] = useState<EventInfo[]>([])
-  useEffect(() => {
-    fetchTodaysEvents().then((data) => {
-      setEvents(data)
-    })
-  }, [])
   const router = useRouter();
-  
+
+  const {data: events, isLoading, error} = useQuery({
+    queryKey: ['events'],
+    queryFn: fetchTodaysEvents,
+  })
+
+
+
+  if (isLoading) return (
+    <View className='flex flex-col w-full  shadow-md shadow-slate-200 justify-between  bg-[#5636A7] rounded-xl p-4 '>
+      <Text className="text-white ">
+        Loading events...
+      </Text>
+    </View>
+  )
+  if (error) return (
+    <View className='flex flex-col w-full  shadow-md shadow-slate-200 justify-between  bg-[#5636A7] rounded-xl p-4 '>
+      <Text className="text-white ">
+        Error loading events
+      </Text>
+    </View>
+  )
+  if (!events) return (
+    <View className='flex flex-col w-full  shadow-md shadow-slate-200 justify-between  bg-[#5636A7] rounded-xl p-4 '>
+      <Text className="text-white ">
+        No events found
+      </Text>
+    </View>
+  )
+
 
 
   return (
