@@ -3,7 +3,7 @@ import { ChevronRight } from 'lucide-react-native'
 import { Linking } from 'react-native'
 import { Image } from 'expo-image';
 import MSA_Logo from '../assets/MSA_Logo.png' 
-import { getImageByID } from '@/Utils/datafetching';
+import { getImageByID } from '@/Utils/api';
 import { useEffect } from 'react';
 import React from 'react'
 import { Event as EventType } from '@/Utils/types'

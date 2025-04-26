@@ -1,6 +1,6 @@
 import { Text, View, Pressable } from "react-native";
 import {ChevronRight} from "lucide-react-native";
-import { fetchTodaysEvents } from "@/Utils/datafetching";
+import { fetchTodaysEvents } from "@/Utils/api";
 import { useState, useEffect } from "react";
 import { Link } from "expo-router";
 import { useRouter } from 'expo-router';

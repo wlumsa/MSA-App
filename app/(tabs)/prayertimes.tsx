@@ -4,7 +4,32 @@ import { Pressable } from 'react-native'
 import PrayerCard from '../components/PrayerCard/PrayerCard'
 import React from 'react'
 import PrayerTiming from '../components/PrayerTiming/PrayerTiming'
+import { getPrayerTimingsForDay } from '@/Utils/api'
+import { useQuery } from '@tanstack/react-query'
 const prayertimes = () => {
+    const formmattedDate = new Date().toLocaleDateString('en-US', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    })
+
+
+    const {data: prayertimes, isLoading, error} = useQuery({
+    queryKey: ['prayertimes'],
+     queryFn: getPrayerTimingsForDay,
+   })
+
+   if (isLoading) return (
+    <View className='h-screen px-6 pt-4 bg-[#F8F5FF] items-center justify-center'>
+      <Text className='text-lg mx-4'>Loading prayer times...</Text>
+    </View>
+  )
+    if (error) return (
+    <View className='h-screen px-6 pt-4 bg-[#F8F5FF] items-center justify-center'>
+      <Text className='text-lg mx-4'>Error loading prayer times</Text>
+    </View>
+    )
   return (
         <ScrollView className='flex flex-col  h-screen px-6 pt-4 bg-[#F8F5FF] '>
          
@@ -15,7 +40,7 @@ const prayertimes = () => {
                     </Pressable>
                     <View className="flex flex-col items-center justify-center py-4  rounded-xl">
                         <Text className="text-lg font-bold text-[#2e046d]">28 Jumada 1446 </Text>
-                        <Text className="text-md text-[#2e046d]">November 30, 2024</Text>
+                        <Text className="text-md text-[#2e046d]">{formmattedDate}</Text>
 
                     </View>
 
@@ -39,32 +64,32 @@ const prayertimes = () => {
               <View className="flex flex-col">
                 <PrayerTiming
                 name="Fajr"
-                athan="5:00 AM"
-                iqama="5:30 AM"
+                athan={prayertimes?.fajr + " AM"}
+                iqama="N/A"
                 icon={<Sunrise color="#9055FF" strokeWidth={2.5} />}
                  />
                 <PrayerTiming
                 name="Dhuhr"
-                athan="12:00 PM"
-                iqama="12:30 PM"
+                athan={prayertimes?.dhuhr + " PM"}
+                iqama="N/A"
                 icon={<Sun color="#9055FF" strokeWidth={2.5} />}
                  />
                 <PrayerTiming
                 name="Asr"
-                athan="3:00 PM"
-                iqama="3:30 PM"
+                athan={prayertimes?.asr+ " PM"}
+                iqama="N/A"
                 icon={<Sunrise color="#9055FF" strokeWidth={2.5} />}
                  />
                 <PrayerTiming
                 name="Maghrib"
-                athan="5:00 PM"
-                iqama="5:30 PM"
+                athan={prayertimes?.maghrib+ " PM"}
+                iqama="N/A"
                 icon={<Sunset color="#9055FF" strokeWidth={2.5} />}
                  />
                 <PrayerTiming
                 name="Isha"
-                athan="7:00 PM"
-                iqama="7:30 PM"
+                athan={prayertimes?.isha +  " PM"}
+                iqama="N/A"
                 icon={<Moon color="#9055FF" strokeWidth={2.5} />}  
                   />
               

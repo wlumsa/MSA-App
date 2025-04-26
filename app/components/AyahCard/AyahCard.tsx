@@ -1,6 +1,6 @@
 import { Text, View } from "react-native";
 import getReminderId from "@/Utils/utils";
-import { getDailyReminder } from "@/Utils/datafetching";
+import { getDailyReminder } from "@/Utils/api";
 import { useState, useEffect } from "react";
 import { Reminder } from "@/Utils/types";
 import { useQuery } from "@tanstack/react-query";

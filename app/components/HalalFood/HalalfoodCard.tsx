@@ -2,7 +2,7 @@ import { View, Text, Pressable } from 'react-native'
 import { ChevronRight } from 'lucide-react-native'
 import { Linking } from 'react-native'
 import { Image } from 'expo-image';
-import { getImageByID } from '@/Utils/datafetching';
+import { getImageByID } from '@/Utils/api';
 import { useEffect } from 'react';
 import React from 'react'
 import { Place } from '@/Utils/types'

@@ -3,6 +3,41 @@ import { supabase } from "@/lib/supabase";
 //get the next prayer time here
 
 
+export async function getPrayerTimingsForDay() {
+ 
+    const today = new Date();
+    //get the current month and day
+    const monthName = today.toLocaleString('default', { month: 'long' });
+    const day = today.getDate();
+
+    const { data: monthData, error: monthError } = await supabase
+      .from('prayer_timings_month')
+      .select('id')
+      .eq('month', monthName)
+      .single();
+  
+    if (monthError) {
+      console.error('Error fetching month:', monthError);
+      return null;
+    }
+  
+
+    const { data: dayData, error: dayError } = await supabase
+      .from('prayer_timings_month_days')
+      .select('*')
+      .eq('_parent_id', monthData.id)
+      .eq('day', day)
+      .single();
+  
+    if (dayError) {
+      console.error('Error fetching day:', dayError);
+      return null;
+    }
+  
+    return dayData;
+  }
+  
+
 //get events here
 
 export const fetchEvents = async () => {
