@@ -1,5 +1,5 @@
 import { supabase } from "@/lib/supabase";
-
+import { timeToMinutes } from "./utils";
 //get the next prayer time here
 
 export async function getNextPrayerTime() {
@@ -39,18 +39,47 @@ export async function getNextPrayerTime() {
       console.error('Error fetching day:', dayError);
       return null;
     }
-    let nextPrayer = dayData.prayer_times[0];
+    console.log(dayData)
+    //convert to array
+    const prayerTimes = [
+      { name: 'Fajr', time: dayData.fajr, ampm: 'AM' },
+      { name: 'Dhuhr', time: dayData.dhuhr, ampm: 'PM' },
+      { name: 'Asr', time: dayData.asr, ampm: 'PM' },
+      { name: 'Maghrib', time: dayData.maghrib, ampm: 'PM' },
+      { name: 'Isha', time: dayData.isha, ampm: 'PM' }
+    ];
+  
+    let nextPrayer = null;
     console.log("next prayer time is: ", nextPrayer)
-    for (let i = 0; i < dayData.prayer_times.length; i++) {
-        const prayerTime = dayData.prayer_times[i];
-        const prayerTimeString = prayerTime.time;
-        if (prayerTimeString > currentTimeString) {
-            nextPrayer = prayerTime;
+    for (let i = 0; i < prayerTimes.length ; i++) {
+        if (timeToMinutes(prayerTimes[i].time, prayerTimes[i].ampm) > timeToMinutes(currentTimeString, parseInt(currentTimeString.substring(0, 1)) >= 12 ? "PM" : "AM")) {
+            nextPrayer = prayerTimes[i];
             console.log("next prayer time is: ", nextPrayer)
+            return nextPrayer;
         }
     }
 
-    //acc for the next day
+
+    //get fajr time for next day
+    if( nextPrayer == null) {
+      const { data: nextDayData, error: nextDayError } = await supabase
+        .from('prayer_timings_month_days')
+        .select('*')
+        .eq('_parent_id', monthData.id)
+        .eq('day', day + 1)
+        .single();
+      if (nextDayError) {
+        console.error('Error fetching next day:', nextDayError);
+        return null;
+      }
+      console.log(nextDayData)
+
+ 
+        nextPrayer = { name: 'Fajr', time: nextDayData.fajr, ampm: 'AM' }
+        console.log("next prayer time is: ", nextPrayer)
+        return nextPrayer;
+    }
+
 
 
 

@@ -6,6 +6,7 @@ import AyahCard from "../components/AyahCard/AyahCard";
 import * as Linking from 'expo-linking';
 import IconComponent from "../components/Icon/Icon";
 import { useState } from "react";
+// import Push from "../PushNotifications";
 export default function Index() {
   
    const [isPressed, setIsPressed] = useState(false);
@@ -29,6 +30,7 @@ export default function Index() {
         <Text className="text-3xl font-bold text-[#2E046D] pb-2 ">
           WLU MSA
         </Text>
+
       </View>
       <PrayerCard />
       <AyahCard />

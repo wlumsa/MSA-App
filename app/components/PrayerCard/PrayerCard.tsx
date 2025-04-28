@@ -36,8 +36,8 @@ const PrayerCard = () => {
       </Text>
       </View>
       <View className="flex flex-row justify-between py-4 font-bold  w-full">
-        <Text className="text-4xl font-bold text-white">Fajr</Text>
-        <Text className="text-4xl font-bold text-white">{nextPrayer}</Text>
+        <Text className="text-4xl font-bold text-white">{nextPrayer?.name}</Text>
+        <Text className="text-4xl font-bold text-white">{nextPrayer?.time}</Text>
       </View>
       
       <View className="flex flex-row  justify-between" >
