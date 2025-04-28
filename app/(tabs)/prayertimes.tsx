@@ -23,6 +23,25 @@ const prayertimes = () => {
             day: 'numeric'
         })
 
+        const getHijriDate = ( locale = 'en-TN') => {
+            const futureDateInMillis = Date.now() + date * 24 * 60 * 60 * 1000;
+            const futureGregorianDate = new Date(futureDateInMillis);
+          
+            const options: Intl.DateTimeFormatOptions = {
+             
+              year: 'numeric',
+              month: 'long' as 'long',
+              day: 'numeric',
+            };
+          
+            const formattedHijri = new Intl.DateTimeFormat(
+              `${locale}-u-ca-islamic`,
+                options
+            ).format(futureGregorianDate);
+          
+            return formattedHijri;
+          };
+
 
     const {data: prayertimes, isLoading, error} = useQuery({
     queryKey: ['prayertimes', date],
@@ -49,7 +68,7 @@ const prayertimes = () => {
                         <ChevronLeft color={"#5636A7"} size={32} />
                     </Pressable>
                     <View className="flex flex-col items-center justify-center py-4  rounded-xl">
-                        <Text className="text-lg font-bold text-[#2e046d]">28 Jumada 1446 </Text>
+                        <Text className="text-lg font-bold text-[#2e046d]">{getHijriDate()}</Text>
                         <Text className="text-md text-[#2e046d]">{formmattedDate }</Text>
 
                     </View>
