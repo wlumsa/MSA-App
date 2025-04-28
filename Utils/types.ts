@@ -31,6 +31,7 @@ export type Prayer = {
   athan: string
   iqama: string
   icon: React.ReactNode
+  isLastItem?: boolean
 }
 
 export type ButtonProps = {

@@ -3,11 +3,13 @@ import React from 'react'
 import { Sunrise } from 'lucide-react-native'
 import { Prayer } from '@/Utils/types'
 
-const PrayerTiming:React.FC<Prayer> = ({icon, name, athan, iqama}: Prayer) => {
+const PrayerTiming:React.FC<Prayer> = ({icon, name, athan, iqama, isLastItem}: Prayer) => {
   return (
-    <View className="flex flex-row justify-between w-full p-6 rounded-xl bg-white my-2 ">
-            <View className="flex flex-row gap-4">
-                {icon}
+    <View className={`flex flex-row justify-between w-full p-6 bg-white  border-gray-300 ${isLastItem ? 'rounded-b-xl' : 'border-b'}`}>
+            <View className="flex flex-row gap-4 items-center ">
+                <View className='rounded-full bg-purple-50 p-2'>
+                    {icon}
+                </View>
                 <Text className="text-lg text-bold font-bold">{name}</Text>
              </View>
                     <View className="flex flex-row gap-8 ">

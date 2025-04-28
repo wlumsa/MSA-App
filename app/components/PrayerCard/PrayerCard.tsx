@@ -1,12 +1,23 @@
 import { Text, View, Pressable } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { Link } from 'expo-router';
-
+import {getNextPrayerTime} from "@/Utils/api";
+import { useQuery } from "@tanstack/react-query";
 const PrayerCard = () => {
+  
+  const {data: nextPrayer, isLoading, error} = useQuery({
+    queryKey: ['nextPrayer'],
+    queryFn: getNextPrayerTime,
+  })
+
+
+
+
+  
   return (
     
 
-    <View className="flex flex-col w-full  shadow-md shadow-slate-200 justify-between   ">
+    <View className="flex flex-col w-full  shadow-md shadow-slate-200 justify-between ">
       <Link href="/prayertimes"> 
      <LinearGradient
 
@@ -19,12 +30,14 @@ const PrayerCard = () => {
       start={{ x: -0.1, y: 0.5 }}
       style={{ padding: 20, borderRadius: 12, width: '100%' }}
       >  */}
-      <Text className=" text-white">
+      <View>
+      <Text className=" text-white ">
         Upcoming Salah
       </Text>
+      </View>
       <View className="flex flex-row justify-between py-4 font-bold  w-full">
         <Text className="text-4xl font-bold text-white">Fajr</Text>
-        <Text className="text-4xl font-bold text-white">6:00 AM</Text>
+        <Text className="text-4xl font-bold text-white">{nextPrayer}</Text>
       </View>
       
       <View className="flex flex-row  justify-between" >
