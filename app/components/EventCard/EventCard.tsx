@@ -14,6 +14,12 @@ const EventCard= () => {
     queryFn: fetchTodaysEvents,
   })
 
+    const [isPressed, setIsPressed] = useState(false);
+        const onPress = () => {
+          setIsPressed(!isPressed);
+        };
+    
+
 
 
   if (isLoading) return (
@@ -49,8 +55,13 @@ const EventCard= () => {
         {events.length > 0 ? "Today's Events" : "No events today"}
         </Text>
         <Link href="/events">
-          <Pressable onPress={() => router.navigate('/events')} >
-              <View className="flex flex-row items-center justify-end p-2 rounded bg-violet-100">
+          <Pressable onPress={() => router.navigate('/events')} 
+          onPressIn={onPress}
+          onPressOut={onPress}
+          className={`bg-[#5636A7] w-36 p-2  rounded-xl text-center mt-2 flex flex-row items-center justify-center   ` }
+            
+            >
+              <View className={`flex flex-row items-center justify-end p-2 rounded bg-violet-100 ${isPressed ? "bg-violet-300 " :"bg-violet-100 "   }`}>
               <Text className="  text-[#5636A7]  ">All events </Text>
               <ChevronRight size={18} color="#5636A7" />
               </View>

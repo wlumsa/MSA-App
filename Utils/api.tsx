@@ -50,12 +50,16 @@ export async function getNextPrayerTime() {
     ];
   
     let nextPrayer = null;
+    let elapsedTime:any = 0;
+    const currentTimeMins = timeToMinutes(currentTimeString, parseInt(currentTimeString.substring(0, 1)) >= 12 ? "PM" : "AM")
     console.log("next prayer time is: ", nextPrayer)
     for (let i = 0; i < prayerTimes.length ; i++) {
-        if (timeToMinutes(prayerTimes[i].time, prayerTimes[i].ampm) > timeToMinutes(currentTimeString, parseInt(currentTimeString.substring(0, 1)) >= 12 ? "PM" : "AM")) {
+      const prayerTimeMins = timeToMinutes(prayerTimes[i].time, prayerTimes[i].ampm)
+      elapsedTime = prayerTimeMins - currentTimeMins
+        if (prayerTimeMins > currentTimeMins) {
             nextPrayer = prayerTimes[i];
             console.log("next prayer time is: ", nextPrayer)
-            return nextPrayer;
+            return {nextPrayer, elapsedTime};
         }
     }
 
@@ -76,8 +80,10 @@ export async function getNextPrayerTime() {
 
  
         nextPrayer = { name: 'Fajr', time: nextDayData.fajr, ampm: 'AM' }
+        const nextPrayerTimeMins = timeToMinutes(nextPrayer.time, nextPrayer.ampm)
+        elapsedTime = nextPrayerTimeMins - currentTimeMins
         console.log("next prayer time is: ", nextPrayer)
-        return nextPrayer;
+        return {nextPrayer, elapsedTime};
     }
 
 
@@ -170,6 +176,7 @@ export async function getDailyReminder(id:string) {
     if (error) {
         throw error
     }
+
     return data
 }
 

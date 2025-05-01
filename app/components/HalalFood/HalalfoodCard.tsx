@@ -5,6 +5,7 @@ import { Image } from 'expo-image';
 import { getImageByID } from '@/Utils/api';
 import { useEffect } from 'react';
 import React from 'react'
+import { useState } from 'react';
 import { Place } from '@/Utils/types'
 
 const HalalfoodCard:React.FC<Place> = ({name, description, location, link, image_id, method, category}) => {
@@ -17,6 +18,11 @@ const HalalfoodCard:React.FC<Place> = ({name, description, location, link, image
       })
     }, [])
   }
+
+  const [isPressed, setIsPressed] = useState(false);
+      const onPress = () => {
+        setIsPressed(!isPressed);
+      };
   
 
 
@@ -40,7 +46,10 @@ const HalalfoodCard:React.FC<Place> = ({name, description, location, link, image
               <Text className="text-md  text-gray-500">Location: {location} </Text>
             </View>
            <View className='flex flex-row justify-end'>
-            {link && <Pressable className="bg-[#5636A7] w-36 p-2  rounded-xl text-center mt-2 flex flex-row items-center justify-center" onPress={() => Linking.openURL(link)}>
+            {link && <Pressable className={`w-36 p-2  rounded-xl text-center mt-2 flex flex-row items-center justify-center  ${isPressed ? "bg-[#3c2674]" :"bg-[#5636A7]"   } ` }
+            onPressIn={onPress} 
+            onPressOut={onPress}
+            onPress={() => Linking.openURL(link)}>
                         <Text className="text-white text-center font-semibold ">Order now</Text>
                 </Pressable>}
            </View>

@@ -16,7 +16,7 @@ export function timeToMinutes(timeString:string, ampm:string) {
     const [hours, minutes] = timeString.split(':').map(Number);
   
     if (isNaN(hours) || isNaN(minutes) || hours < 0 || hours > 23 || minutes < 0 || minutes > 59) {
-      return "Invalid time format";
+      return -1;
     }
     if(ampm == "PM") {
         return 720 + hours * 60 + minutes

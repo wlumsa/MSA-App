@@ -3,6 +3,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { Link } from 'expo-router';
 import {getNextPrayerTime} from "@/Utils/api";
 import { useQuery } from "@tanstack/react-query";
+import React from "react";
 const PrayerCard = () => {
   
   const {data: nextPrayer, isLoading, error} = useQuery({
@@ -11,8 +12,13 @@ const PrayerCard = () => {
   })
 
 
-
-
+ const convertElapsedTimeToString = (elapsedTime: number) => {
+  const hours = Math.floor(elapsedTime / 60);
+  const minutes = elapsedTime % 60;
+  const hoursString = hours > 0 ? `${hours} hour${hours > 1 ? 's' : ''}` : '';
+  const minutesString = minutes > 0 ? `${minutes} minute${minutes > 1 ? 's' : ''}` : '';
+  return `${hoursString} ${minutesString}`.trim();
+}
   
   return (
     
@@ -36,13 +42,13 @@ const PrayerCard = () => {
       </Text>
       </View>
       <View className="flex flex-row justify-between py-4 font-bold  w-full">
-        <Text className="text-4xl font-bold text-white">{nextPrayer?.name}</Text>
-        <Text className="text-4xl font-bold text-white">{nextPrayer?.time}</Text>
+        <Text className="text-4xl font-bold text-white">{nextPrayer?.nextPrayer.name}</Text>
+        <Text className="text-4xl font-bold text-white">{nextPrayer?.nextPrayer.time} {nextPrayer?.nextPrayer.ampm}</Text>
       </View>
       
       <View className="flex flex-row  justify-between" >
         <Text className="text-white ">
-          in 1 hour 42 min
+          in {convertElapsedTimeToString(nextPrayer?.elapsedTime)}
         </Text>
         <Pressable>
         <Link href="/prayertimes">
