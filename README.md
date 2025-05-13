@@ -1,50 +1,93 @@
-# Welcome to your Expo app 👋
+# MSA App 📱
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A comprehensive mobile application for Muslim Student Associations (MSA) built with Expo and React Native. This app provides essential features for managing Islamic events, prayer times, and community resources.
 
-## Get started
+## Features ✨
 
-1. Install dependencies
+- **Prayer Times**: Track daily prayer times with athan and iqama schedules
+- **Events Management**: Create and manage Islamic events with details like:
+  - Event name and description
+  - Date and time
+  - Location
+  - Event links
+  - Event images
+- **Places Directory**: Find and share information about:
+  - Islamic centers
+  - Halal restaurants
+  - Prayer spaces
+  - Other community resources
+- **Reminders**: Access Islamic reminders with:
+  - English and Arabic text
+  - Reference sources
+- **Push Notifications**: Stay updated with important announcements and prayer times
 
+## Tech Stack 🛠
+
+- [Expo](https://expo.dev/) - React Native framework
+- [Supabase](https://supabase.io/) - Backend and database
+- [React Native](https://reactnative.dev/) - Mobile app development
+- [TypeScript](https://www.typescriptlang.org/) - Type safety
+- [pnpm](https://pnpm.io/) - Package manager
+
+## Getting Started 🚀
+
+1. **Prerequisites**
+   - Node.js (LTS version)
+   - pnpm (`npm install -g pnpm`)
+   - Expo CLI (`pnpm add -g expo-cli`)
+
+2. **Installation**
    ```bash
-   npm install
+   # Clone the repository
+   git clone [repository-url]
+   cd MSA-App
+
+   # Install dependencies
+   pnpm install
    ```
 
-2. Start the app
-
-   ```bash
-    npx expo start
+3. **Environment Setup**
+   Create a `.env` file in the root directory with:
+   ```
+   EXPO_PUBLIC_SUPABASE_URL=your_supabase_url
+   EXPO_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
    ```
 
-In the output, you'll find options to open the app in a
+4. **Running the App**
+   ```bash
+   # Start the development server
+   pnpm expo start
+   ```
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+   Then choose your preferred method to run the app:
+   - Press `a` for Android emulator
+   - Press `i` for iOS simulator
+   - Scan QR code with Expo Go app on your device
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Project Structure 📁
 
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```
+MSA-App/
+├── app/                 # Main application code
+│   ├── components/     # Reusable UI components
+│   └── (tabs)/        # Tab-based navigation screens
+├── Utils/             # Utility functions and types
+├── lib/               # Library configurations
+└── assets/            # Static assets (images, fonts)
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Contributing 🤝
 
-## Learn more
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-To learn more about developing your project with Expo, look at the following resources:
+## License 📝
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-## Join the community
+## Support 💬
 
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+For support, please open an issue in the GitHub repository or contact the development team.
