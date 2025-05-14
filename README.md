@@ -1,3 +1,34 @@
+<!-- MSA Banner -->
+
+<p align="center">
+  <img src="./assets/images/MSA_Logo.png" width="140" />
+</p>
+
+<h1 align="center">
+  <strong>Wilfrid Laurier University MSA</strong>
+</h1>
+
+<p align="center">
+  <em><span style="color:#CCCCCC;">Empowering students through faith, community, and service.</span></em>
+</p>
+
+<p align="center">
+  <a href="https://wlumsa.org">
+    <img src="https://img.shields.io/badge/Website-wlumsa.org-0A66C2?style=for-the-badge&logo=Google%20Chrome&logoColor=white" />
+  </a>
+  <a href="https://www.instagram.com/wlumsa/">
+    <img src="https://img.shields.io/badge/Instagram-@wlumsa-E4405F?style=for-the-badge&logo=instagram&logoColor=white" />
+  </a>
+  <a href="mailto:msa@mylaurier.ca">
+    <img src="https://img.shields.io/badge/Email-msa@mylaurier.ca-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
+  </a>
+</p>
+
+
+---
+
+
+
 # MSA App 📱
 
 A comprehensive mobile application for Muslim Student Associations (MSA) built with Expo and React Native. This app provides essential features for managing Islamic events, prayer times, and community resources.
