@@ -1,4 +1,4 @@
-import { Text, View, Pressable, ScrollView } from "react-native";
+import { Text, View, Pressable, ScrollView, SafeAreaView } from "react-native";
 import { Clock3, Globe, MapPin } from "lucide-react-native";
 import EventCard from "../components/EventCard/EventCard";
 import PrayerCard from "../components/PrayerCard/PrayerCard";
@@ -8,49 +8,60 @@ import IconComponent from "../components/Icon/Icon";
 import { useState } from "react";
 // import Push from "../PushNotifications";
 export default function Index() {
-  
-   const [isPressed, setIsPressed] = useState(false);
-    const onPress = () => {
-      setIsPressed(!isPressed);
-    };
-
   return (
-    <ScrollView
-      className="flex flex-col  h-screen px-6 pt-4 bg-[#F8F5FF] "
-    >
-       {/* <Stack.Screen
-        options={{
-          headerLeft: () => <Text className="font-bold">logo</Text>,
-          title: "Home",
-          headerRight: () => <Pressable> <Ionicons name="menu-outline" size={32} color="black" /> </Pressable>,
-        }}
-      /> */}
-      <View className="items-center mx-4 ">
-      <View className="flex flex-row justify-between w-full px-4 ">
-        <Text className="text-3xl font-bold text-[#2E046D] pb-2 ">
-          WLU MSA
-        </Text>
+    <SafeAreaView className="flex-1 bg-[#F8F5FF]">
+      <ScrollView contentContainerStyle={{ paddingBottom: 24 }} className="px-6 pt-6">
+        <View className="items-center w-full">
+          {/* Header */}
+          <View className="w-full mb-4">
+            <Text className="text-3xl font-bold text-[#2E046D]">WLU MSA</Text>
+            <Text className="text-base text-gray-600">Wilfrid Laurier Muslim Students' Association</Text>
+          </View>
 
-      </View>
-      <PrayerCard />
-      <AyahCard />
-      <EventCard />
-     
-      <View className="flex flex-row items-center justify-center gap-8 py-4 mt-8 space-x-8 ">
-        <IconComponent icon={<MapPin  size={24} color="#9055FF" strokeWidth={2.5}/>  } link="/halalfood" text="Halal food"/>
-        <IconComponent icon={<Clock3  size={24} color="#9055FF" strokeWidth={2.5}/> } link="/prayertimes" text="Prayer Times"/>
-        <IconComponent icon={<Globe  size={24} color="#9055FF" strokeWidth={2.5}/>} link="https://www.wlumsa.org/" text="Website"/>
-      </View>
-      </View>
-      <View className="w-full p-4 ">
-     <Pressable  className={` p-4 rounded-xl my-4 ${isPressed ? "bg-[#19033b]" : "bg-[#2e046d]"} `} 
-      onPressIn={onPress}
-      onPressOut={onPress} 
-      onPress= { 
-      () => Linking.openURL('https://www.wlumsa.org/ramadan')}>
-        <Text className="text-[#ffffff]  text-center font-bold ">Donate to the MSA</Text>
-      </Pressable>
-      </View>
-    </ScrollView>
+          {/* Cards */}
+          <View className="space-y-4 w-full">
+            <PrayerCard />
+            <AyahCard />
+            <EventCard />
+          </View>
+
+          {/* Quick Links */}
+          <View className="flex-row justify-center gap-8 py-6">
+            <IconComponent
+              icon={<MapPin size={24} color="#9055FF" strokeWidth={2.5} />}
+              link="/halalfood"
+              text="Halal food"
+            />
+            <IconComponent
+              icon={<Clock3 size={24} color="#9055FF" strokeWidth={2.5} />}
+              link="/prayertimes"
+              text="Prayer Times"
+            />
+            <IconComponent
+              icon={<Globe size={24} color="#9055FF" strokeWidth={2.5} />}
+              link="https://www.wlumsa.org/"
+              text="Website"
+            />
+          </View>
+
+          {/* Donate Button */}
+          <View className="w-full px-2">
+            <Pressable
+              onPress={() => Linking.openURL("https://www.wlumsa.org/ramadan")}
+              style={({ pressed }) => ({
+                backgroundColor: pressed ? "#19033b" : "#2e046d",
+                paddingVertical: 16,
+                borderRadius: 12,
+                marginTop: 16,
+              })}
+            >
+              <Text className="text-white text-center font-bold text-base">
+                Donate to the MSA
+              </Text>
+            </Pressable>
+          </View>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
