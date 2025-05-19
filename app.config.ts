@@ -9,8 +9,8 @@ const OWNER = "msateam";
 
 // App production config
 const APP_NAME = "MSA App";
-const BUNDLE_IDENTIFIER = "com.msa.msa-app";
-const PACKAGE_NAME = "com.msa.msa-app";
+const BUNDLE_IDENTIFIER = "com.msa.msaapp";
+const PACKAGE_NAME = "com.msa.msaapp";
 const ICON = "./assets/images/MSA_Logo.png";
 const ADAPTIVE_ICON = "./assets/images/MSA_Logo.png";
 const SCHEME = "app-scheme";
@@ -51,9 +51,8 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     updates: {
       url: `https://u.expo.dev/${EAS_PROJECT_ID}`,
     },
-    runtimeVersion: {
-      policy: "appVersion",
-    },
+      "runtimeVersion": "appVersion",
+
     extra: {
       eas: {
         projectId: EAS_PROJECT_ID,
