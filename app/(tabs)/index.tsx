@@ -6,8 +6,10 @@ import AyahCard from "../components/AyahCard/AyahCard";
 import * as Linking from 'expo-linking';
 import IconComponent from "../components/Icon/Icon";
 import { useState } from "react";
+
 // import Push from "../PushNotifications";
 export default function Index() {
+
   return (
     <SafeAreaView className="flex-1 bg-[#F8F5FF]">
       <ScrollView contentContainerStyle={{ paddingBottom: 24 }} className="px-6 pt-6">
