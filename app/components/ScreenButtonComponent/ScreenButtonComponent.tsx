@@ -35,7 +35,7 @@ export const ScreenButtonComponent:React.FC<ButtonProps> = ({icon, screenName, t
        <View className="mr-4">
        {icon} 
        </View>
-        <Text className={`text-[#696573] text-md max-w-[90%]`}>{text}</Text> 
+        <Text className={`text-textPrimary text-md max-w-[90%]`}>{text}</Text> 
       </View>
       <ChevronRight size={20} color="#5636A7" strokeWidth={2.5} />
       </View>

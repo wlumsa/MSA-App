@@ -114,7 +114,7 @@ const HalalFood = () => {
   );
 
   return (
-    <ScrollView className="flex flex-col h-screen px-6 pt-4 bg-[#F8F5FF]">
+    <ScrollView className="flex flex-col h-screen px-6 pt-4 bg-background">
       <View className="items-center mx-4">
         <View className="w-full flex-row items-center gap-3 py-3 border border-gray-300 bg-white rounded-xl shadow-md px-3">
           <Search color="#A0AEC0" size={24} strokeWidth={1.5} className="mx-1" />

@@ -19,19 +19,19 @@ const AyahCard = () => {
 
 
   if (isLoading) return (
-    <View className='flex flex-col rounded-xl my-4 justify-start text-start bg-slate-50 shadow-md shadow-slate-200 p-6 w-full'>
-      <Text className="card-title text-[#2E046D] text-left pb-2">
+    <View className='flex flex-col rounded-xl my-4 justify-start text-start bg-foreground shadow-md shadow-slate-200 p-6 w-full'>
+      <Text className="card-title text-primary text-left pb-2">
           Daily Reminder
         </Text>
         
-        <Text className="card-text text-gray-700 py-2 justify-end ">
+        <Text className="card-text text-textPrimary py-2 justify-end ">
         Loading...     </Text>   
          
     </View>
   )
   if (error) return (
     <View className='flex flex-col rounded-xl my-4 justify-start text-start bg-slate-50 shadow-md shadow-slate-200 p-6 w-full'>
-    <Text className="card-title text-[#2E046D] text-left pb-2">
+    <Text className="card-title text-textPrimary text-left pb-2">
         Daily Reminder
       </Text>
       

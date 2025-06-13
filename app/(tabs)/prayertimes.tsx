@@ -64,22 +64,22 @@ const prayertimes = () => {
    
   
    if (isLoading) return (
-    <View className='h-screen px-6 pt-4 bg-[#F8F5FF] items-center justify-center'>
+    <View className='h-screen px-6 pt-4 bg-background items-center justify-center'>
       <Text className='text-lg mx-4'>Loading prayer times...</Text>
     </View>
   )
     if (error) return (
-    <View className='h-screen px-6 pt-4 bg-[#F8F5FF] items-center justify-center'>
+    <View className='h-screen px-6 pt-4 bg-background items-center justify-center'>
       <Text className='text-lg mx-4'>Error loading prayer times</Text>
     </View>
     )
   return (
  
-        <ScrollView className='flex flex-col  h-screen px-6 pt-4 bg-[#F8F5FF] '>
+        <ScrollView className='flex flex-col  h-screen px-6 pt-4 bg-background '>
            
          
             <View className="items-center p-2 rounded-xl bg-base-200 mb-2 " >
-                <View className="flex flex-row items-center justify-between w-full bg-white rounded-xl ">
+                <View className="flex flex-row items-center justify-between w-full bg-foreground rounded-xl ">
                     <Pressable className="px-4"  onPress={decrementDate} 
                     onPressIn={onPressDec}
                     onPressOut={onPressDec}
@@ -104,11 +104,11 @@ const prayertimes = () => {
                 <PrayerCard />
             </View>
             <View className='flex flex-col w-full  mt-8  '>
-              <View className="flex flex-row justify-between w-full p-8 bg-white rounded-t-lg  border-b-2 border-gray-300 ">
-                  <Text className=" text-lg font-bold">Prayer</Text>
+              <View className="flex flex-row justify-between w-full p-8 bg-foreground rounded-t-lg  border-b-2 border-gray-300 ">
+                  <Text className=" text-lg font-bold text-textPrimary">Prayer</Text>
                   <View className="flex flex-row gap-16 ">
-                      <Text className="text-lg ">Athan</Text>
-                      <Text className="text-lg ">Iqama</Text>
+                      <Text className="text-lg text-textPrimary">Athan</Text>
+                      <Text className="text-lg text-textPrimary">Iqama</Text>
                   </View>
               </View>
               <View className="flex flex-col pb-8">

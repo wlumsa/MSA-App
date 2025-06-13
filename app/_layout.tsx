@@ -30,7 +30,7 @@ export default function RootLayout() {
     <>
       <QueryClientProvider client={queryClient}>
       <StatusBar backgroundColor="#F8F5FF" barStyle="dark-content" />
-      <GestureHandlerRootView style={{ flex: 1,  backgroundColor: '#F8F5FF' }}>
+      <GestureHandlerRootView style={{ flex: 1,  backgroundColor: 'var(--background)' }}>
       <Drawer 
         screenOptions={({ navigation }) => ({  
           headerLeft: () => (
@@ -53,7 +53,7 @@ export default function RootLayout() {
                 <View className="flex flex-row   w-full px-4 pb-6">
                 <View className="flex flex-row items-center gap-4">
                   <Image source={MSA_Logo} style={{ width: 50, height: 50 }} />
-                  <Text className="text-4xl font-bold text-[#2E046D] pb-2 flex items-start justify-center ">
+                  <Text className="text-4xl font-bold text-primary pb-2 flex items-start justify-center ">
                     WLU MSA
                   </Text>
                 </View>
@@ -61,7 +61,7 @@ export default function RootLayout() {
                   </Pressable>
                 </View>
                 
-                <View className="flex flex-col    px-4 py-2 rounded-lg my-3 w-full bg-white  shadow-md shadow-slate-200 ">
+                <View className="flex flex-col    px-4 py-2 rounded-lg my-3 w-full bg-foreground   ">
 
                   <ScreenButtonComponent
                     icon={<House size={20} color="#5636A7"  />}
