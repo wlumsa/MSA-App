@@ -31,7 +31,7 @@ const HalalfoodCard: React.FC<Place> = ({ name, description, location, link, ima
   const onPress = () => setIsPressed(!isPressed);
 
   return (
-    <View className='flex flex-col w-full shadow-md shadow-slate-200 justify-between bg-white rounded-xl px-4 py-2'>
+    <View className='flex flex-col w-full shadow-md shadow-slate-200 justify-between bg-foreground rounded-xl px-4 py-2'>
       <View>
         {image ? (
           <Image
@@ -45,16 +45,16 @@ const HalalfoodCard: React.FC<Place> = ({ name, description, location, link, ima
       </View>
 
       <View className='flex flex-row'>
-        <Text className="text-lg font-semibold text-[#5636A7]">{name}</Text>
+        <Text className="text-lg font-semibold text-primary">{name}</Text>
       </View>
 
       <View className='flex flex-col justify-between w-full py-2 font-bold'>
-        <Text className="text-md text-gray-600">{description}</Text>
+        <Text className="text-md text-textPrimary">{description}</Text>
 
         <View className='py-2'>
-          <Text className="text-md text-gray-500">Category: {category}</Text>
-          <Text className="text-md text-gray-500">Method: {method}</Text>
-          <Text className="text-md text-gray-500">Location: {location}</Text>
+          <Text className="text-md text-textGray">Category: {category}</Text>
+          <Text className="text-md text-textGray">Method: {method}</Text>
+          <Text className="text-md text-textGray">Location: {location}</Text>
         </View>
 
         <View className='flex flex-row justify-end'>

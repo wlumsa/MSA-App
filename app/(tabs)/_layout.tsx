@@ -8,6 +8,7 @@ import {
   DarkTheme,
   DefaultTheme,
 } from '@react-navigation/native';
+import { LightTheme } from '@/Utils/themeOptions';
 
 export default function TabLayout() {
     const navigation = useNavigation();
@@ -17,7 +18,7 @@ export default function TabLayout() {
   return (
 
     <ThemeProvider
-      value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+      value={colorScheme === 'dark' ? DarkTheme : LightTheme}>
 
     <Tabs screenOptions={{ tabBarActiveTintColor: '#5636A7' }}>
       <Tabs.Screen

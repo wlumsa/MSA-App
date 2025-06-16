@@ -17,6 +17,7 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query'
 import { useReactQueryDevTools } from '@dev-plugins/react-query';
+import { useColorScheme } from "nativewind";
 
 
 
@@ -25,12 +26,13 @@ const queryClient = new QueryClient()
 export default function RootLayout() {
 
   useReactQueryDevTools(queryClient);
+  const colorScheme = useColorScheme();
 
   return (
     <>
       <QueryClientProvider client={queryClient}>
       <StatusBar backgroundColor="#F8F5FF" barStyle="dark-content" />
-      <GestureHandlerRootView style={{ flex: 1,  backgroundColor: '#F8F5FF' }}>
+      <GestureHandlerRootView style={{ flex: 1,  backgroundColor: '' }}>
       <Drawer 
         screenOptions={({ navigation }) => ({  
           headerLeft: () => (
@@ -41,7 +43,7 @@ export default function RootLayout() {
           drawerHideStatusBarOnOpen: true,
           drawerType: "front",
           drawerStyle: {
-              backgroundColor: "#F8F5FF",
+              backgroundColor: colorScheme.colorScheme === "dark" ? "#191818" : "#F8F5FF",
               width: "80%",
           },
       })}
@@ -50,10 +52,10 @@ export default function RootLayout() {
             <DrawerContentScrollView {...props}>
             <SafeAreaView>
             
-                <View className="flex flex-row   w-full px-4 pb-6">
+                <View className="flex flex-row   w-full px-4 pb-6 ">
                 <View className="flex flex-row items-center gap-4">
                   <Image source={MSA_Logo} style={{ width: 50, height: 50 }} />
-                  <Text className="text-4xl font-bold text-[#2E046D] pb-2 flex items-start justify-center ">
+                  <Text className="text-4xl font-bold text-primary pb-2 flex items-start justify-center ">
                     WLU MSA
                   </Text>
                 </View>
@@ -61,7 +63,7 @@ export default function RootLayout() {
                   </Pressable>
                 </View>
                 
-                <View className="flex flex-col    px-4 py-2 rounded-lg my-3 w-full bg-white  shadow-md shadow-slate-200 ">
+                <View className="flex flex-col    px-4 py-2 rounded-lg my-3 w-full bg-foreground  shadow-md shadow-slate-200 ">
 
                   <ScreenButtonComponent
                     icon={<House size={20} color="#5636A7"  />}
@@ -96,10 +98,10 @@ export default function RootLayout() {
                 </View>
                   {/* External links */}
                <View>
-                <Text className="text-sm  text-gray-500 p-4 ">
+                <Text className="text-sm  text-gray-500 dark:text-gray-300 p-4 ">
                   Quick Links
                 </Text>
-                <View className="bg-white  px-4 py-2 rounded-lg my-3   shadow-md shadow-slate-200 ">
+                <View className="bg-foreground  px-4 py-2 rounded-lg my-3   shadow-md shadow-slate-200 ">
                 <ButtonComponent
                   icon={<Pencil size={20} color="#5636A7"  /> }
                   link="https://www.wlumsa.org/contact"
@@ -133,7 +135,7 @@ export default function RootLayout() {
 
                <View>
                 {/* Socials */}
-                <Text className="text-sm  text-gray-500 p-4 ">
+                <Text className="text-sm  text-gray-500 dark:text-gray-300 p-4 ">
                   Connect with us
                 </Text>
                 <View className="  gap-10 items-center  justify-center p-4 rounded-xl  w-full flex flex-row flex-wrap ">

@@ -114,9 +114,9 @@ const HalalFood = () => {
   );
 
   return (
-    <ScrollView className="flex flex-col h-screen px-6 pt-4 bg-[#F8F5FF]">
+    <ScrollView className="flex flex-col h-screen px-6 pt-4 bg-background">
       <View className="items-center mx-4">
-        <View className="w-full flex-row items-center gap-3 py-3 border border-gray-300 bg-white rounded-xl shadow-md px-3">
+        <View className="w-full flex-row items-center gap-3 py-3 border border-gray-300 dark:border-gray-600 bg-foreground rounded-xl shadow-md px-3">
           <Search color="#A0AEC0" size={24} strokeWidth={1.5} className="mx-1" />
           <TextInput
             className="w-[90%]"
@@ -131,8 +131,8 @@ const HalalFood = () => {
         <View className="py-4 w-full">
           <Pressable onPress={onFiltersPress}>
             <View className="flex-row items-center gap-2 mb-2">
-              <View className="flex-row gap-2 p-2 bg-violet-100 rounded-xl items-center">
-                <Text className="text-md font-semibold text-violet-900">Filters</Text>
+              <View className="flex-row gap-2 p-2 bg-violet-100 dark:bg-violet-400 rounded-xl items-center">
+                <Text className="text-md font-semibold text-violet-900 dark:text-violet-950">Filters</Text>
                 {openFilters ? (
                   <ChevronUp size={20} color="#5636A7" strokeWidth={2.5} />
                 ) : (
@@ -167,12 +167,12 @@ const HalalFood = () => {
                 set: setLocationValue,
               }].map(({ label, options, selected, set }) => (
                 <View className="h-20" key={label}>
-                  <Text className="text-gray-500 mx-4 mb-2">{label}</Text>
+                  <Text className="text-gray-500 dark:text-gray-300 mx-4 mb-2">{label}</Text>
                   <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 4 }}>
                     {options.map((opt) => (
                       <Pressable key={opt.value} onPress={() => set(opt.value)}>
                         <View className={`p-2 rounded-lg mx-2 shadow-sm ${
-                          selected === opt.value ? 'bg-[#5636A7]' : 'bg-violet-200'
+                          selected === opt.value ? 'bg-[#5636A7]' : 'bg-violet-200 dark:bg-violet-300'
                         }`}>
                           <Text className={`text-sm font-semibold ${
                             selected === opt.value ? 'text-white' : 'text-violet-900'
