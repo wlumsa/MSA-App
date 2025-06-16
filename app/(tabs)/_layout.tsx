@@ -2,10 +2,23 @@ import { DrawerActions, useNavigation } from '@react-navigation/native';
 import { Tabs } from 'expo-router';
 import { House, Link, AlignJustify, Clock3, MapPin } from 'lucide-react-native';
 import { TouchableOpacity } from 'react-native';
+import { useColorScheme } from 'nativewind'
+import {
+  ThemeProvider,
+  DarkTheme,
+  DefaultTheme,
+} from '@react-navigation/native';
 
 export default function TabLayout() {
     const navigation = useNavigation();
+      const { colorScheme, setColorScheme } = useColorScheme();
+
+
   return (
+
+    <ThemeProvider
+      value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+
     <Tabs screenOptions={{ tabBarActiveTintColor: '#5636A7' }}>
       <Tabs.Screen
         name="index"
@@ -44,5 +57,6 @@ export default function TabLayout() {
         }}
       />
     </Tabs>
+    </ThemeProvider>
   );
 }
