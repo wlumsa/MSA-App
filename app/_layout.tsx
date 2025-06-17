@@ -27,6 +27,7 @@ export default function RootLayout() {
 
   useReactQueryDevTools(queryClient);
   const colorScheme = useColorScheme();
+  const iconColor = colorScheme.colorScheme === "dark" ? "#9055FF" : "#5636A7";
 
   return (
     <>
@@ -37,7 +38,7 @@ export default function RootLayout() {
         screenOptions={({ navigation }) => ({  
           headerLeft: () => (
               <TouchableOpacity onPress={() => navigation.toggleDrawer()}> 
-                  <AlignJustify size={24} color="#5636A7" style={{ marginLeft: 30 }} strokeWidth={2.5} /> 
+                  <AlignJustify size={24} color={iconColor} style={{ marginLeft: 30 }} strokeWidth={2.5} /> 
               </TouchableOpacity>
           ),
           drawerHideStatusBarOnOpen: true,
@@ -66,28 +67,28 @@ export default function RootLayout() {
                 <View className="flex flex-col    px-4 py-2 rounded-lg my-3 w-full bg-foreground  shadow-md shadow-slate-200 ">
 
                   <ScreenButtonComponent
-                    icon={<House size={20} color="#5636A7"  />}
+                    icon={<House size={20} color={iconColor} />}
                     screenName=""
                     text="Home"
                     navigation={props.navigation}
                     state={props.state}
                   />
                   <ScreenButtonComponent
-                    icon={<Clock3 size={20} color="#5636A7"  />}
+                    icon={<Clock3 size={20} color={iconColor}  />}
                     screenName="/prayertimes"
                     text="Prayer Timings"
                     navigation={props.navigation}
                     state={props.state}
                   />
                   <ScreenButtonComponent
-                    icon={<Link size={20} color="#5636A7"  />}
+                    icon={<Link size={20} color={iconColor}  />}
                     screenName="/events"
                     text="Events"
                     navigation={props.navigation}
                     state={props.state} 
                   />
                   <ScreenButtonComponent
-                    icon={<MapPin size={20} color="#5636A7" />}
+                    icon={<MapPin size={20} color={iconColor}/>}
                     screenName="/halalfood"
                     text="Halal Food Directory"
                     navigation={props.navigation}
@@ -103,13 +104,13 @@ export default function RootLayout() {
                 </Text>
                 <View className="bg-foreground  px-4 py-2 rounded-lg my-3   shadow-md shadow-slate-200 ">
                 <ButtonComponent
-                  icon={<Pencil size={20} color="#5636A7"  /> }
+                  icon={<Pencil size={20} color={iconColor}  /> }
                   link="https://www.wlumsa.org/contact"
                   text="Feedback Form"
                   type="2"
                 />
                 <ButtonComponent
-                  icon={<CircleUser size={20} color="#5636A7"  /> }
+                  icon={<CircleUser size={20} color={iconColor}  /> }
                   link="https://www.wlumsa.org/contact"
                   text="Become a General Member"
                   type="2"
@@ -117,13 +118,13 @@ export default function RootLayout() {
                 />
                   
                 <ButtonComponent
-                  icon={<Banknote size={20} color="#5636A7"  /> }
+                  icon={<Banknote size={20} color={iconColor}  /> }
                   link="https://www.wlumsa.org/contact"
                   text="Donate to the MSA"
                   type="2"
                 />
-                <ButtonComponent  
-                  icon={<MessageCircle size={20} color="#5636A7"  /> }
+                <ButtonComponent
+                  icon={<MessageCircle size={20} color={iconColor}  /> }
                   link="https://www.wlumsa.org/contact"
                   text="Contact Us"
                   type="2"
@@ -140,35 +141,35 @@ export default function RootLayout() {
                 </Text>
                 <View className="  gap-10 items-center  justify-center p-4 rounded-xl  w-full flex flex-row flex-wrap ">
                 <ButtonComponent
-                    icon={ <FontAwesome6 name="instagram" size={20} color="#5636A7" /> }
+                    icon={ <FontAwesome6 name="instagram" size={20} color={iconColor} /> }
                     type="1"
                     link="https://www.instagram.com/wlumsa/"
                   />
     
                   <ButtonComponent
-                    icon={ <FontAwesome6 name="facebook" size={20} color="#5636A7" /> }
+                    icon={ <FontAwesome6 name="facebook" size={20} color={iconColor} /> }
                     type="1"
                     link="https://www.facebook.com/wlumsa/"
                   />
       
                   <ButtonComponent
-                    icon={<FontAwesome6 name="linkedin" size={20} color="#5636A7" />}
+                    icon={<FontAwesome6 name="linkedin" size={20} color={iconColor} />}
                     type="1"
                     link="https://www.linkedin.com/company/wlu-msa/"
                   />
                   <ButtonComponent
-                    icon={<FontAwesome6 name="whatsapp" size={20} color="#5636A7" />}
+                    icon={<FontAwesome6 name="whatsapp" size={20} color={iconColor} />}
                     type="1"
                     link="https://chat.whatsapp.com/BslJGlMMnAM7TRss3Y1Va0"
                   />
                   <ButtonComponent
-                    icon={<Globe size={20} color={"#5636A7"} /> }
+                    icon={<Globe size={20} color={iconColor} /> }
                     type="1"
                     link="https://wlumsa.org"
                   />
                 
                 <ButtonComponent
-                    icon={<TvMinimalPlay size={20} color="#5636A7"  /> }
+                    icon={<TvMinimalPlay size={20} color={iconColor}  /> }
                     type="1"
                     link="https://www.youtube.com/@WLUMSA"
                   />

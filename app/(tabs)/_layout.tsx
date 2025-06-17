@@ -20,7 +20,7 @@ export default function TabLayout() {
     <ThemeProvider
       value={colorScheme === 'dark' ? DarkTheme : LightTheme}>
 
-    <Tabs screenOptions={{ tabBarActiveTintColor: '#5636A7' }}>
+    <Tabs screenOptions={{ tabBarActiveTintColor: colorScheme === 'dark' ? '#9055FF' : '#5636A7',}}>
       <Tabs.Screen
         name="index"
         options={{
@@ -29,7 +29,7 @@ export default function TabLayout() {
           headerShown: true,
           headerLeft: () => (   
             <TouchableOpacity onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}> 
-                <AlignJustify size={24} color="#5636A7" style={{ marginLeft: 30 }} strokeWidth={2.5} /> 
+                <AlignJustify size={24} color={colorScheme === 'dark' ? "#F8F5FF" : "#5636A7"} style={{ marginLeft: 30 }} strokeWidth={2.5} /> 
             </TouchableOpacity>
           ),
 

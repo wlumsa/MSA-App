@@ -49,7 +49,7 @@ export default function Index() {
             <Pressable
               onPress={() => Linking.openURL("https://www.wlumsa.org/ramadan")}
               style={({ pressed }) => ({
-                backgroundColor: pressed ? "primary" : "primary",
+                backgroundColor: pressed ? "#19033b" : "#5636A7",
                 paddingVertical: 16,
                 borderRadius: 12,
                 marginTop: 16,

@@ -46,6 +46,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
         foregroundImage: adaptiveIcon,
         backgroundColor: "#ffffff",
       },
+    
       package: packageName,
     },
     updates: {
@@ -75,6 +76,10 @@ export default ({ config }: ConfigContext): ExpoConfig => {
           resizeMode: "contain",
           backgroundColor: "#ffffff",
           dark: {
+
+          image: "./assets/images/splash-icon.png",
+          imageWidth: 200,
+          resizeMode: "contain",
             backgroundColor: "#191818"
           }
         },
