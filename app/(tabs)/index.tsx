@@ -9,13 +9,13 @@ import { useState } from "react";
 // import Push from "../PushNotifications";
 export default function Index() {
   return (
-    <SafeAreaView className="flex-1 bg-[#F8F5FF]">
+    <SafeAreaView className="flex-1 bg-background">
       <ScrollView contentContainerStyle={{ paddingBottom: 24 }} className="px-6 pt-6">
         <View className="items-center w-full">
           {/* Header */}
           <View className="w-full mb-4">
-            <Text className="text-3xl font-bold text-[#2E046D]">WLU MSA</Text>
-            <Text className="text-base text-gray-600">Wilfrid Laurier Muslim Students' Association</Text>
+            <Text className="text-3xl font-bold text-primary ">WLU MSA</Text>
+            <Text className="text-base text-gray-600 dark:text-gray-400">Wilfrid Laurier Muslim Students' Association</Text>
           </View>
 
           {/* Cards */}
@@ -49,11 +49,12 @@ export default function Index() {
             <Pressable
               onPress={() => Linking.openURL("https://www.wlumsa.org/ramadan")}
               style={({ pressed }) => ({
-                backgroundColor: pressed ? "#19033b" : "#2e046d",
+                backgroundColor: pressed ? "#19033b" : "#5636A7",
                 paddingVertical: 16,
                 borderRadius: 12,
                 marginTop: 16,
               })}
+               className="bg-[#5636A7] px-16 rounded-lg py-4"
             >
               <Text className="text-white text-center font-bold text-base">
                 Donate to the MSA

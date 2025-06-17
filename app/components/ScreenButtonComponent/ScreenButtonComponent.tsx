@@ -29,17 +29,17 @@ export const ScreenButtonComponent:React.FC<ButtonProps> = ({icon, screenName, t
       onPress={() => router.push(screenName as any)}
       className="pt-2">
       <View className={`flex-row items-center  p-4  justify-between ${
-        (isCurrentScreen|| isPressed) ? 'bg-[#ededed] rounded-xl' : ''
+        (isCurrentScreen|| isPressed) ? 'bg-[#ededed] dark:bg-slate-700 rounded-xl' : ''
       } `}>
       <View className={`flex flex-row items-center `}>
        <View className="mr-4">
        {icon} 
        </View>
-        <Text className={`text-[#696573] text-md max-w-[90%]`}>{text}</Text> 
+        <Text className={`text-textGray dark:text-gray-300  text-md max-w-[90%]`}>{text}</Text> 
       </View>
       <ChevronRight size={20} color="#5636A7" strokeWidth={2.5} />
       </View>
-      <View className={`${!lastItem ? "border-b border-gray-200 py-1 ": "" }`}>
+      <View className={`${!lastItem ? "border-b border-gray-200 dark:border-gray-600 py-1 ": "" }`}>
       </View>
     </Pressable>
   );

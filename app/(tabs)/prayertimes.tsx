@@ -64,22 +64,22 @@ const prayertimes = () => {
    
   
    if (isLoading) return (
-    <View className='h-screen px-6 pt-4 bg-[#F8F5FF] items-center justify-center'>
+    <View className='h-screen px-6 pt-4 bg-background items-center justify-center'>
       <Text className='text-lg mx-4'>Loading prayer times...</Text>
     </View>
   )
     if (error) return (
-    <View className='h-screen px-6 pt-4 bg-[#F8F5FF] items-center justify-center'>
+    <View className='h-screen px-6 pt-4 bg-background items-center justify-center'>
       <Text className='text-lg mx-4'>Error loading prayer times</Text>
     </View>
     )
   return (
- 
-        <ScrollView className='flex flex-col  h-screen px-6 pt-4 bg-[#F8F5FF] '>
-           
-         
+
+        <ScrollView className='flex flex-col  h-screen px-6 pt-4 bg-background '>
+
+
             <View className="items-center p-2 rounded-xl bg-base-200 mb-2 " >
-                <View className="flex flex-row items-center justify-between w-full bg-white rounded-xl ">
+                <View className="flex flex-row items-center justify-between w-full bg-foreground rounded-xl ">
                     <Pressable className="px-4"  onPress={decrementDate} 
                     onPressIn={onPressDec}
                     onPressOut={onPressDec}
@@ -87,8 +87,8 @@ const prayertimes = () => {
                         <ChevronLeft color={ `${isPressedDec ? "#3c2674" : "#5636A7"  }` } size={32} />
                     </Pressable>
                     <View className="flex flex-col items-center justify-center py-4  rounded-xl">
-                        <Text className="text-lg font-bold text-[#2e046d]">{getHijriDate()}</Text>
-                        <Text className="text-md text-[#2e046d]">{formmattedDate }</Text>
+                        <Text className="text-lg font-bold text-primary">{getHijriDate()}</Text>
+                        <Text className="text-md text-textPrimary">{formmattedDate }</Text>
 
                     </View>
 
@@ -104,11 +104,11 @@ const prayertimes = () => {
                 <PrayerCard />
             </View>
             <View className='flex flex-col w-full  mt-8  '>
-              <View className="flex flex-row justify-between w-full p-8 bg-white rounded-t-lg  border-b-2 border-gray-300 ">
-                  <Text className=" text-lg font-bold">Prayer</Text>
+              <View className="flex flex-row justify-between w-full p-8 bg-foreground rounded-t-lg  border-b-2 border-gray-300 dark:border-gray-600 ">
+                  <Text className=" text-lg font-bold  text-textPrimary">Prayer</Text>
                   <View className="flex flex-row gap-16 ">
-                      <Text className="text-lg ">Athan</Text>
-                      <Text className="text-lg ">Iqama</Text>
+                      <Text className="text-lg text-textPrimary">Athan</Text>
+                      <Text className="text-lg text-textPrimary">Iqama</Text>
                   </View>
               </View>
               <View className="flex flex-col pb-8">

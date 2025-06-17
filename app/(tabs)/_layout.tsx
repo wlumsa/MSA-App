@@ -2,11 +2,25 @@ import { DrawerActions, useNavigation } from '@react-navigation/native';
 import { Tabs } from 'expo-router';
 import { House, Link, AlignJustify, Clock3, MapPin } from 'lucide-react-native';
 import { TouchableOpacity } from 'react-native';
+import { useColorScheme } from 'nativewind'
+import {
+  ThemeProvider,
+  DarkTheme,
+  DefaultTheme,
+} from '@react-navigation/native';
+import { LightTheme } from '@/Utils/themeOptions';
 
 export default function TabLayout() {
     const navigation = useNavigation();
+      const { colorScheme, setColorScheme } = useColorScheme();
+
+
   return (
-    <Tabs screenOptions={{ tabBarActiveTintColor: '#5636A7' }}>
+
+    <ThemeProvider
+      value={colorScheme === 'dark' ? DarkTheme : LightTheme}>
+
+    <Tabs screenOptions={{ tabBarActiveTintColor: colorScheme === 'dark' ? '#9055FF' : '#5636A7',}}>
       <Tabs.Screen
         name="index"
         options={{
@@ -15,7 +29,7 @@ export default function TabLayout() {
           headerShown: true,
           headerLeft: () => (   
             <TouchableOpacity onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}> 
-                <AlignJustify size={24} color="#5636A7" style={{ marginLeft: 30 }} strokeWidth={2.5} /> 
+                <AlignJustify size={24} color={colorScheme === 'dark' ? "#F8F5FF" : "#5636A7"} style={{ marginLeft: 30 }} strokeWidth={2.5} /> 
             </TouchableOpacity>
           ),
 
@@ -44,5 +58,6 @@ export default function TabLayout() {
         }}
       />
     </Tabs>
+    </ThemeProvider>
   );
 }

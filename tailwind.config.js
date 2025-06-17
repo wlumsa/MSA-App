@@ -4,8 +4,21 @@ module.exports = {
   content: ["./app/**/*.{js,jsx,ts,tsx}", "./components/**/**/*.{js,jsx,ts,tsx}"],
   presets: [require("nativewind/preset")],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        background: 'var(--background)',
+        primary: 'var(--primary)',
+        text: 'var(--text)',
+        border: 'var(--border)',
+        foreground: 'var(--foreground)',
+        secondary: 'var(--secondary)',
+        textPrimary: 'var(--text-primary)',
+        textGray : 'var(--text-gray)',
+    
+      }
+    },
   },
+   darkMode: "class",
   plugins: [require('daisyui'),  ],
   daisyui: {
     
