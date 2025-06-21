@@ -28,7 +28,7 @@ const events = () => {
         <Text className="text-3xl font-bold text-primary pb-2 ">
           Announcements
         </Text>
-      <Text className='text-lg mx-4 my-8 items-center justify-center'>There are no events at the moment</Text>
+      <Text className='text-lg mx-4 my-8 items-center justify-center text-textPrimary'>There are no events at the moment</Text>
     </View>
   )
 
@@ -44,7 +44,7 @@ const events = () => {
       </View>
       <View className='flex flex-col gap-6 w-full py-8'>
         {events.map((event) => (
-          <Event key={event.name} name={event.name} description={event.description} date={event.date} time={event.time} location={event.location} link={event.link} image_id={event.image_id} />
+          <Event key={event.id} name={event.name} description={event.description} date={event.date} time={event.time} location={event.location} link={event.link} image_id={event.image_id} />
         ))
       }
         

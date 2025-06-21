@@ -8,6 +8,9 @@ import IconComponent from "../components/Icon/Icon";
 import { useState } from "react";
 // import Push from "../PushNotifications";
 export default function Index() {
+
+  const [isPressed, setIsPressed] = useState(false);
+
   return (
     <SafeAreaView className="flex-1 bg-background">
       <ScrollView contentContainerStyle={{ paddingBottom: 24 }} className="px-6 pt-6">
@@ -29,7 +32,7 @@ export default function Index() {
           <View className="flex-row justify-center gap-8 py-6">
             <IconComponent
               icon={<MapPin size={24} color="#9055FF" strokeWidth={2.5} />}
-              link="/halalfood"
+              link="/Halalfood"
               text="Halal food"
             />
             <IconComponent
@@ -48,13 +51,10 @@ export default function Index() {
           <View className="w-full px-2">
             <Pressable
               onPress={() => Linking.openURL("https://www.wlumsa.org/ramadan")}
-              style={({ pressed }) => ({
-                backgroundColor: pressed ? "#19033b" : "#5636A7",
-                paddingVertical: 16,
-                borderRadius: 12,
-                marginTop: 16,
-              })}
-               className="bg-[#5636A7] px-16 rounded-lg py-4"
+              onPressIn={() => setIsPressed(true)}
+              onPressOut={() => setIsPressed(false)}
+            
+               className={`bg-[#5636A7] px-16 rounded-lg py-4 ${isPressed ? "bg-[#3e2778]" : ""}`}
             >
               <Text className="text-white text-center font-bold text-base">
                 Donate to the MSA

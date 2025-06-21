@@ -119,9 +119,10 @@ const HalalFood = () => {
         <View className="w-full flex-row items-center gap-3 py-3 border border-gray-300 dark:border-gray-600 bg-foreground rounded-xl shadow-md px-3">
           <Search color="#A0AEC0" size={24} strokeWidth={1.5} className="mx-1" />
           <TextInput
-            className="w-[90%]"
+            className="w-[90%] dark:text-gray-200 text-gray-800"
             placeholder="Search for halal food"
             placeholderTextColor="#A0AEC0"
+          
             clearButtonMode="always"
             value={search}
             onChangeText={handleSearch}
@@ -243,7 +244,7 @@ const HalalFood = () => {
               </View>
             </>
           ) : (
-            <Text className="text-lg mx-4">No halal food available right now</Text>
+            <Text className="text-lg mx-4 text-textPrimary ">No halal food available right now</Text>
           )}
         </View>
       </View>

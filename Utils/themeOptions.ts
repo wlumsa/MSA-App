@@ -1,28 +1,65 @@
+import { Theme } from '@react-navigation/native';
 
-export const LightTheme = {
+export const LightTheme:Theme = {
     dark: false,
+
     colors: {
-    background: "#F8F5FF",
-    text: "#2E046D",
-    primary: "#5636A7",
-    secondary: "#9055FF"
-    
+        background: "#F8F5FF",
+        text: "#2E046D",
+        primary: "#5636A7",
+        card: '#fff',
+        border: '#eee',
+        notification: '#fff'
+    },
+    fonts: {
+        regular: {
+            fontFamily: '',
+            fontWeight: 'bold'
+        },
+        medium: {
+            fontFamily: '',
+            fontWeight: 'bold'
+        },
+        bold: {
+            fontFamily: '',
+            fontWeight: 'bold'
+        },
+        heavy: {
+            fontFamily: '',
+            fontWeight: 'bold'
+        }
     }
- 
 }
 
  
 
-export const DarkTheme = {
+export const DarkTheme:Theme = {
     dark: true,
+  
     colors: {
         background: "#191818",
         text: "#FFFFFF",
         primary: "#9D71FF",
-        secondary: "#616161",
-        foreground: "#262626",
         border: "#595a5b",
-        textSecondary: "#FFFFFF",
-        textGray: "#C0C0C0"
+        card: '#fff',
+        notification: '#fff'
+    },
+    fonts: {
+        regular: {
+            fontFamily: '',
+            fontWeight: 'bold'
+        },
+        medium: {
+            fontFamily: '',
+            fontWeight: 'bold'
+        },
+        bold: {
+            fontFamily: '',
+            fontWeight: 'bold'
+        },
+        heavy: {
+            fontFamily: '',
+            fontWeight: 'bold'
+        }
     }
 }
