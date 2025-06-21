@@ -61,7 +61,7 @@ const EventCard= () => {
           className={`bg-[#5636A7] w-36 p-2  rounded-xl text-center mt-2 flex flex-row items-center justify-center   ` }
             
             >
-              <View className={`flex flex-row items-center justify-end p-2 rounded bg-violet-100 ${isPressed ? "bg-violet-300  " :"bg-violet-100 dark:bg-foreground "   }`}>
+              <View className={`flex flex-row items-center justify-end p-2 rounded bg-violet-100 ${isPressed ? "bg-violet-300 dark:bg-[#4b4b4b] " :"bg-violet-100 dark:bg-foreground "   }`}>
               <Text className="  text-[#5636A7] dark:text-gray-200  ">All events </Text>
               <ChevronRight size={18} color="#5636A7" />
               </View>
@@ -69,9 +69,11 @@ const EventCard= () => {
         </Link>
       </View>
       {events.map((event) => (
+        <View key={event.id}>
         <View className="flex flex-row justify-between w-full py-2 font-bold">
         <Text className="sm:text-sm font-bold text-white break-words">{event.name}</Text>
         <Text className="text-sm font-bold text-white">{event.time}</Text>
+      </View>
       </View>
       ))
       }
