@@ -8,6 +8,7 @@ import "../global.css";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { ButtonComponent } from "./components/ButtonComponent/ButtonComponent";
 import { Drawer } from "expo-router/drawer";
+import ThemeButton from "./components/ThemeButton/ThemeButton";
 import ScreenButtonComponent from "./components/ScreenButtonComponent/ScreenButtonComponent";
 import {
   useQuery,
@@ -175,6 +176,7 @@ export default function RootLayout() {
                   />
         
                 </View>
+                <ThemeButton />
                </View>
 
             </SafeAreaView>

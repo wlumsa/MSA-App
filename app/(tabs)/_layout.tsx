@@ -4,8 +4,7 @@ import { House, Link, AlignJustify, Clock3, MapPin } from 'lucide-react-native';
 import { TouchableOpacity } from 'react-native';
 import {LightTheme, DarkTheme} from '@/Utils/themeOptions';
 import { useColorScheme } from 'nativewind';
-import { ThemeProvider } from '@react-navigation/native';
-
+import { ThemeProvider } from '@/context/ThemeContext';
 export default function TabLayout() {
 
     const navigation = useNavigation();
@@ -13,7 +12,7 @@ const {colorScheme, setColorScheme} = useColorScheme();
   const theme = colorScheme === 'dark' ? DarkTheme : LightTheme;
 
   return (
-    <ThemeProvider value={theme}>
+    <ThemeProvider>
     <Tabs screenOptions={{ tabBarActiveTintColor: theme.colors.primary
 , tabBarInactiveTintColor: '#A9A9A9', tabBarStyle: { backgroundColor: theme.colors.background }, headerStyle: { backgroundColor: theme.colors.background }, headerTitleStyle: { color: theme.colors.text }
     }}>
