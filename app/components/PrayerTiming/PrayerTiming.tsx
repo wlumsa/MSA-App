@@ -5,16 +5,16 @@ import { Prayer } from '@/Utils/types'
 
 const PrayerTiming:React.FC<Prayer> = ({icon, name, athan, iqama, isLastItem}: Prayer) => {
   return (
-    <View className={`flex flex-row justify-between w-full p-6 bg-white items-center  border-gray-300 ${isLastItem ? 'rounded-b-lg' : 'border-b'}`}>
+    <View className={`flex flex-row justify-between w-full p-6 bg-foreground items-center  border-gray-300 dark:border-gray-600 ${isLastItem ? 'rounded-b-lg' : 'border-b'}`}>
             <View className="flex flex-row gap-4 items-center  ">
-                <View className='rounded-full bg-purple-100 p-2'>
+                <View className='rounded-full bg-purple-100 dark:bg-purple-100/10 p-2'>
                     {icon}
                 </View>
-                <Text className="text-lg text-bold font-bold">{name}</Text>
+                <Text className="text-lg text-bold font-bold text-textPrimary">{name}</Text>
              </View>
                     <View className="flex flex-row gap-8 ">
-                        <Text className="text-lg text-gray-500 font-bold">{athan}</Text>
-                        <Text className="text-lg font-bold text-[#2e046d]">{iqama}</Text>
+                        <Text className="text-lg text-textGray font-bold">{athan}</Text>
+                        <Text className="text-lg font-bold text-primary">{iqama}</Text>
                     </View>
                 </View>
   )

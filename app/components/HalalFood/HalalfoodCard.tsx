@@ -9,6 +9,9 @@ import { Place } from '@/Utils/types';
 const HalalfoodCard: React.FC<Place> = ({ name, description, location, link, image_id, method, category }) => {
   const [image, setImage] = useState<string | null>(null);
   const [isPressed, setIsPressed] = useState(false);
+   const onPress = () => {
+        setIsPressed(!isPressed);
+      };
   const [loadingImage, setLoadingImage] = useState(true);
 
   useEffect(() => {
@@ -28,10 +31,10 @@ const HalalfoodCard: React.FC<Place> = ({ name, description, location, link, ima
     }
   }, [image_id]);
 
-  const onPress = () => setIsPressed(!isPressed);
+  
 
   return (
-    <View className='flex flex-col w-full shadow-md shadow-slate-200 justify-between bg-white rounded-xl px-4 py-2'>
+    <View className='flex flex-col w-full shadow-md shadow-slate-200 justify-between bg-foreground rounded-xl px-4 py-2'>
       <View>
         {image ? (
           <Image
@@ -45,25 +48,26 @@ const HalalfoodCard: React.FC<Place> = ({ name, description, location, link, ima
       </View>
 
       <View className='flex flex-row'>
-        <Text className="text-lg font-semibold text-[#5636A7]">{name}</Text>
+        <Text className="text-lg font-semibold text-primary">{name}</Text>
       </View>
 
       <View className='flex flex-col justify-between w-full py-2 font-bold'>
-        <Text className="text-md text-gray-600">{description}</Text>
+        <Text className="text-md text-textPrimary">{description}</Text>
 
         <View className='py-2'>
-          <Text className="text-md text-gray-500">Category: {category}</Text>
-          <Text className="text-md text-gray-500">Method: {method}</Text>
-          <Text className="text-md text-gray-500">Location: {location}</Text>
+          <Text className="text-md text-textGray">Category: {category}</Text>
+          <Text className="text-md text-textGray">Method: {method}</Text>
+          <Text className="text-md text-textGray">Location: {location}</Text>
         </View>
 
         <View className='flex flex-row justify-end'>
           {link && (
             <Pressable
-              className={`w-36 p-2 rounded-xl text-center mt-2 flex flex-row items-center justify-center ${isPressed ? "bg-[#3c2674]" : "bg-[#5636A7]"}`}
-              onPress={onPress}
-              onPressOut={onPress}
-              onPress={() => Linking.openURL(link)}
+              onPressIn={() => onPress()}
+              onPressOut={() => onPress()}
+              onPress={() => { Linking.openURL(link); setIsPressed(!isPressed); }}
+              className={`w-36 p-2 rounded-xl text-center mt-2 flex flex-row items-center justify-center bg-[#5636A7]  ${isPressed ? "bg-[#3c2674] dark:bg-[#3c2674] " : ""}`}
+
               accessibilityLabel={`Order from ${name}`}
               accessibilityHint="Navigates to the restaurant's website"
             >

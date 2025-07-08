@@ -17,6 +17,7 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query'
 import { useReactQueryDevTools } from '@dev-plugins/react-query';
+import { useColorScheme } from "nativewind";
 
 
 
@@ -25,23 +26,25 @@ const queryClient = new QueryClient()
 export default function RootLayout() {
 
   useReactQueryDevTools(queryClient);
+  const colorScheme = useColorScheme();
+  const iconColor = colorScheme.colorScheme === "dark" ? "#9055FF" : "#5636A7";
 
   return (
     <>
       <QueryClientProvider client={queryClient}>
       <StatusBar backgroundColor="#F8F5FF" barStyle="dark-content" />
-      <GestureHandlerRootView style={{ flex: 1,  backgroundColor: '#F8F5FF' }}>
+      <GestureHandlerRootView style={{ flex: 1,  backgroundColor: '' }}>
       <Drawer 
         screenOptions={({ navigation }) => ({  
           headerLeft: () => (
               <TouchableOpacity onPress={() => navigation.toggleDrawer()}> 
-                  <AlignJustify size={24} color="#5636A7" style={{ marginLeft: 30 }} strokeWidth={2.5} /> 
+                  <AlignJustify size={24} color={iconColor} style={{ marginLeft: 30 }} strokeWidth={2.5} /> 
               </TouchableOpacity>
           ),
           drawerHideStatusBarOnOpen: true,
           drawerType: "front",
           drawerStyle: {
-              backgroundColor: "#F8F5FF",
+              backgroundColor: colorScheme.colorScheme === "dark" ? "#191818" : "#F8F5FF",
               width: "80%",
           },
       })}
@@ -50,10 +53,10 @@ export default function RootLayout() {
             <DrawerContentScrollView {...props}>
             <SafeAreaView>
             
-                <View className="flex flex-row   w-full px-4 pb-6">
+                <View className="flex flex-row   w-full px-4 pb-6 ">
                 <View className="flex flex-row items-center gap-4">
                   <Image source={MSA_Logo} style={{ width: 50, height: 50 }} />
-                  <Text className="text-4xl font-bold text-[#2E046D] pb-2 flex items-start justify-center ">
+                  <Text className="text-4xl font-bold text-primary pb-2 flex items-start justify-center ">
                     WLU MSA
                   </Text>
                 </View>
@@ -61,31 +64,31 @@ export default function RootLayout() {
                   </Pressable>
                 </View>
                 
-                <View className="flex flex-col    px-4 py-2 rounded-lg my-3 w-full bg-white  shadow-md shadow-slate-200 ">
+                <View className="flex flex-col    px-4 py-2 rounded-lg my-3 w-full bg-foreground  shadow-md shadow-slate-200 ">
 
                   <ScreenButtonComponent
-                    icon={<House size={20} color="#5636A7"  />}
+                    icon={<House size={20} color={iconColor} />}
                     screenName=""
                     text="Home"
                     navigation={props.navigation}
                     state={props.state}
                   />
                   <ScreenButtonComponent
-                    icon={<Clock3 size={20} color="#5636A7"  />}
+                    icon={<Clock3 size={20} color={iconColor}  />}
                     screenName="/prayertimes"
                     text="Prayer Timings"
                     navigation={props.navigation}
                     state={props.state}
                   />
                   <ScreenButtonComponent
-                    icon={<Link size={20} color="#5636A7"  />}
+                    icon={<Link size={20} color={iconColor}  />}
                     screenName="/events"
                     text="Events"
                     navigation={props.navigation}
                     state={props.state} 
                   />
                   <ScreenButtonComponent
-                    icon={<MapPin size={20} color="#5636A7" />}
+                    icon={<MapPin size={20} color={iconColor}/>}
                     screenName="/halalfood"
                     text="Halal Food Directory"
                     navigation={props.navigation}
@@ -96,18 +99,18 @@ export default function RootLayout() {
                 </View>
                   {/* External links */}
                <View>
-                <Text className="text-sm  text-gray-500 p-4 ">
+                <Text className="text-sm  text-gray-500 dark:text-gray-300 p-4 ">
                   Quick Links
                 </Text>
-                <View className="bg-white  px-4 py-2 rounded-lg my-3   shadow-md shadow-slate-200 ">
+                <View className="bg-foreground  px-4 py-2 rounded-lg my-3   shadow-md shadow-slate-200 ">
                 <ButtonComponent
-                  icon={<Pencil size={20} color="#5636A7"  /> }
+                  icon={<Pencil size={20} color={iconColor}  /> }
                   link="https://www.wlumsa.org/contact"
                   text="Feedback Form"
                   type="2"
                 />
                 <ButtonComponent
-                  icon={<CircleUser size={20} color="#5636A7"  /> }
+                  icon={<CircleUser size={20} color={iconColor}  /> }
                   link="https://www.wlumsa.org/contact"
                   text="Become a General Member"
                   type="2"
@@ -115,13 +118,13 @@ export default function RootLayout() {
                 />
                   
                 <ButtonComponent
-                  icon={<Banknote size={20} color="#5636A7"  /> }
+                  icon={<Banknote size={20} color={iconColor}  /> }
                   link="https://www.wlumsa.org/contact"
                   text="Donate to the MSA"
                   type="2"
                 />
-                <ButtonComponent  
-                  icon={<MessageCircle size={20} color="#5636A7"  /> }
+                <ButtonComponent
+                  icon={<MessageCircle size={20} color={iconColor}  /> }
                   link="https://www.wlumsa.org/contact"
                   text="Contact Us"
                   type="2"
@@ -133,40 +136,40 @@ export default function RootLayout() {
 
                <View>
                 {/* Socials */}
-                <Text className="text-sm  text-gray-500 p-4 ">
+                <Text className="text-sm  text-gray-500 dark:text-gray-300 p-4 ">
                   Connect with us
                 </Text>
                 <View className="  gap-10 items-center  justify-center p-4 rounded-xl  w-full flex flex-row flex-wrap ">
                 <ButtonComponent
-                    icon={ <FontAwesome6 name="instagram" size={20} color="#5636A7" /> }
+                    icon={ <FontAwesome6 name="instagram" size={20} color={iconColor} /> }
                     type="1"
                     link="https://www.instagram.com/wlumsa/"
                   />
     
                   <ButtonComponent
-                    icon={ <FontAwesome6 name="facebook" size={20} color="#5636A7" /> }
+                    icon={ <FontAwesome6 name="facebook" size={20} color={iconColor} /> }
                     type="1"
                     link="https://www.facebook.com/wlumsa/"
                   />
       
                   <ButtonComponent
-                    icon={<FontAwesome6 name="linkedin" size={20} color="#5636A7" />}
+                    icon={<FontAwesome6 name="linkedin" size={20} color={iconColor} />}
                     type="1"
                     link="https://www.linkedin.com/company/wlu-msa/"
                   />
                   <ButtonComponent
-                    icon={<FontAwesome6 name="whatsapp" size={20} color="#5636A7" />}
+                    icon={<FontAwesome6 name="whatsapp" size={20} color={iconColor} />}
                     type="1"
                     link="https://chat.whatsapp.com/BslJGlMMnAM7TRss3Y1Va0"
                   />
                   <ButtonComponent
-                    icon={<Globe size={20} color={"#5636A7"} /> }
+                    icon={<Globe size={20} color={iconColor} /> }
                     type="1"
                     link="https://wlumsa.org"
                   />
                 
                 <ButtonComponent
-                    icon={<TvMinimalPlay size={20} color="#5636A7"  /> }
+                    icon={<TvMinimalPlay size={20} color={iconColor}  /> }
                     type="1"
                     link="https://www.youtube.com/@WLUMSA"
                   />
