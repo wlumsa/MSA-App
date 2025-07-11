@@ -42,7 +42,6 @@
     "expo-updates": "~0.28.13",
     "expo-web-browser": "~14.1.6",
     "lucide-react-native": "^0.474.0",
-    "msa_app": "file:",
     "nativewind": "^4.1.23",
     "react": "19.0.0",
     "react-dom": "19.0.0",

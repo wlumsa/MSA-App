@@ -46,8 +46,14 @@ export default ({ config }: ConfigContext): ExpoConfig => {
         foregroundImage: adaptiveIcon,
         backgroundColor: "#ffffff",
       },
-    
       package: packageName,
+      permissions: [
+        "android.permission.RECEIVE_BOOT_COMPLETED",
+        "android.permission.WAKE_LOCK",
+        "android.permission.VIBRATE",
+        "android.permission.SCHEDULE_EXACT_ALARM",
+        "android.permission.POST_NOTIFICATIONS"
+      ],
     },
     updates: {
       url: `https://u.expo.dev/${EAS_PROJECT_ID}`,
@@ -66,8 +72,10 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     },
     plugins: [
       "expo-font",
-    "expo-web-browser",
+      "expo-web-browser",
       "expo-router",
+      "expo-notifications",
+      "expo-background-fetch",
       [
         "expo-splash-screen",
         {
@@ -76,10 +84,9 @@ export default ({ config }: ConfigContext): ExpoConfig => {
           resizeMode: "contain",
           backgroundColor: "#ffffff",
           dark: {
-
-          image: "./assets/images/splash-icon.png",
-          imageWidth: 200,
-          resizeMode: "contain",
+            image: "./assets/images/splash-icon.png",
+            imageWidth: 200,
+            resizeMode: "contain",
             backgroundColor: "#191818"
           }
         },
