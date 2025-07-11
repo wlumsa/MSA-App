@@ -52,21 +52,27 @@ export default function RootLayout() {
   const colorScheme = useColorScheme();
   const iconColor = colorScheme.colorScheme === "dark" ? "#9055FF" : "#5636A7";
 
-  // Initialize prayer notifications on app start
+  // Initialize prayer notifications on app start (non-blocking)
   useEffect(() => {
     const initializeNotifications = async () => {
       try {
+        console.log("Checking notification permissions...");
         const enabled = await arePrayerNotificationsEnabled();
         if (enabled) {
-          // This willchedule notifications for today if permissions are granted
-          await scheduleAllPrayerNotifications();
+          console.log("Permissions granted, but skipping auto-scheduling for now");
+          // Temporarily disabled auto-scheduling to improve app load time
+          // Users can manually schedule notifications from the Prayer Times screen
+        } else {
+          console.log("Notification permissions not granted");
         }
       } catch (error) {
-        console.log('Error initializing notifications:', error);
+        console.log("Error checking notification permissions:", error);
       }
     };
 
-    initializeNotifications();
+    // Delay initialization to let app load first
+    const timer = setTimeout(initializeNotifications, 1000);
+    return () => clearTimeout(timer);
   }, []);
 
   return (

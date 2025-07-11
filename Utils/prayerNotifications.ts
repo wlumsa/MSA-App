@@ -150,6 +150,7 @@ export async function cancelPrayerNotification(prayerKey: keyof typeof PRAYER_IN
 // Schedule all prayer notifications for today
 export async function scheduleAllPrayerNotifications() {
   try {
+    console.log('Fetching prayer times for today...');
     const todayPrayers = await getPrayerTimingsForDay(0);
     
     if (!todayPrayers) {
@@ -157,12 +158,26 @@ export async function scheduleAllPrayerNotifications() {
       return;
     }
     
-    // Schedule notifications for each prayer
-    await schedulePrayerNotification('fajr', todayPrayers.fajr, 'AM');
-    await schedulePrayerNotification('dhuhr', todayPrayers.dhuhr, 'PM');
-    await schedulePrayerNotification('asr', todayPrayers.asr, 'PM');
-    await schedulePrayerNotification('maghrib', todayPrayers.maghrib, 'PM');
-    await schedulePrayerNotification('isha', todayPrayers.isha, 'PM');
+    console.log('Prayer times fetched, scheduling notifications...');
+    
+    // Schedule notifications for each prayer with timeout protection
+    const schedulePromises = [
+      schedulePrayerNotification('fajr', todayPrayers.fajr, 'AM'),
+      schedulePrayerNotification('dhuhr', todayPrayers.dhuhr, 'PM'),
+      schedulePrayerNotification('asr', todayPrayers.asr, 'PM'),
+      schedulePrayerNotification('maghrib', todayPrayers.maghrib, 'PM'),
+      schedulePrayerNotification('isha', todayPrayers.isha, 'PM')
+    ];
+    
+    // Add timeout to prevent hanging
+    const timeoutPromise = new Promise((_, reject) => 
+      setTimeout(() => reject(new Error('Scheduling timeout')), 10000)
+    );
+    
+    await Promise.race([
+      Promise.all(schedulePromises),
+      timeoutPromise
+    ]);
     
     console.log('All prayer notifications scheduled for today');
   } catch (error) {

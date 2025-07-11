@@ -75,7 +75,6 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       "expo-web-browser",
       "expo-router",
       "expo-notifications",
-      "expo-background-fetch",
       [
         "expo-splash-screen",
         {
