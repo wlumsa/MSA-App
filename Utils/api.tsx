@@ -1,8 +1,15 @@
 import { supabase } from "@/lib/supabase";
 import { timeToMinutes } from "./utils";
+import {
+  PrayerTiming,
+  NextPrayerResponse,
+  validatePrayerTiming,
+  validateNextPrayerResponse,
+} from "./types";
+
 //get the next prayer time here
 
-export async function getNextPrayerTime() {
+export async function getNextPrayerTime(): Promise<NextPrayerResponse | null> {
   try {
     const today = new Date();
     //get the current month and day
@@ -17,7 +24,7 @@ export async function getNextPrayerTime() {
 
     if (monthError) {
       console.error("Error fetching month:", monthError);
-      return null;
+      throw new Error("Failed to fetch prayer month data");
     }
 
     //get the current time
@@ -37,9 +44,14 @@ export async function getNextPrayerTime() {
 
     if (dayError) {
       console.error("Error fetching day:", dayError);
-      return null;
+      throw new Error("Failed to fetch prayer day data");
     }
     console.log(dayData);
+
+    // Validate the response
+    if (!validatePrayerTiming(dayData)) {
+      throw new Error("Invalid prayer timing data received");
+    }
 
     //convert to array
     const prayerTimes = [
@@ -67,7 +79,14 @@ export async function getNextPrayerTime() {
       if (prayerTimeMins > currentTimeMins) {
         nextPrayer = prayerTimes[i];
         console.log("next prayer time is: ", nextPrayer);
-        return { nextPrayer, elapsedTime };
+        const result = { nextPrayer, elapsedTime };
+
+        // Validate the result
+        if (!validateNextPrayerResponse(result)) {
+          throw new Error("Invalid next prayer response");
+        }
+
+        return result;
       }
     }
 
@@ -81,9 +100,14 @@ export async function getNextPrayerTime() {
         .single();
       if (nextDayError) {
         console.error("Error fetching next day:", nextDayError);
-        return null;
+        throw new Error("Failed to fetch next day prayer data");
       }
       console.log(nextDayData);
+
+      // Validate next day data
+      if (!validatePrayerTiming(nextDayData)) {
+        throw new Error("Invalid next day prayer timing data");
+      }
 
       nextPrayer = { name: "Fajr", time: nextDayData.fajr, ampm: "AM" };
       const nextPrayerTimeMins = timeToMinutes(
@@ -92,17 +116,27 @@ export async function getNextPrayerTime() {
       );
       elapsedTime = nextPrayerTimeMins - currentTimeMins;
       console.log("next prayer time is: ", nextPrayer);
-      return { nextPrayer, elapsedTime };
+
+      const result = { nextPrayer, elapsedTime };
+
+      // Validate the result
+      if (!validateNextPrayerResponse(result)) {
+        throw new Error("Invalid next prayer response");
+      }
+
+      return result;
     }
 
     return null;
   } catch (error) {
     console.error("Error in getNextPrayerTime:", error);
-    return null;
+    throw error; // Re-throw to let React Query handle it
   }
 }
 
-export async function getPrayerTimingsForDay(index: number) {
+export async function getPrayerTimingsForDay(
+  index: number
+): Promise<PrayerTiming | null> {
   try {
     const today = new Date();
     //get the current month and day
@@ -119,7 +153,7 @@ export async function getPrayerTimingsForDay(index: number) {
 
     if (monthError) {
       console.error("Error fetching month:", monthError);
-      return null;
+      throw new Error("Failed to fetch prayer month data");
     }
 
     const { data: dayData, error: dayError } = await supabase
@@ -131,14 +165,19 @@ export async function getPrayerTimingsForDay(index: number) {
 
     if (dayError) {
       console.error("Error fetching day:", dayError);
-      return null;
+      throw new Error("Failed to fetch prayer day data");
+    }
+
+    // Validate the response
+    if (!validatePrayerTiming(dayData)) {
+      throw new Error("Invalid prayer timing data received");
     }
 
     console.log("Prayer times fetched successfully");
     return dayData;
   } catch (error) {
     console.error("Error in getPrayerTimingsForDay:", error);
-    return null;
+    throw error; // Re-throw to let React Query handle it
   }
 }
 
