@@ -12,7 +12,7 @@ const PrayerCard = () => {
     isLoading,
     error,
     refetch,
-  } = useQuery<NextPrayerResponse>({
+  } = useQuery<NextPrayerResponse | null>({
     queryKey: ["nextPrayer"],
     queryFn: getNextPrayerTime,
     retry: 2,

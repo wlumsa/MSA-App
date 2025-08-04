@@ -11,6 +11,8 @@ Notifications.setNotificationHandler({
     shouldShowAlert: true,
     shouldPlaySound: true,
     shouldSetBadge: false,
+    shouldShowBanner: true,
+    shouldShowList: true,
   }),
 });
 
@@ -118,8 +120,8 @@ export async function schedulePrayerNotification(
         data: { prayer: prayerKey, type: 'iqama' },
       },
       trigger: {
+        type: Notifications.SchedulableTriggerInputTypes.DATE,
         date: notificationTime,
-        repeats: false,
       },
     });
     
@@ -236,4 +238,4 @@ export async function requestNotificationPermissions(): Promise<boolean> {
     console.error('Error requesting notification permissions:', error);
     return false;
   }
-} 
+}
