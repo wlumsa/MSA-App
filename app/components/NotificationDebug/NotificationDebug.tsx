@@ -33,8 +33,8 @@ const NotificationDebug: React.FC = () => {
           data: { prayer: "test", type: "test" },
         },
         trigger: {
+          type: Notifications.SchedulableTriggerInputTypes.DATE,
           date: testTime,
-          repeats: false,
         },
       });
       Alert.alert(

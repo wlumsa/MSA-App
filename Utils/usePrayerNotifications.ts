@@ -26,8 +26,8 @@ export function usePrayerNotifications() {
     error: null,
   });
 
-  const notificationListener = useRef<Notifications.EventSubscription>();
-  const responseListener = useRef<Notifications.EventSubscription>();
+  const notificationListener = useRef<Notifications.EventSubscription | undefined>(undefined);
+  const responseListener = useRef<Notifications.EventSubscription | undefined>(undefined);
 
   // Initialize notifications
   useEffect(() => {
