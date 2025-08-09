@@ -11,8 +11,7 @@ const events = () => {
     queryKey: ['events'],
     queryFn: fetchEvents,
   })
-
-
+  
   if (isLoading) return (
     <View className='h-screen px-6 pt-4 bg-background items-center justify-center'>
       <Text className='text-lg mx-4'>Loading events...</Text>

@@ -44,6 +44,7 @@ import {
   scheduleAllPrayerNotifications,
   arePrayerNotificationsEnabled,
 } from "@/Utils/prayerNotifications";
+import { usePostHog, PostHogProvider } from 'posthog-react-native'
 
 const queryClient = new QueryClient();
 
@@ -77,6 +78,8 @@ export default function RootLayout() {
 
   return (
     <>
+    <PostHogProvider apiKey={process.env.POSTHOG_PROJECT_API || ""} options={{
+            host: 'https://us.i.posthog.com'}}>
       <QueryClientProvider client={queryClient}>
         <StatusBar backgroundColor="#F8F5FF" barStyle="dark-content" />
         <GestureHandlerRootView style={{ flex: 1, backgroundColor: "" }}>
@@ -275,6 +278,7 @@ export default function RootLayout() {
         </Stack>
       </GestureHandlerRootView> */}
       </QueryClientProvider>
+      </PostHogProvider>
     </>
   );
 }
