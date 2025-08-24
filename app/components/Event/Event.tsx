@@ -8,7 +8,7 @@ import { useEffect } from 'react';
 import React from 'react'
 import { Event as EventType } from '@/Utils/types'
 import { useState } from 'react';
-import { posthog } from '../../posthog'
+import  posthog  from '../../posthog'
 
 const Event:React.FC<EventType> = ({name, description, date, time,location, link, image_id}) => {
   const [image, setImage] = React.useState<string | null>(null)

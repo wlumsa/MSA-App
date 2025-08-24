@@ -78,7 +78,7 @@ export default function RootLayout() {
 
   return (
     <>
-    <PostHogProvider apiKey={process.env.POSTHOG_PROJECT_API || ""} options={{
+    <PostHogProvider apiKey={process.env.EXPO_PUBLIC_POSTHOG_PROJECT_API || ""} options={{
             host: 'https://us.i.posthog.com'}}>
       <QueryClientProvider client={queryClient}>
         <StatusBar backgroundColor="#F8F5FF" barStyle="dark-content" />
