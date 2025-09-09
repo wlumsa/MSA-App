@@ -8,7 +8,7 @@ const PROJECT_SLUG = "msa-app";
 const OWNER = "msateam";
 
 // App production config
-const APP_NAME = "MSA App";
+const APP_NAME = "WLU MSA";
 const BUNDLE_IDENTIFIER = "com.msa.msaapp";
 const PACKAGE_NAME = "com.msa.msaapp";
 const ICON = "./assets/images/MSA_Logo.png";
@@ -39,7 +39,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       infoPlist: {
     ITSAppUsesNonExemptEncryption: false
   }
-      
+
     },
     android: {
       adaptiveIcon: {
@@ -71,7 +71,15 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       favicon: "./assets/images/favicon.png",
     },
     plugins: [
-      "expo-font",
+      [
+        "expo-font",
+        {
+          fonts: [
+            "https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap",
+            "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+          ]
+        }
+      ],
       "expo-web-browser",
       "expo-router",
       "expo-notifications",
