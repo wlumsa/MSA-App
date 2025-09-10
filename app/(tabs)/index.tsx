@@ -14,27 +14,25 @@ export default function Index() {
   return (
     <SafeAreaView className="flex-1 bg-background">
       <ScrollView contentContainerStyle={{ paddingBottom: 24 }} className="px-6 pt-6">
-        <View className="items-center w-full">
-          {/* Header */}
-          <View className="w-full mb-4">
-            <View className="items-center mb-4">
-              <Text className="text-3xl font-bold text-primary text-center">WLU MSA</Text>
-              <Text className="text-base text-gray-600 dark:text-gray-400 text-center">Wilfrid Laurier Muslim Students' Association</Text>
+        <View className="w-full">
+          {/* Header with Donate Button */}
+          <View className="flex-row justify-between items-center mb-6">
+            <View className="flex-1">
+              <Text className="text-3xl font-bold text-primary">WLU MSA</Text>
+              <Text className="text-base text-gray-600 dark:text-gray-400">Wilfrid Laurier Muslim Students' Association</Text>
             </View>
 
-            {/* Donate Button */}
-            <View className="items-center">
-              <Pressable
-                onPress={() => Linking.openURL("https://docs.google.com/forms/d/e/1FAIpQLSfwn-5xuz58a9nzINqZoofyiMr-C7lphMs5KesnzVOB1jrXNg/viewform")}
-                onPressIn={() => setIsPressed(true)}
-                onPressOut={() => setIsPressed(false)}
-                className={`bg-[#e7ac3b] px-6 py-3 rounded-lg ${isPressed ? "opacity-80" : ""}`}
-              >
-                <Text className="text-black text-center font-semibold text-base">
-                  Donate
-                </Text>
-              </Pressable>
-            </View>
+            {/* Donate Button - Top Right */}
+            <Pressable
+              onPress={() => Linking.openURL("https://docs.google.com/forms/d/e/1FAIpQLSfwn-5xuz58a9nzINqZoofyiMr-C7lphMs5KesnzVOB1jrXNg/viewform")}
+              onPressIn={() => setIsPressed(true)}
+              onPressOut={() => setIsPressed(false)}
+              className={`bg-[#e7ac3b] px-5 py-3 rounded-lg ${isPressed ? "opacity-80" : ""}`}
+            >
+              <Text className="text-black font-semibold text-base">
+                Donate
+              </Text>
+            </Pressable>
           </View>
 
           {/* Cards */}
