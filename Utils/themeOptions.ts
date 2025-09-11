@@ -13,29 +13,29 @@ export const LightTheme:Theme = {
     },
     fonts: {
         regular: {
-            fontFamily: '',
-            fontWeight: 'bold'
+            fontFamily: 'Inter',
+            fontWeight: '400'
         },
         medium: {
-            fontFamily: '',
-            fontWeight: 'bold'
+            fontFamily: 'Inter',
+            fontWeight: '500'
         },
         bold: {
-            fontFamily: '',
-            fontWeight: 'bold'
+            fontFamily: 'Inter',
+            fontWeight: '600'
         },
         heavy: {
-            fontFamily: '',
-            fontWeight: 'bold'
+            fontFamily: 'Libre Baskerville',
+            fontWeight: '700'
         }
     }
 }
 
- 
+
 
 export const DarkTheme:Theme = {
     dark: true,
-  
+
     colors: {
         background: "#191818",
         text: "#FFFFFF",
@@ -46,20 +46,20 @@ export const DarkTheme:Theme = {
     },
     fonts: {
         regular: {
-            fontFamily: '',
-            fontWeight: 'bold'
+            fontFamily: 'Inter',
+            fontWeight: '400'
         },
         medium: {
-            fontFamily: '',
-            fontWeight: 'bold'
+            fontFamily: 'Inter',
+            fontWeight: '500'
         },
         bold: {
-            fontFamily: '',
-            fontWeight: 'bold'
+            fontFamily: 'Inter',
+            fontWeight: '600'
         },
         heavy: {
-            fontFamily: '',
-            fontWeight: 'bold'
+            fontFamily: 'Libre Baskerville',
+            fontWeight: '700'
         }
     }
 }
