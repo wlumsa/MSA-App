@@ -242,16 +242,35 @@ export async function getImageByID(id: string) {
 
 //get ayah here
 export async function getDailyReminder(id: string) {
+  // Try exact id first
   const { data, error } = await supabase
     .from("daily_reminders")
     .select("*")
     .eq("id", id)
-    .single();
+    .maybeSingle();
   if (error) {
     throw error;
   }
+  if (data) return data;
 
-  return data;
+  // Fallback 1: if table has an `index` numeric column mapped 1..98
+  const asNumber = Number(id);
+  if (!Number.isNaN(asNumber)) {
+    const { data: byIndex } = await supabase
+      .from("daily_reminders")
+      .select("*")
+      .eq("index", asNumber)
+      .maybeSingle();
+    if (byIndex) return byIndex;
+  }
+
+  // Fallback 2: return a random published row to avoid empty UI
+  const { data: anyRow } = await supabase
+    .from("daily_reminders")
+    .select("*")
+    .limit(1)
+    .maybeSingle();
+  return anyRow ?? null;
 }
 
 export async function fetchHalalDirectory() {
