@@ -16,10 +16,10 @@ module.exports = {
         textGray : 'var(--text-gray)',
       },
       fontFamily: {
-        'serif': 'var(--font-family-serif)',
-        'sans': 'var(--font-family-sans)',
-        'heading': 'var(--font-family-serif)',
-        'body': 'var(--font-family-sans)',
+        'serif': ['LibreBaskerville', 'Georgia', 'serif'],
+        'sans': ['Inter', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        'heading': ['LibreBaskerville-Bold', 'Georgia', 'serif'],
+        'body': ['Inter', 'Helvetica Neue', 'Arial', 'sans-serif'],
       }
     },
   },

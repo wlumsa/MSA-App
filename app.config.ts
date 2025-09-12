@@ -71,15 +71,6 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       favicon: "./assets/images/favicon.png",
     },
     plugins: [
-      [
-        "expo-font",
-        {
-          fonts: [
-            "https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap",
-            "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-          ]
-        }
-      ],
       "expo-web-browser",
       "expo-router",
       "expo-notifications",
