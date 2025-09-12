@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@dev-plugins/react-query": "~0.2.0",
+    "@expo-google-fonts/amiri": "^0.4.1",
     "@expo-google-fonts/inter": "^0.4.2",
     "@expo-google-fonts/libre-baskerville": "^0.4.0",
     "@expo/vector-icons": "^14.0.2",
