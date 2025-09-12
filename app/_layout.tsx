@@ -60,6 +60,8 @@ export default function RootLayout() {
     'Inter-Bold': require('@expo-google-fonts/inter/700Bold/Inter_700Bold.ttf'),
     'LibreBaskerville': require('@expo-google-fonts/libre-baskerville/400Regular/LibreBaskerville_400Regular.ttf'),
     'LibreBaskerville-Bold': require('@expo-google-fonts/libre-baskerville/700Bold/LibreBaskerville_700Bold.ttf'),
+    'Amiri': require('@expo-google-fonts/amiri/400Regular/Amiri_400Regular.ttf'),
+    'Amiri-Bold': require('@expo-google-fonts/amiri/700Bold/Amiri_700Bold.ttf'),
   });
 
   // All other hooks must be called in the same order every time
