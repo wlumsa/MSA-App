@@ -122,7 +122,7 @@ const HalalFood = () => {
             className="w-[90%] dark:text-gray-200 text-gray-800"
             placeholder="Search for halal food"
             placeholderTextColor="#A0AEC0"
-            style={{ fontFamily: 'Inter', fontSize: 16 }}
+            style={{ fontFamily: 'Inter', fontSize: 14 }}
             clearButtonMode="always"
             value={search}
             onChangeText={handleSearch}
@@ -133,7 +133,7 @@ const HalalFood = () => {
           <Pressable onPress={onFiltersPress}>
             <View className="flex-row items-center gap-2 mb-2">
               <View className="flex-row gap-2 p-2 bg-violet-100 dark:bg-violet-400 rounded-xl items-center">
-                <Text className="text-md font-semibold text-violet-900 dark:text-violet-950" style={{ fontFamily: 'Inter-Bold' }}>Filters</Text>
+                <Text className="text-sm font-semibold text-violet-900 dark:text-violet-950" style={{ fontFamily: 'Inter-Bold', fontSize: 14 }}>Filters</Text>
                 {openFilters ? (
                   <ChevronUp size={20} color="#5636A7" strokeWidth={2.5} />
                 ) : (
@@ -168,16 +168,16 @@ const HalalFood = () => {
                 set: setLocationValue,
               }].map(({ label, options, selected, set }) => (
                 <View className="h-20" key={label}>
-                  <Text className="text-gray-500 dark:text-gray-300 mx-4 mb-2" style={{ fontFamily: 'Inter', fontSize: 14 }}>{label}</Text>
+                  <Text className="text-gray-500 dark:text-gray-300 mx-4 mb-2" style={{ fontFamily: 'Inter', fontSize: 12 }}>{label}</Text>
                   <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 4 }}>
                     {options.map((opt) => (
                       <Pressable key={opt.value} onPress={() => set(opt.value)}>
                         <View className={`p-2 rounded-lg mx-2 shadow-sm ${
                           selected === opt.value ? 'bg-[#5636A7]' : 'bg-violet-200 dark:bg-violet-300'
                         }`}>
-                          <Text className={`text-sm font-semibold ${
+                          <Text className={`text-xs font-semibold ${
                             selected === opt.value ? 'text-white' : 'text-violet-900'
-                          }`} style={{ fontFamily: selected === opt.value ? 'Inter-Bold' : 'Inter' }}>
+                          }`} style={{ fontFamily: selected === opt.value ? 'Inter-Bold' : 'Inter', fontSize: 12 }}>
                             {opt.label}
                           </Text>
                         </View>
@@ -220,14 +220,14 @@ const HalalFood = () => {
                   onPress={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
                   disabled={currentPage === 1}
                 >
-                  <Text className={`text-sm ${
+                  <Text className={`text-xs ${
                     currentPage === 1 ? 'text-gray-400' : 'text-blue-600 underline'
-                  }`} style={{ fontFamily: currentPage === 1 ? 'Inter' : 'Inter-Bold' }}>
+                  }`} style={{ fontFamily: currentPage === 1 ? 'Inter' : 'Inter-Bold', fontSize: 12 }}>
                     Previous
                   </Text>
                 </Pressable>
 
-                <Text className="text-sm text-gray-600 font-semibold" style={{ fontFamily: 'Inter-Bold' }}>
+                <Text className="text-xs text-gray-600 font-semibold" style={{ fontFamily: 'Inter-Bold', fontSize: 12 }}>
                   Page {currentPage} of {totalPages}
                 </Text>
 
@@ -235,16 +235,16 @@ const HalalFood = () => {
                   onPress={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
                   disabled={currentPage === totalPages}
                 >
-                  <Text className={`text-sm ${
+                  <Text className={`text-xs ${
                     currentPage === totalPages ? 'text-gray-400' : 'text-blue-600 underline'
-                  }`} style={{ fontFamily: currentPage === totalPages ? 'Inter' : 'Inter-Bold' }}>
+                  }`} style={{ fontFamily: currentPage === totalPages ? 'Inter' : 'Inter-Bold', fontSize: 12 }}>
                     Next
                   </Text>
                 </Pressable>
               </View>
             </>
           ) : (
-            <Text className="text-lg mx-4 text-textPrimary " style={{ fontFamily: 'Inter', fontSize: 16 }}>No halal food available right now</Text>
+            <Text className="text-base mx-4 text-textPrimary " style={{ fontFamily: 'Inter', fontSize: 14 }}>No halal food available right now</Text>
           )}
         </View>
       </View>
