@@ -8,6 +8,8 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
+import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
 import MSA_Logo from "../assets/images/MSA_Logo.png";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import {
@@ -48,10 +50,38 @@ import { usePostHog, PostHogProvider } from 'posthog-react-native'
 
 const queryClient = new QueryClient();
 
+// Prevent the splash screen from auto-hiding before asset loading is complete
+SplashScreen.preventAutoHideAsync();
+
 export default function RootLayout() {
+  // Load fonts first - using the correct import method
+  const [loaded, error] = useFonts({
+    'Inter': require('@expo-google-fonts/inter/400Regular/Inter_400Regular.ttf'),
+    'Inter-Bold': require('@expo-google-fonts/inter/700Bold/Inter_700Bold.ttf'),
+    'LibreBaskerville': require('@expo-google-fonts/libre-baskerville/400Regular/LibreBaskerville_400Regular.ttf'),
+    'LibreBaskerville-Bold': require('@expo-google-fonts/libre-baskerville/700Bold/LibreBaskerville_700Bold.ttf'),
+    'Amiri': require('@expo-google-fonts/amiri/400Regular/Amiri_400Regular.ttf'),
+    'Amiri-Bold': require('@expo-google-fonts/amiri/700Bold/Amiri_700Bold.ttf'),
+  });
+
+  // All other hooks must be called in the same order every time
   useReactQueryDevTools(queryClient);
   const colorScheme = useColorScheme();
   const iconColor = colorScheme.colorScheme === "dark" ? "#9055FF" : "#5636A7";
+
+  // Font loading effect
+  useEffect(() => {
+    console.log('Font loading status:', { loaded, error });
+    if (loaded) {
+      console.log('✅ Fonts loaded successfully!');
+    }
+    if (error) {
+      console.log('❌ Font loading error:', error);
+    }
+    if (loaded || error) {
+      SplashScreen.hideAsync();
+    }
+  }, [loaded, error]);
 
   // Initialize prayer notifications on app start (non-blocking)
   useEffect(() => {
@@ -75,6 +105,11 @@ export default function RootLayout() {
     const timer = setTimeout(initializeNotifications, 1000);
     return () => clearTimeout(timer);
   }, []);
+
+  // Early return after all hooks are called
+  if (!loaded && !error) {
+    return null;
+  }
 
   return (
     <>

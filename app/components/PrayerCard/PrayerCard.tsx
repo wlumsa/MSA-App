@@ -39,7 +39,7 @@ const PrayerCard = () => {
         >
           <View className="flex flex-row items-center justify-center py-8">
             <ActivityIndicator size="large" color="#ffffff" />
-            <Text className="text-white ml-3">Loading prayer times...</Text>
+            <Text className="text-white ml-3" style={{ fontFamily: 'Inter' }}>Loading prayer times...</Text>
           </View>
         </LinearGradient>
       </View>
@@ -56,14 +56,14 @@ const PrayerCard = () => {
           style={{ padding: 20, borderRadius: 12, width: "100%" }}
         >
           <View className="flex flex-col items-center py-4">
-            <Text className="text-white text-center mb-2">
+            <Text className="text-white text-center mb-2" style={{ fontFamily: 'Inter' }}>
               Unable to load prayer times
             </Text>
             <Pressable
               onPress={() => refetch()}
               className="bg-white/20 px-4 py-2 rounded-lg"
             >
-              <Text className="text-white font-semibold">Retry</Text>
+              <Text className="text-white font-semibold" style={{ fontFamily: 'Inter-Bold' }}>Retry</Text>
             </Pressable>
           </View>
         </LinearGradient>
@@ -81,7 +81,7 @@ const PrayerCard = () => {
           style={{ padding: 20, borderRadius: 12, width: "100%" }}
         >
           <View className="flex flex-col items-center py-4">
-            <Text className="text-white text-center">
+            <Text className="text-white text-center" style={{ fontFamily: 'Inter' }}>
               No prayer times available
             </Text>
           </View>
@@ -100,19 +100,19 @@ const PrayerCard = () => {
           style={{ padding: 20, borderRadius: 12, width: "100%" }}
         >
           <View>
-            <Text className="text-white">Upcoming Salah</Text>
+            <Text className="text-white" style={{ fontFamily: 'Inter', fontSize: 16 }}>Upcoming Salah</Text>
           </View>
           <View className="flex flex-row justify-between py-4 font-bold w-full">
-            <Text className="text-4xl font-bold text-white">
+            <Text className="text-4xl font-bold text-white" style={{ fontFamily: 'LibreBaskerville-Bold', fontSize: 36 }}>
               {nextPrayer.nextPrayer.name}
             </Text>
-            <Text className="text-4xl font-bold text-white">
+            <Text className="text-4xl font-bold text-white" style={{ fontFamily: 'LibreBaskerville-Bold', fontSize: 36 }}>
               {nextPrayer.nextPrayer.time} {nextPrayer.nextPrayer.ampm}
             </Text>
           </View>
 
           <View className="flex flex-row justify-between">
-            <Text className="text-white">
+            <Text className="text-white" style={{ fontFamily: 'Inter', fontSize: 14 }}>
               in {convertElapsedTimeToString(nextPrayer.elapsedTime)}
             </Text>
             <Pressable>

@@ -31,7 +31,7 @@ const HalalfoodCard: React.FC<Place> = ({ name, description, location, link, ima
     }
   }, [image_id]);
 
-  
+
 
   return (
     <View className='flex flex-col w-full shadow-md shadow-slate-200 justify-between bg-foreground rounded-xl px-4 py-2'>
@@ -48,16 +48,16 @@ const HalalfoodCard: React.FC<Place> = ({ name, description, location, link, ima
       </View>
 
       <View className='flex flex-row'>
-        <Text className="text-lg font-semibold text-primary">{name}</Text>
+        <Text className="text-base font-semibold text-primary" style={{ fontFamily: 'LibreBaskerville-Bold', fontSize: 16 }}>{name}</Text>
       </View>
 
       <View className='flex flex-col justify-between w-full py-2 font-bold'>
-        <Text className="text-md text-textPrimary">{description}</Text>
+        <Text className="text-sm text-textPrimary" style={{ fontFamily: 'Inter', fontSize: 14, lineHeight: 20 }}>{description}</Text>
 
         <View className='py-2'>
-          <Text className="text-md text-textGray">Category: {category}</Text>
-          <Text className="text-md text-textGray">Method: {method}</Text>
-          <Text className="text-md text-textGray">Location: {location}</Text>
+          <Text className="text-sm text-textGray" style={{ fontFamily: 'Inter', fontSize: 12 }}>Category: {category}</Text>
+          <Text className="text-sm text-textGray" style={{ fontFamily: 'Inter', fontSize: 12 }}>Method: {method}</Text>
+          <Text className="text-sm text-textGray" style={{ fontFamily: 'Inter', fontSize: 12 }}>Location: {location}</Text>
         </View>
 
         <View className='flex flex-row justify-end'>
@@ -71,7 +71,7 @@ const HalalfoodCard: React.FC<Place> = ({ name, description, location, link, ima
               accessibilityLabel={`Order from ${name}`}
               accessibilityHint="Navigates to the restaurant's website"
             >
-              <Text className="text-white text-center font-semibold">Order now</Text>
+              <Text className="text-white text-center font-semibold" style={{ fontFamily: 'Inter-Bold', fontSize: 14 }}>Order now</Text>
             </Pressable>
           )}
         </View>

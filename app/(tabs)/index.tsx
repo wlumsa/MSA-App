@@ -18,8 +18,23 @@ export default function Index() {
           {/* Header with Donate Button */}
           <View className="flex-row justify-between items-center mb-6">
             <View className="flex-1">
-              <Text className="text-3xl font-bold text-primary">WLU MSA</Text>
-              <Text className="text-base text-gray-600 dark:text-gray-400">Wilfrid Laurier Muslim Students' Association</Text>
+              <Text className="text-3xl font-bold text-primary" style={{
+                fontFamily: 'LibreBaskerville-Bold',
+                fontSize: 32,
+                letterSpacing: 1.2,
+                textShadowColor: 'rgba(0, 0, 0, 0.12)',
+                textShadowOffset: { width: 0, height: 1.5 },
+                textShadowRadius: 2.5,
+                lineHeight: 36
+              }}>WLU MSA</Text>
+              <Text className="text-sm text-gray-800 dark:text-gray-200" style={{
+                fontFamily: 'Inter',
+                fontSize: 15,
+                fontWeight: '500',
+                lineHeight: 20,
+                marginTop: 3,
+                letterSpacing: 0.2
+              }}>Wilfrid Laurier Muslim Students' Association</Text>
             </View>
 
             {/* Donate Button - Top Right */}
@@ -29,7 +44,7 @@ export default function Index() {
               onPressOut={() => setIsPressed(false)}
               className={`bg-[#e7ac3b] px-5 py-3 rounded-lg ${isPressed ? "opacity-80" : ""}`}
             >
-              <Text className="text-black font-semibold text-base">
+              <Text className="text-black font-semibold text-base" style={{ fontFamily: 'Inter-Bold', fontSize: 16, fontWeight: '700' }}>
                 Donate
               </Text>
             </Pressable>
