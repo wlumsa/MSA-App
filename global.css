@@ -11,9 +11,11 @@
     --text: #333333;
     --text-primary: #000000;
     --border: #e0e0e0;
-    --font-family: 'Helvetica Neue', Arial, sans-serif;
+    --font-family-serif: 'LibreBaskerville', Georgia, serif;
+    --font-family-sans: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    --font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
  --text-gray: #6c7393;
-    
+
 }
 
  @media(prefers-color-scheme: dark) {
@@ -26,7 +28,7 @@
         --text: #FFFFFF;
         --text-primary: #ffffff;
         --border: #595a5b;
-        --text-gray: #C0C0C0; 
+        --text-gray: #C0C0C0;
     }
 
 /*

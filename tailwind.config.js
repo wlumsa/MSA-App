@@ -14,15 +14,20 @@ module.exports = {
         secondary: 'var(--secondary)',
         textPrimary: 'var(--text-primary)',
         textGray : 'var(--text-gray)',
-    
+      },
+      fontFamily: {
+        'serif': ['LibreBaskerville', 'Georgia', 'serif'],
+        'sans': ['Inter', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        'heading': ['LibreBaskerville-Bold', 'Georgia', 'serif'],
+        'body': ['Inter', 'Helvetica Neue', 'Arial', 'sans-serif'],
       }
     },
   },
    darkMode: "class",
   plugins: [require('daisyui'),  ],
   daisyui: {
-    
-    themes:[ 
+
+    themes:[
       {
         mytheme: { // Light theme
           "primary": "#2e046d", // Purple
@@ -34,8 +39,8 @@ module.exports = {
           "success": "#DEF29F",
           "warning": "#F7E589",
           "error": "#F2B6B5",
-        }, 
-        IIA: { 
+        },
+        IIA: {
           "primary": "#3EB169", // Green
           "secondary": "#F3FAF6", // light green
           "accent": "#6c703e", // Green
@@ -45,8 +50,8 @@ module.exports = {
           "success": "#DEF29F",
           "warning": "#F7E589",
           "error": "#F2B6B5",
-        }, 
-        
+        },
+
       },
     ],
     darkTheme:"mytheme",

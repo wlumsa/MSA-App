@@ -14,11 +14,40 @@ export default function Index() {
   return (
     <SafeAreaView className="flex-1 bg-background">
       <ScrollView contentContainerStyle={{ paddingBottom: 24 }} className="px-6 pt-6">
-        <View className="items-center w-full">
-          {/* Header */}
-          <View className="w-full mb-4">
-            <Text className="text-3xl font-bold text-primary ">WLU MSA</Text>
-            <Text className="text-base text-gray-600 dark:text-gray-400">Wilfrid Laurier Muslim Students' Association</Text>
+        <View className="w-full">
+          {/* Header with Donate Button */}
+          <View className="flex-row justify-between items-center mb-6">
+            <View className="flex-1">
+              <Text className="text-3xl font-bold text-primary" style={{
+                fontFamily: 'LibreBaskerville-Bold',
+                fontSize: 32,
+                letterSpacing: 1.2,
+                textShadowColor: 'rgba(0, 0, 0, 0.12)',
+                textShadowOffset: { width: 0, height: 1.5 },
+                textShadowRadius: 2.5,
+                lineHeight: 36
+              }}>WLU MSA</Text>
+              <Text className="text-sm text-gray-800 dark:text-gray-200" style={{
+                fontFamily: 'Inter',
+                fontSize: 15,
+                fontWeight: '500',
+                lineHeight: 20,
+                marginTop: 3,
+                letterSpacing: 0.2
+              }}>Wilfrid Laurier Muslim Students' Association</Text>
+            </View>
+
+            {/* Donate Button - Top Right */}
+            <Pressable
+              onPress={() => Linking.openURL("https://docs.google.com/forms/d/e/1FAIpQLSfwn-5xuz58a9nzINqZoofyiMr-C7lphMs5KesnzVOB1jrXNg/viewform")}
+              onPressIn={() => setIsPressed(true)}
+              onPressOut={() => setIsPressed(false)}
+              className={`bg-[#e7ac3b] px-5 py-3 rounded-lg ${isPressed ? "opacity-80" : ""}`}
+            >
+              <Text className="text-black font-semibold text-base" style={{ fontFamily: 'Inter-Bold', fontSize: 16, fontWeight: '700' }}>
+                Donate
+              </Text>
+            </Pressable>
           </View>
 
           {/* Cards */}
@@ -47,20 +76,6 @@ export default function Index() {
             />
           </View>
 
-          {/* Donate Button */}
-          <View className="w-full px-2">
-            <Pressable
-              onPress={() => Linking.openURL("https://www.wlumsa.org/ramadan")}
-              onPressIn={() => setIsPressed(true)}
-              onPressOut={() => setIsPressed(false)}
-            
-               className={`bg-[#5636A7] px-16 rounded-lg py-4 ${isPressed ? "bg-[#3e2778]" : ""}`}
-            >
-              <Text className="text-white text-center font-bold text-base">
-                Donate to the MSA
-              </Text>
-            </Pressable>
-          </View>
         </View>
       </ScrollView>
     </SafeAreaView>

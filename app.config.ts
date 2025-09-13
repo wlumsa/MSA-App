@@ -8,11 +8,11 @@ const PROJECT_SLUG = "msa-app";
 const OWNER = "msateam";
 
 // App production config
-const APP_NAME = "MSA App";
+const APP_NAME = "WLU MSA";
 const BUNDLE_IDENTIFIER = "com.msa.msaapp";
 const PACKAGE_NAME = "com.msa.msaapp";
-const ICON = "./assets/images/MSA_Logo.png";
-const ADAPTIVE_ICON = "./assets/images/MSA_Logo.png";
+const ICON = "./assets/images/app-logo1.webp";
+const ADAPTIVE_ICON = "./assets/images/app-logo1.webp";
 const SCHEME = "app-scheme";
 
 export default ({ config }: ConfigContext): ExpoConfig => {
@@ -39,7 +39,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       infoPlist: {
     ITSAppUsesNonExemptEncryption: false
   }
-      
+
     },
     android: {
       adaptiveIcon: {
@@ -71,21 +71,20 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       favicon: "./assets/images/favicon.png",
     },
     plugins: [
-      "expo-font",
       "expo-web-browser",
       "expo-router",
       "expo-notifications",
       [
         "expo-splash-screen",
         {
-          image: "./assets/images/splash-icon.png",
-          imageWidth: 200,
-          resizeMode: "contain",
+          image: "./assets/images/app-logo1.webp",
+          imageWidth: 250,
+          resizeMode: "cover",
           backgroundColor: "#ffffff",
           dark: {
-            image: "./assets/images/splash-icon.png",
-            imageWidth: 200,
-            resizeMode: "contain",
+            image: "./assets/images/app-logo1.webp",
+            imageWidth: 250,
+            resizeMode: "cover",
             backgroundColor: "#191818"
           }
         },
