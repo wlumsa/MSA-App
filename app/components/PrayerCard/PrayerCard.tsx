@@ -103,10 +103,10 @@ const PrayerCard = () => {
             <Text className="text-white" style={{ fontFamily: 'Inter', fontSize: 16 }}>Upcoming Salah</Text>
           </View>
           <View className="flex flex-row justify-between py-4 font-bold w-full">
-            <Text className="text-4xl font-bold text-white" style={{ fontFamily: 'LibreBaskerville-Bold', fontSize: 36 }}>
+            <Text className=" font-bold text-white" style={{ fontFamily: 'LibreBaskerville-Bold', fontSize: 36 }}>
               {nextPrayer.nextPrayer.name}
             </Text>
-            <Text className="text-4xl font-bold text-white" style={{ fontFamily: 'LibreBaskerville-Bold', fontSize: 36 }}>
+            <Text className="font-bold text-white" style={{ fontFamily: 'LibreBaskerville-Bold', fontSize: 36 }}>
               {nextPrayer.nextPrayer.time} {nextPrayer.nextPrayer.ampm}
             </Text>
           </View>

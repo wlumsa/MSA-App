@@ -1,5 +1,6 @@
-import { Text, View, Pressable, ScrollView, SafeAreaView } from "react-native";
+import { Text, View, Pressable, ScrollView, SafeAreaView, Image } from "react-native";
 import { Clock3, Globe, MapPin } from "lucide-react-native";
+import MSA_Logo from "../../assets/images/MSA_Logo.png"
 import EventCard from "../components/EventCard/EventCard";
 import PrayerCard from "../components/PrayerCard/PrayerCard";
 import AyahCard from "../components/AyahCard/AyahCard";
@@ -17,8 +18,13 @@ export default function Index() {
         <View className="w-full">
           {/* Header with Donate Button */}
           <View className="flex-row justify-between items-center mb-6">
-            <View className="flex-1">
-              <Text className="text-3xl font-bold text-primary" style={{
+            <View className="">
+             <View className="flex flex-row gap-2 items-center justify-start">
+             <Image
+                   source={MSA_Logo}
+                   style={{ width: 40, height: 40 }}
+                        />
+              <Text className=" font-bold text-primary" style={{
                 fontFamily: 'LibreBaskerville-Bold',
                 fontSize: 32,
                 letterSpacing: 1.2,
@@ -27,6 +33,7 @@ export default function Index() {
                 textShadowRadius: 2.5,
                 lineHeight: 36
               }}>WLU MSA</Text>
+             </View>
               <Text className="text-sm text-gray-800 dark:text-gray-200" style={{
                 fontFamily: 'Inter',
                 fontSize: 15,
@@ -42,7 +49,7 @@ export default function Index() {
               onPress={() => Linking.openURL("https://docs.google.com/forms/d/e/1FAIpQLSfwn-5xuz58a9nzINqZoofyiMr-C7lphMs5KesnzVOB1jrXNg/viewform")}
               onPressIn={() => setIsPressed(true)}
               onPressOut={() => setIsPressed(false)}
-              className={`bg-[#e7ac3b] px-5 py-3 rounded-lg ${isPressed ? "opacity-80" : ""}`}
+              className={`bg-[#e7ac3b] px-2 py-3 rounded-lg ${isPressed ? "opacity-80" : ""}`}
             >
               <Text className="text-black font-semibold text-base" style={{ fontFamily: 'Inter-Bold', fontSize: 16, fontWeight: '700' }}>
                 Donate
