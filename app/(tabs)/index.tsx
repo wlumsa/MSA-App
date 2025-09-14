@@ -45,7 +45,7 @@ export default function Index() {
             </View>
 
             {/* Donate Button - Top Right */}
-            <Pressable
+            {/* <Pressable
               onPress={() => Linking.openURL("https://docs.google.com/forms/d/e/1FAIpQLSfwn-5xuz58a9nzINqZoofyiMr-C7lphMs5KesnzVOB1jrXNg/viewform")}
               onPressIn={() => setIsPressed(true)}
               onPressOut={() => setIsPressed(false)}
@@ -54,7 +54,7 @@ export default function Index() {
               <Text className="text-black font-semibold text-base" style={{ fontFamily: 'Inter-Bold', fontSize: 16, fontWeight: '700' }}>
                 Donate
               </Text>
-            </Pressable>
+            </Pressable> */}
           </View>
 
           {/* Cards */}
