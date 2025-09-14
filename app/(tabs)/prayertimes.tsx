@@ -125,12 +125,12 @@ const prayertimes = () => {
                   <View>
                 <PrayerCard />
             </View>
-            <View className="mt-4">
+            {/* <View className="mt-4">
                 <NotificationSettings />
             </View>
             <View className="mt-4">
                 <NotificationDebug />
-            </View>
+            </View> */}
       <View className="flex flex-col w-full  mt-8  ">
         <View className="flex flex-row justify-between w-full p-8 bg-foreground rounded-t-lg  border-b-2 border-gray-300 dark:border-gray-600 ">
           <Text className=" text-lg font-bold  text-textPrimary">Prayer</Text>
