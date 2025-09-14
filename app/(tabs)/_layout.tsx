@@ -1,7 +1,7 @@
 import { DrawerActions, useNavigation } from '@react-navigation/native';
 import { Tabs } from 'expo-router';
-import { House, Link, AlignJustify, Clock3, MapPin } from 'lucide-react-native';
-import { TouchableOpacity } from 'react-native';
+import { House, Link, AlignJustify, Clock3, MapPin, HandCoins } from 'lucide-react-native';
+import { Linking, TouchableOpacity } from 'react-native';
 import {LightTheme, DarkTheme} from '@/Utils/themeOptions';
 import { useColorScheme } from 'nativewind';
 import { ThemeProvider } from '@react-navigation/native';
@@ -29,6 +29,11 @@ const {colorScheme, setColorScheme} = useColorScheme();
                 <AlignJustify size={24} color={theme.colors.primary} style={{ marginLeft: 30 }} strokeWidth={2.5} /> 
             </TouchableOpacity>
           ),
+          headerRight: () => (
+            <TouchableOpacity  onPress={() => Linking.openURL("https://docs.google.com/forms/d/e/1FAIpQLSfwn-5xuz58a9nzINqZoofyiMr-C7lphMs5KesnzVOB1jrXNg/viewform")}> 
+            <HandCoins size={24} color={theme.colors.primary} style={{ marginRight: 30 }} strokeWidth={2.5} /> 
+        </TouchableOpacity>
+          )
 
         }}
       />
