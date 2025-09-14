@@ -1,7 +1,8 @@
 {
   "cli": {
     "version": ">= 15.0.10",
-    "appVersionSource": "remote"
+    "appVersionSource": "remote",
+    "packageManager":"pnpm"
   },
   "build": {
     "development": {
@@ -45,4 +46,5 @@
   "submit": {
     "production": {}
   }
+  
 }
