@@ -11,8 +11,8 @@ const OWNER = "msateam";
 const APP_NAME = "WLU MSA";
 const BUNDLE_IDENTIFIER = "com.msa.msaapp";
 const PACKAGE_NAME = "com.msa.msaapp";
-const ICON = "./assets/images/app-logo1.webp";
-const ADAPTIVE_ICON = "./assets/images/app-logo1.webp";
+const ICON = "./assets/images/app-logo1.png";
+const ADAPTIVE_ICON = "./assets/images/app-logo1.png";
 const SCHEME = "app-scheme";
 
 export default ({ config }: ConfigContext): ExpoConfig => {
@@ -73,16 +73,17 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     plugins: [
       "expo-web-browser",
       "expo-router",
+      "expo-font",
       "expo-notifications",
       [
         "expo-splash-screen",
         {
-          image: "./assets/images/app-logo1.webp",
+          image: "./assets/images/app-logo1.png",
           imageWidth: 250,
           resizeMode: "cover",
           backgroundColor: "#ffffff",
           dark: {
-            image: "./assets/images/app-logo1.webp",
+            image: "./assets/images/app-logo1.png",
             imageWidth: 250,
             resizeMode: "cover",
             backgroundColor: "#191818"

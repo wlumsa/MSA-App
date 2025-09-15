@@ -157,7 +157,7 @@ export default function RootLayout() {
                       ></Pressable>
                     </View>
 
-                    <View className="flex flex-col    px-4 py-2 rounded-lg my-3 w-full bg-foreground  shadow-md shadow-slate-200 ">
+                    <View className="flex flex-col    px-4 py-2 rounded-lg my-3 w-full bg-foreground  shadow-md shadow-slate-200  dark:shadow-none  ">
                       <ScreenButtonComponent
                         icon={<House size={20} color={iconColor} />}
                         screenName=""
@@ -192,7 +192,7 @@ export default function RootLayout() {
                       <Text className="text-sm  text-gray-500 dark:text-gray-300 p-4 ">
                         Quick Links
                       </Text>
-                      <View className="bg-foreground  px-4 py-2 rounded-lg my-3   shadow-md shadow-slate-200 ">
+                      <View className="bg-foreground  px-4 py-2 rounded-lg my-3   shadow-md shadow-slate-200 dark:shadow-none  ">
                         <ButtonComponent
                           icon={<Pencil size={20} color={iconColor} />}
                           link="https://www.wlumsa.org/contact"

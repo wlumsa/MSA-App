@@ -31,7 +31,7 @@ const PrayerCard = () => {
   // Loading state
   if (isLoading) {
     return (
-      <View className="flex flex-col w-full shadow-md shadow-slate-200 justify-between">
+      <View className="flex flex-col w-full shadow-md shadow-slate-200 dark:shadow-none justify-between">
         <LinearGradient
           colors={["#8D6EDB", "#5636A7", "#5636A7"]}
           start={{ x: -0.1, y: 0.5 }}
@@ -49,7 +49,7 @@ const PrayerCard = () => {
   // Error state
   if (error) {
     return (
-      <View className="flex flex-col w-full shadow-md shadow-slate-200 justify-between">
+      <View className="flex flex-col w-full shadow-md shadow-slate-200 dark:shadow-none  justify-between">
         <LinearGradient
           colors={["#8D6EDB", "#5636A7", "#5636A7"]}
           start={{ x: -0.1, y: 0.5 }}
@@ -74,7 +74,7 @@ const PrayerCard = () => {
   // No data state
   if (!nextPrayer) {
     return (
-      <View className="flex flex-col w-full shadow-md shadow-slate-200 justify-between">
+      <View className="flex flex-col w-full shadow-md shadow-slate-200 dark:shadow-none  justify-between">
         <LinearGradient
           colors={["#8D6EDB", "#5636A7", "#5636A7"]}
           start={{ x: -0.1, y: 0.5 }}
@@ -92,7 +92,7 @@ const PrayerCard = () => {
 
   // Success state
   return (
-    <View className="flex flex-col w-full shadow-md shadow-slate-200 justify-between">
+    <View className="flex flex-col w-full shadow-md shadow-slate-200 dark:shadow-none  justify-between">
       <Link href="/prayertimes">
         <LinearGradient
           colors={["#8D6EDB", "#5636A7", "#5636A7"]}

@@ -60,7 +60,7 @@ const AyahCard = () => {
 
 
   if (isLoading) return (
-    <View className='flex flex-col rounded-xl my-4 justify-start text-start bg-foreground shadow-md shadow-slate-200 p-6 w-full'>
+    <View className='flex flex-col rounded-xl my-4 justify-start text-start bg-foreground shadow-md shadow-slate-200 dark:shadow-none  p-6 w-full'>
       <Text className="card-title text-primary text-left pb-2" style={{ fontFamily: 'LibreBaskerville-Bold', fontSize: 22, marginBottom: 4 }}>
           Daily Reminder
         </Text>
@@ -71,7 +71,7 @@ const AyahCard = () => {
     </View>
   )
   if (error) return (
-    <View className='flex flex-col rounded-xl my-4 justify-start text-start bg-slate-50 shadow-md shadow-slate-200 p-6 w-full'>
+    <View className='flex flex-col rounded-xl my-4 justify-start text-start bg-slate-50 shadow-md shadow-slate-200 dark:shadow-none  p-6 w-full'>
     <Text className="card-title text-[#2E046D] text-left pb-2" style={{ fontFamily: 'LibreBaskerville-Bold', fontSize: 22, marginBottom: 4 }}>
         Daily Reminder
       </Text>
@@ -82,7 +82,7 @@ const AyahCard = () => {
   </View>
   )
   if (!ayah) return (
-    <View className='flex flex-col rounded-xl my-4 justify-start text-start bg-foreground shadow-md shadow-slate-200 p-6 w-full'>
+    <View className='flex flex-col rounded-xl my-4 justify-start text-start bg-foreground shadow-md shadow-slate-200 dark:shadow-none  p-6 w-full'>
     <Text className="card-title text-[#2E046D] text-left pb-2" style={{ fontFamily: 'LibreBaskerville-Bold', fontSize: 22, marginBottom: 4 }}>
         Daily Reminder
       </Text>
@@ -96,7 +96,7 @@ const AyahCard = () => {
 
 
   return (
-    <View className="flex flex-col rounded-xl my-4 justify-start text-start bg-foreground shadow-md shadow-slate-200 p-6 w-full ">
+    <View className="flex flex-col rounded-xl my-4 justify-start text-start bg-foreground shadow-md shadow-slate-200 dark:shadow-none p-6 w-full ">
         <Text className="card-title text-primary text-left pb-2" style={{ fontFamily: 'LibreBaskerville-Bold', fontSize: 22, marginBottom: 4 }}>
           Daily Reminder
         </Text>

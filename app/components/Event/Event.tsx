@@ -34,7 +34,7 @@ const Event:React.FC<EventType> = ({name, description, date, time,location, link
 
   const formattedDate = new Date(date).toDateString()
   return (
-    <View className='flex flex-col w-full  shadow-md shadow-slate-200 justify-between  bg-foreground rounded-xl px-4 py-2 '>
+    <View className='flex flex-col w-full  shadow-md shadow-slate-200 dark:shadow-none  justify-between  bg-foreground rounded-xl px-4 py-2 '>
       <View className=''>
      {image_id &&  <Image
         style={{ width: "100%", height: 100, borderRadius: 10, marginTop: 10, marginBottom: 10 }}

@@ -116,7 +116,7 @@ const HalalFood = () => {
   return (
     <ScrollView className="flex flex-col h-screen px-6 pt-4 bg-background">
       <View className="items-center mx-4">
-        <View className="w-full flex-row items-center gap-3 py-3 border border-gray-300 dark:border-gray-600 bg-foreground rounded-xl shadow-md px-3">
+        <View className="w-full flex-row items-center gap-3 py-3 border border-gray-300 dark:border-gray-600 bg-foreground rounded-xl shadow-md dark:shadow-none  px-3">
           <Search color="#A0AEC0" size={24} strokeWidth={1.5} className="mx-1" />
           <TextInput
             className="w-[90%] dark:text-gray-200 text-gray-800"
@@ -172,7 +172,7 @@ const HalalFood = () => {
                   <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 4 }}>
                     {options.map((opt) => (
                       <Pressable key={opt.value} onPress={() => set(opt.value)}>
-                        <View className={`p-2 rounded-lg mx-2 shadow-sm ${
+                        <View className={`p-2 rounded-lg mx-2 shadow-sm dark:shadow-none  ${
                           selected === opt.value ? 'bg-[#5636A7]' : 'bg-violet-200 dark:bg-violet-300'
                         }`}>
                           <Text className={`text-xs font-semibold ${

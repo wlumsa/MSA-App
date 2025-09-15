@@ -34,7 +34,7 @@ const HalalfoodCard: React.FC<Place> = ({ name, description, location, link, ima
 
 
   return (
-    <View className='flex flex-col w-full shadow-md shadow-slate-200 justify-between bg-foreground rounded-xl px-4 py-2'>
+    <View className='flex flex-col w-full shadow-md shadow-slate-200 justify-between bg-foreground dark:shadow-none  rounded-xl px-4 py-2'>
       <View>
         {image ? (
           <Image
