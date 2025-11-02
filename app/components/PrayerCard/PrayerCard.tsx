@@ -28,6 +28,8 @@ const PrayerCard = () => {
     return `${hoursString} ${minutesString}`.trim();
   };
 
+ 
+
   // Loading state
   if (isLoading) {
     return (
