@@ -78,13 +78,13 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       [
         "expo-splash-screen",
         {
-          image: "./assets/images/app-logo1.png",
-          imageWidth: 250,
+          image: "./assets/images/MSA_Logo.png",
+          imageWidth: 200,
           resizeMode: "cover",
           backgroundColor: "#ffffff",
           dark: {
-            image: "./assets/images/app-logo1.png",
-            imageWidth: 250,
+            image: "./assets/images/MSA_Logo.png",
+            imageWidth: 200,
             resizeMode: "cover",
             backgroundColor: "#191818"
           }

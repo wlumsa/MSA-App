@@ -15,7 +15,7 @@ const {colorScheme, setColorScheme} = useColorScheme();
   return (
     <ThemeProvider value={theme}>
     <Tabs screenOptions={{ tabBarActiveTintColor: theme.colors.primary
-, tabBarInactiveTintColor: '#A9A9A9', tabBarStyle: { backgroundColor: theme.colors.background }, headerStyle: { backgroundColor: theme.colors.background }, headerTitleStyle: { color: theme.colors.text }
+, tabBarInactiveTintColor: '#A9A9A9', tabBarStyle: { backgroundColor: theme.colors.background }, headerStyle: { backgroundColor: theme.colors.background }, headerTitleStyle: { color: "#fff" }
     }}>
       <Tabs.Screen
         name="index"
@@ -23,7 +23,7 @@ const {colorScheme, setColorScheme} = useColorScheme();
           title: 'Home',
           tabBarIcon: ({ color }) => <House size={24} color={color} strokeWidth={2.5} />,
           headerShown: true,
-          headerTintColor: theme.colors.text,
+          headerTintColor: "#fff",
           headerLeft: () => (   
             <TouchableOpacity onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}> 
                 <AlignJustify size={24} color={theme.colors.primary} style={{ marginLeft: 30 }} strokeWidth={2.5} /> 
