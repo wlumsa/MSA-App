@@ -14,7 +14,7 @@ const {colorScheme, setColorScheme} = useColorScheme();
 
   return (
     <ThemeProvider value={theme}>
-    <Tabs screenOptions={{ tabBarActiveTintColor: theme.colors.primary
+    <Tabs screenOptions={{  tabBarActiveTintColor: theme.colors.primary
 , tabBarInactiveTintColor: '#A9A9A9', tabBarStyle: { backgroundColor: theme.colors.background }, headerStyle: { backgroundColor: theme.colors.background }, headerTitleStyle: { color: theme.colors.text }
     }}>
       <Tabs.Screen

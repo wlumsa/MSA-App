@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import {
   ScrollView,
   Text,
@@ -7,11 +7,12 @@ import {
   Linking,
   ActivityIndicator,
 } from 'react-native';
-import { Pressable } from 'react-native-gesture-handler';
+import { Pressable } from 'react-native';
 import { ChevronDown, ChevronUp, Search } from 'lucide-react-native';
 
 import HalalfoodCard from '../components/HalalFood/HalalfoodCard';
 import { fetchHalalDirectory } from '@/Utils/api';
+import { Screen } from "../components/Screen/Screen"
 
 type Place = {
   name: string;
@@ -114,6 +115,7 @@ const HalalFood = () => {
   );
 
   return (
+    <Screen>
     <ScrollView className="flex flex-col h-screen px-6 pt-4 bg-background">
       <View className="items-center mx-4">
         <View className="w-full flex-row items-center gap-3 py-3 border border-gray-300 dark:border-gray-600 bg-foreground rounded-xl shadow-md dark:shadow-none  px-3">
@@ -249,6 +251,8 @@ const HalalFood = () => {
         </View>
       </View>
     </ScrollView>
+    </Screen>
+
   );
 };
 

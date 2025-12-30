@@ -1,9 +1,8 @@
 import { View, Text, Pressable } from 'react-native';
-import { ChevronRight } from 'lucide-react-native';
 import { Linking } from 'react-native';
 import { Image } from 'expo-image';
 import { getImageByID } from '@/Utils/api';
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import { Place } from '@/Utils/types';
 
 const HalalfoodCard: React.FC<Place> = ({ name, description, location, link, image_id, method, category }) => {

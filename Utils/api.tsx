@@ -197,27 +197,27 @@ export const fetchEvents = async () => {
 };
 export const fetchTodaysEvents = async () => {
   const today = new Date();
-  const startOfDay = new Date(
-    today.getFullYear(),
-    today.getMonth(),
-    today.getDate()
-  ).toISOString();
-  const datepart = startOfDay.split("T")[0];
-  const noon = datepart + "T12:00:00.000Z";
-  console.log(startOfDay);
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, '0');
+  const day = String(today.getDate()).padStart(2, '0');
+  const todayDate = `${year}-${month}-${day}`;
+
+  console.log('Fetching events for:', todayDate);
 
   const { data, error } = await supabase
     .from("events")
     .select("*")
     .eq("status", "published")
-    .eq("date", noon)
+    .gte("date", todayDate)
+    .lt("date", new Date(today.getTime() + 24 * 60 * 60 * 1000).toISOString().split('T')[0])
     .order("created_at", { ascending: false });
 
-  console.log(data);
+  console.log('Today\'s events:', data);
+  
   if (error) {
     throw error;
   }
-  return data;
+  return data || [];
 };
 
 export async function getImageByID(id: string) {

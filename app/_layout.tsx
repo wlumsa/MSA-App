@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import  { useEffect } from "react";
 import {
   StatusBar,
   View,
@@ -32,7 +32,7 @@ import "../global.css";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { ButtonComponent } from "./components/ButtonComponent/ButtonComponent";
 import { Drawer } from "expo-router/drawer";
-import ScreenButtonComponent from "./components/ScreenButtonComponent/ScreenButtonComponent";
+import {ScreenButtonComponent} from "./components/ScreenButtonComponent/ScreenButtonComponent";
 import {
   useQuery,
   useMutation,
@@ -47,7 +47,7 @@ import {
   arePrayerNotificationsEnabled,
 } from "@/Utils/prayerNotifications";
 import { usePostHog, PostHogProvider } from 'posthog-react-native'
-
+import ThemeSection from "./components/ThemeSection/ThemeSection"
 const queryClient = new QueryClient();
 
 // Prevent the splash screen from auto-hiding before asset loading is complete
@@ -286,6 +286,7 @@ export default function RootLayout() {
                           link="https://www.youtube.com/@WLUMSA"
                         />
                       </View>
+                      <ThemeSection/>
                     </View>
                   </SafeAreaView>
                 </DrawerContentScrollView>
