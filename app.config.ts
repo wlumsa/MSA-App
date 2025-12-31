@@ -1,5 +1,4 @@
 import { ConfigContext, ExpoConfig } from "expo/config";
-import { version } from "./package.json";
 
 // Replace these with your EAS project ID and project slug.
 // You can find them at https://expo.dev/accounts/[account]/projects/[project].
@@ -26,7 +25,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
   return {
     ...config,
     name: name,
-    version, // Automatically bump your project version with `npm version patch`, `npm version minor` or `npm version major`.
+    version:"1.0.0", // Automatically bump your project version with `npm version patch`, `npm version minor` or `npm version major`.
     slug: PROJECT_SLUG, // Must be consistent across all environments.
     orientation: "portrait",
     userInterfaceStyle: "automatic",
@@ -78,13 +77,13 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       [
         "expo-splash-screen",
         {
-          image: "./assets/images/app-logo1.png",
-          imageWidth: 250,
+          image: "./assets/images/MSA_Logo.png",
+          imageWidth: 200,
           resizeMode: "cover",
           backgroundColor: "#ffffff",
           dark: {
             image: "./assets/images/app-logo1.png",
-            imageWidth: 250,
+            imageWidth: 200,
             resizeMode: "cover",
             backgroundColor: "#191818"
           }

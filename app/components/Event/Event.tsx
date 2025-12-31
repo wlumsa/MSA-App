@@ -2,16 +2,13 @@ import { View, Text, Pressable } from 'react-native'
 import { ChevronRight } from 'lucide-react-native'
 import { Linking } from 'react-native'
 import { Image } from 'expo-image';
-import MSA_Logo from '../assets/MSA_Logo.png' 
 import { getImageByID } from '@/Utils/api';
 import { useEffect } from 'react';
-import React from 'react'
 import { Event as EventType } from '@/Utils/types'
 import { useState } from 'react';
 import  posthog  from '../../posthog'
-
 const Event:React.FC<EventType> = ({name, description, date, time,location, link, image_id}) => {
-  const [image, setImage] = React.useState<string | null>(null)
+  const [image, setImage] = useState<string | null>(null)
   if(image_id) {
     useEffect(() => {
       getImageByID(image_id).then((data) => {
@@ -34,6 +31,7 @@ const Event:React.FC<EventType> = ({name, description, date, time,location, link
 
   const formattedDate = new Date(date).toDateString()
   return (
+    
     <View className='flex flex-col w-full  shadow-md shadow-slate-200 dark:shadow-none  justify-between  bg-foreground rounded-xl px-4 py-2 '>
       <View className=''>
      {image_id &&  <Image

@@ -10,14 +10,13 @@ import {
 } from "lucide-react-native";
 import { Pressable } from "react-native";
 import PrayerCard from "../components/PrayerCard/PrayerCard";
-import React, { useState } from "react";
+import  { useState } from "react";
 import PrayerTiming from "../components/PrayerTiming/PrayerTiming";
 import NotificationSettings from "../components/NotificationSettings/NotificationSettings";
 import NotificationDebug from "../components/NotificationDebug/NotificationDebug";
 import { getPrayerTimingsForDay } from "@/Utils/api";
 import { useQuery } from "@tanstack/react-query";
-import { StatusBar } from "expo-status-bar";
-
+import { Screen } from "../components/Screen/Screen";
 const prayertimes = () => {
   const [isPressedInc, setIsPressedInc] = useState(false);
 
@@ -77,17 +76,21 @@ const prayertimes = () => {
 
   if (isLoading)
     return (
-      <View className="h-screen px-6 pt-4 bg-background items-center justify-center">
+      <Screen><View className="h-screen px-6 pt-4 bg-background items-center justify-center">
         <Text className="text-lg mx-4">Loading prayer times...</Text>
       </View>
+      </Screen>
     );
   if (error)
     return (
-      <View className="h-screen px-6 pt-4 bg-background items-center justify-center">
+     <Screen> <View className="h-screen px-6 pt-4 bg-background items-center justify-center">
         <Text className="text-lg mx-4">Error loading prayer times</Text>
       </View>
+      </Screen>
     );
   return (
+    <Screen>
+
     <ScrollView className="flex flex-col  h-screen px-6 pt-4 bg-background ">
       <View className="items-center p-2 rounded-xl bg-base-200 mb-2 ">
         <View className="flex flex-row items-center justify-between w-full bg-foreground rounded-xl ">
@@ -174,6 +177,7 @@ const prayertimes = () => {
         </View>
       </View>
     </ScrollView>
+    </Screen>
   );
 };
 

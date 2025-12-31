@@ -1,4 +1,3 @@
-import React from "react";
 import { useState } from "react";
 import { Pressable, View, Text } from "react-native";
 import { ReactNode } from 'react'
@@ -26,7 +25,7 @@ export const ButtonComponent:React.FC<ButtonProps> = ({icon, type, link, text, l
           onPressIn={onPress}
           onPressOut={onPress}
           onPress={() => Linking.openURL(link)}
-          className={`items-center w-14 h-14 p-4 text-center shadow-md shadow-slate-200 bg-foreground rounded-xl ${isPressed ? "bg-[#ededed] dark:bg-[#4b4b4b]" : "bg-[#F9FAFB]"}`}>    
+          className={`items-center w-14 h-14 p-4 text-center shadow-md shadow-slate-200 dark:shadow-slate-800  bg-foreground rounded-xl ${isPressed ? "bg-[#ededed] dark:bg-[#4b4b4b]" : "bg-[#F9FAFB]"}`}>    
             {icon}
           </Pressable>
         </View>

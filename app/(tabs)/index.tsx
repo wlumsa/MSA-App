@@ -1,19 +1,20 @@
-import { Text, View, Pressable, ScrollView, SafeAreaView, Image } from "react-native";
+import { Text, View, ScrollView, Image } from "react-native";
 import { Clock3, Globe, MapPin } from "lucide-react-native";
 import MSA_Logo from "../../assets/images/MSA_Logo.png"
 import EventCard from "../components/EventCard/EventCard";
 import PrayerCard from "../components/PrayerCard/PrayerCard";
 import AyahCard from "../components/AyahCard/AyahCard";
-import * as Linking from 'expo-linking';
+import { Screen } from "../components/Screen/Screen"
 import IconComponent from "../components/Icon/Icon";
 import { useState } from "react";
 // import Push from "../PushNotifications";
+
 export default function Index() {
 
   const [isPressed, setIsPressed] = useState(false);
 
   return (
-    <SafeAreaView className="flex-1 bg-background">
+    <Screen >
       <ScrollView contentContainerStyle={{ paddingBottom: 24 }} className="px-6 pt-6">
         <View className="w-full">
           {/* Header with Donate Button */}
@@ -85,6 +86,6 @@ export default function Index() {
 
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </Screen>
   );
 }

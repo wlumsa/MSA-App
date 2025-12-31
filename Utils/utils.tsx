@@ -18,9 +18,18 @@ export function timeToMinutes(timeString:string, ampm:string) {
     if (isNaN(hours) || isNaN(minutes) || hours < 0 || hours > 23 || minutes < 0 || minutes > 59) {
       return -1;
     }
-    if(ampm == "PM") {
-        return 720 + hours * 60 + minutes
+    let hours24 = hours;
+    if (ampm === "AM") {
+      if (hours === 12) {
+        hours24 = 0; 
+      }
+    } else if (ampm === "PM") {
+      if (hours !== 12) {
+        hours24 = hours + 12; 
+      }
     }
+    const totalMinutes = hours24 * 60 + minutes;
+    console.log(`${timeString} ${ampm} = ${hours24}:${minutes.toString().padStart(2, '0')} = ${totalMinutes} mins`);
 
-    return hours * 60 + minutes;
+    return totalMinutes;
   }

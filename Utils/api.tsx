@@ -91,7 +91,7 @@ export async function getNextPrayerTime(): Promise<NextPrayerResponse | null> {
     }
 
     //get fajr time for next day
-    if (nextPrayer == null) {
+    if (nextPrayer == null || "") {
       const { data: nextDayData, error: nextDayError } = await supabase
         .from("prayer_timings_month_days")
         .select("*")
@@ -114,24 +114,28 @@ export async function getNextPrayerTime(): Promise<NextPrayerResponse | null> {
         nextPrayer.time,
         nextPrayer.ampm
       );
-      elapsedTime = nextPrayerTimeMins - currentTimeMins;
+      
       console.log("next prayer time is: ", nextPrayer);
-
+      const minsUntilMidnight = (24 * 60) - currentTimeMins;
+      elapsedTime = minsUntilMidnight + nextPrayerTimeMins;
       const result = { nextPrayer, elapsedTime };
 
       // Validate the result
       if (!validateNextPrayerResponse(result)) {
         throw new Error("Invalid next prayer response");
       }
+      
 
       return result;
-    }
+    
 
     return null;
+    }
   } catch (error) {
     console.error("Error in getNextPrayerTime:", error);
     throw error; // Re-throw to let React Query handle it
   }
+
 }
 
 export async function getPrayerTimingsForDay(
@@ -197,27 +201,27 @@ export const fetchEvents = async () => {
 };
 export const fetchTodaysEvents = async () => {
   const today = new Date();
-  const startOfDay = new Date(
-    today.getFullYear(),
-    today.getMonth(),
-    today.getDate()
-  ).toISOString();
-  const datepart = startOfDay.split("T")[0];
-  const noon = datepart + "T12:00:00.000Z";
-  console.log(startOfDay);
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, '0');
+  const day = String(today.getDate()).padStart(2, '0');
+  const todayDate = `${year}-${month}-${day}`;
+
+  console.log('Fetching events for:', todayDate);
 
   const { data, error } = await supabase
     .from("events")
     .select("*")
     .eq("status", "published")
-    .eq("date", noon)
+    .gte("date", todayDate)
+    .lt("date", new Date(today.getTime() + 24 * 60 * 60 * 1000).toISOString().split('T')[0])
     .order("created_at", { ascending: false });
 
-  console.log(data);
+  console.log('Today\'s events:', data);
+  
   if (error) {
     throw error;
   }
-  return data;
+  return data || [];
 };
 
 export async function getImageByID(id: string) {

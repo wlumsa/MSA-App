@@ -3,7 +3,6 @@ import { LinearGradient } from "expo-linear-gradient";
 import { Link } from "expo-router";
 import { getNextPrayerTime } from "@/Utils/api";
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
 import { NextPrayerResponse } from "@/Utils/types";
 
 const PrayerCard = () => {
