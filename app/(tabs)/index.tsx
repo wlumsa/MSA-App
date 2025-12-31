@@ -1,4 +1,4 @@
-import { Text, View, Pressable, ScrollView, Image } from "react-native";
+import { Text, View, ScrollView, Image } from "react-native";
 import { Clock3, Globe, MapPin } from "lucide-react-native";
 import MSA_Logo from "../../assets/images/MSA_Logo.png"
 import EventCard from "../components/EventCard/EventCard";

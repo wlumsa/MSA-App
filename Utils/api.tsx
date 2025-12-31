@@ -91,7 +91,7 @@ export async function getNextPrayerTime(): Promise<NextPrayerResponse | null> {
     }
 
     //get fajr time for next day
-    if (nextPrayer == null) {
+    if (nextPrayer == null || "") {
       const { data: nextDayData, error: nextDayError } = await supabase
         .from("prayer_timings_month_days")
         .select("*")
@@ -114,24 +114,28 @@ export async function getNextPrayerTime(): Promise<NextPrayerResponse | null> {
         nextPrayer.time,
         nextPrayer.ampm
       );
-      elapsedTime = nextPrayerTimeMins - currentTimeMins;
+      
       console.log("next prayer time is: ", nextPrayer);
-
+      const minsUntilMidnight = (24 * 60) - currentTimeMins;
+      elapsedTime = minsUntilMidnight + nextPrayerTimeMins;
       const result = { nextPrayer, elapsedTime };
 
       // Validate the result
       if (!validateNextPrayerResponse(result)) {
         throw new Error("Invalid next prayer response");
       }
+      
 
       return result;
-    }
+    
 
     return null;
+    }
   } catch (error) {
     console.error("Error in getNextPrayerTime:", error);
     throw error; // Re-throw to let React Query handle it
   }
+
 }
 
 export async function getPrayerTimingsForDay(

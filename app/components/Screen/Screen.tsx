@@ -9,7 +9,7 @@ import type { ReactNode } from 'react';
 import {LightTheme, DarkTheme} from '@/Utils/themeOptions';
 
 
-export function Screen({ children }: { children: ReactNode }) {
+export  function Screen({ children }: { children: ReactNode }) {
     const [key, setKey] = useState(0);
 
     useFocusEffect(

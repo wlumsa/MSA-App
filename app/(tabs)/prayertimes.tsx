@@ -76,15 +76,17 @@ const prayertimes = () => {
 
   if (isLoading)
     return (
-      <View className="h-screen px-6 pt-4 bg-background items-center justify-center">
+      <Screen><View className="h-screen px-6 pt-4 bg-background items-center justify-center">
         <Text className="text-lg mx-4">Loading prayer times...</Text>
       </View>
+      </Screen>
     );
   if (error)
     return (
-      <View className="h-screen px-6 pt-4 bg-background items-center justify-center">
+     <Screen> <View className="h-screen px-6 pt-4 bg-background items-center justify-center">
         <Text className="text-lg mx-4">Error loading prayer times</Text>
       </View>
+      </Screen>
     );
   return (
     <Screen>
