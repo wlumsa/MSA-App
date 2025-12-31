@@ -201,17 +201,17 @@ export default function RootLayout() {
                         />
                         <ButtonComponent
                           icon={<CircleUser size={20} color={iconColor} />}
-                          link="https://www.wlumsa.org/contact"
+                          link="https://www.wlumsa.org/guidebook"
                           text="Become a General Member"
                           type="2"
                         />
 
-                        <ButtonComponent
+                        {/* <ButtonComponent
                           icon={<Banknote size={20} color={iconColor} />}
                           link="https://www.wlumsa.org/contact"
                           text="Donate to the MSA"
                           type="2"
-                        />
+                        /> */}
                         <ButtonComponent
                           icon={<MessageCircle size={20} color={iconColor} />}
                           link="https://www.wlumsa.org/contact"
