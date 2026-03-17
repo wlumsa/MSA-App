@@ -6,17 +6,19 @@ import { getImageByID } from '@/Utils/api';
 import { useEffect } from 'react';
 import { Event as EventType } from '@/Utils/types'
 import { useState } from 'react';
-import  posthog  from '../../posthog'
+import posthog from "@/lib/posthog";
 const Event:React.FC<EventType> = ({name, description, date, time,location, link, image_id}) => {
   const [image, setImage] = useState<string | null>(null)
-  if(image_id) {
-    useEffect(() => {
+  useEffect(() => {
+      if (!image_id) {
+        return;
+      }
+
       getImageByID(image_id).then((data) => {
         setImage(data.toString())
         console.log(data)
       })
-    }, [])
-  }
+    }, [image_id])
   
       const [isPressed, setIsPressed] = useState(false);
       const onPress = () => {
@@ -63,5 +65,4 @@ const Event:React.FC<EventType> = ({name, description, date, time,location, link
 } 
 
 export default Event
-
 

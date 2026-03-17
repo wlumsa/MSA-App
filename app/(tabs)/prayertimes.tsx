@@ -9,14 +9,14 @@ import {
   Sun,
 } from "lucide-react-native";
 import { Pressable } from "react-native";
-import PrayerCard from "../components/PrayerCard/PrayerCard";
+import PrayerCard from "@/components/PrayerCard/PrayerCard";
 import  { useState } from "react";
-import PrayerTiming from "../components/PrayerTiming/PrayerTiming";
-import NotificationSettings from "../components/NotificationSettings/NotificationSettings";
-import NotificationDebug from "../components/NotificationDebug/NotificationDebug";
+import PrayerTiming from "@/components/PrayerTiming/PrayerTiming";
+import NotificationSettings from "@/components/NotificationSettings/NotificationSettings";
+import NotificationDebug from "@/components/NotificationDebug/NotificationDebug";
 import { getPrayerTimingsForDay } from "@/Utils/api";
 import { useQuery } from "@tanstack/react-query";
-import { Screen } from "../components/Screen/Screen";
+import { Screen } from "@/components/Screen/Screen";
 const prayertimes = () => {
   const [isPressedInc, setIsPressedInc] = useState(false);
 
@@ -76,14 +76,14 @@ const prayertimes = () => {
 
   if (isLoading)
     return (
-      <Screen><View className="h-screen px-6 pt-4 bg-background items-center justify-center">
+      <Screen><View className="flex-1 px-6 pt-4 bg-background items-center justify-center">
         <Text className="text-lg mx-4">Loading prayer times...</Text>
       </View>
       </Screen>
     );
   if (error)
     return (
-     <Screen> <View className="h-screen px-6 pt-4 bg-background items-center justify-center">
+     <Screen> <View className="flex-1 px-6 pt-4 bg-background items-center justify-center">
         <Text className="text-lg mx-4">Error loading prayer times</Text>
       </View>
       </Screen>
@@ -91,7 +91,10 @@ const prayertimes = () => {
   return (
     <Screen>
 
-    <ScrollView className="flex flex-col  h-screen px-6 pt-4 bg-background ">
+    <ScrollView
+      className="flex-1 px-6 pt-4 bg-background"
+      contentContainerStyle={{ paddingBottom: 32 }}
+    >
       <View className="items-center p-2 rounded-xl bg-base-200 mb-2 ">
         <View className="flex flex-row items-center justify-between w-full bg-foreground rounded-xl ">
           <Pressable

@@ -10,9 +10,9 @@ import {
 import { Pressable } from 'react-native';
 import { ChevronDown, ChevronUp, Search } from 'lucide-react-native';
 
-import HalalfoodCard from '../components/HalalFood/HalalfoodCard';
+import HalalfoodCard from "@/components/HalalFood/HalalfoodCard";
 import { fetchHalalDirectory } from '@/Utils/api';
-import { Screen } from "../components/Screen/Screen"
+import { Screen } from "@/components/Screen/Screen";
 
 type Place = {
   name: string;
@@ -116,7 +116,10 @@ const HalalFood = () => {
 
   return (
     <Screen>
-    <ScrollView className="flex flex-col h-screen px-6 pt-4 bg-background">
+    <ScrollView
+      className="flex-1 px-6 pt-4 bg-background"
+      contentContainerStyle={{ paddingBottom: 32 }}
+    >
       <View className="items-center mx-4">
         <View className="w-full flex-row items-center gap-3 py-3 border border-gray-300 dark:border-gray-600 bg-foreground rounded-xl shadow-md dark:shadow-none  px-3">
           <Search color="#A0AEC0" size={24} strokeWidth={1.5} className="mx-1" />

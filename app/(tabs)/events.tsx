@@ -1,10 +1,10 @@
 import { View, Text } from 'react-native'
-import Event from '../components/Event/Event'
+import Event from "@/components/Event/Event";
 import { ScrollView } from 'react-native'
 import { fetchEvents } from '@/Utils/api'
 import { useQuery } from '@tanstack/react-query'
 
-import { Screen } from "../components/Screen/Screen"
+import { Screen } from "@/components/Screen/Screen";
 
 const events = () => {
 
@@ -14,20 +14,20 @@ const events = () => {
   })
   if (isLoading) return (
    <Screen>
-   <View className='h-screen px-6 pt-4 bg-background items-center justify-center'>
+   <View className='flex-1 px-6 pt-4 bg-background items-center justify-center'>
       <Text className='text-lg mx-4'>Loading events...</Text>
     </View>
     </Screen>
   )
   if (error) return (
     <Screen>
-      <View className='h-screen px-6 pt-4 bg-background items-center justify-center'>
+      <View className='flex-1 px-6 pt-4 bg-background items-center justify-center'>
       <Text className='text-lg mx-4'>Error loading events</Text>
     </View>
     </Screen>
   )
   if (!events || events.length == 0 ) return (
-   <Screen> <View className='h-screen px-6 pt-4 bg-background '>
+   <Screen> <View className='flex-1 px-6 pt-4 bg-background '>
         <Text className="text-3xl font-bold text-primary pb-2 ">
           Announcements
         </Text>
@@ -42,7 +42,7 @@ const events = () => {
   return (
 <Screen>     
     <ScrollView
-      className="flex-grow px-6 pt-4"
+      className="flex-1 px-6 pt-4"
       contentContainerStyle={{ paddingBottom: 24 }}
     >
       <View className="items-center mx-4 ">

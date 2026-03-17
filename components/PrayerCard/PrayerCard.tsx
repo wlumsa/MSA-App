@@ -92,7 +92,8 @@ const PrayerCard = () => {
   // Success state
   return (
     <View className="flex flex-col w-full shadow-md shadow-slate-200 dark:shadow-none  justify-between">
-      <Link href="/prayertimes">
+      <Link href="/prayertimes" asChild>
+        <Pressable>
         <LinearGradient
           colors={["#8D6EDB", "#5636A7", "#5636A7"]}
           start={{ x: -0.1, y: 0.5 }}
@@ -114,11 +115,9 @@ const PrayerCard = () => {
             <Text className="text-white" style={{ fontFamily: 'Inter', fontSize: 14 }}>
               in {convertElapsedTimeToString(nextPrayer.elapsedTime)}
             </Text>
-            <Pressable>
-              <Link href="/prayertimes" />
-            </Pressable>
           </View>
         </LinearGradient>
+        </Pressable>
       </Link>
     </View>
   );

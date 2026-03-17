@@ -1,11 +1,11 @@
 import { Text, View, ScrollView, Image } from "react-native";
 import { Clock3, Globe, MapPin } from "lucide-react-native";
 import MSA_Logo from "../../assets/images/MSA_Logo.png"
-import EventCard from "../components/EventCard/EventCard";
-import PrayerCard from "../components/PrayerCard/PrayerCard";
-import AyahCard from "../components/AyahCard/AyahCard";
-import { Screen } from "../components/Screen/Screen"
-import IconComponent from "../components/Icon/Icon";
+import EventCard from "@/components/EventCard/EventCard";
+import PrayerCard from "@/components/PrayerCard/PrayerCard";
+import AyahCard from "@/components/AyahCard/AyahCard";
+import { Screen } from "@/components/Screen/Screen";
+import IconComponent from "@/components/Icon/Icon";
 import { useState } from "react";
 // import Push from "../PushNotifications";
 
