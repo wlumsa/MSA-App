@@ -25,20 +25,18 @@ export default ({ config }: ConfigContext): ExpoConfig => {
   return {
     ...config,
     name: name,
-    version:"1.0.0", // Automatically bump your project version with `npm version patch`, `npm version minor` or `npm version major`.
+    version: "1.0.0", // Automatically bump your project version with `npm version patch`, `npm version minor` or `npm version major`.
     slug: PROJECT_SLUG, // Must be consistent across all environments.
     orientation: "portrait",
     userInterfaceStyle: "automatic",
-    newArchEnabled: true,
     icon: icon,
     scheme: scheme,
     ios: {
       supportsTablet: true,
       bundleIdentifier: bundleIdentifier,
       infoPlist: {
-    ITSAppUsesNonExemptEncryption: false
-  }
-
+        ITSAppUsesNonExemptEncryption: false,
+      },
     },
     android: {
       adaptiveIcon: {
@@ -51,13 +49,13 @@ export default ({ config }: ConfigContext): ExpoConfig => {
         "android.permission.WAKE_LOCK",
         "android.permission.VIBRATE",
         "android.permission.SCHEDULE_EXACT_ALARM",
-        "android.permission.POST_NOTIFICATIONS"
+        "android.permission.POST_NOTIFICATIONS",
       ],
     },
     updates: {
       url: `https://u.expo.dev/${EAS_PROJECT_ID}`,
     },
-      "runtimeVersion": "appVersion",
+    runtimeVersion: "appVersion",
 
     extra: {
       eas: {
@@ -73,6 +71,8 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       "expo-web-browser",
       "expo-router",
       "expo-font",
+      "expo-image",
+      "expo-localization",
       "expo-notifications",
       [
         "expo-splash-screen",
@@ -85,9 +85,9 @@ export default ({ config }: ConfigContext): ExpoConfig => {
             image: "./assets/images/app-logo1.png",
             imageWidth: 200,
             resizeMode: "cover",
-            backgroundColor: "#191818"
-          }
-        },
+            backgroundColor: "#191818",
+          },
+        }
       ],
     ],
     experiments: {

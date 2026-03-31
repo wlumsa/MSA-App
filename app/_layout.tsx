@@ -1,4 +1,4 @@
-import  { useEffect } from "react";
+import { ReactNode, useEffect } from "react";
 import {
   StatusBar,
   View,
@@ -7,6 +7,7 @@ import {
   SafeAreaView,
   Image,
   TouchableOpacity,
+  Platform,
 } from "react-native";
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
@@ -30,9 +31,9 @@ import {
 import { DrawerContentScrollView } from "@react-navigation/drawer";
 import "../global.css";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { ButtonComponent } from "./components/ButtonComponent/ButtonComponent";
+import { ButtonComponent } from "@/components/ButtonComponent/ButtonComponent";
 import { Drawer } from "expo-router/drawer";
-import {ScreenButtonComponent} from "./components/ScreenButtonComponent/ScreenButtonComponent";
+import { ScreenButtonComponent } from "@/components/ScreenButtonComponent/ScreenButtonComponent";
 import {
   useQuery,
   useMutation,
@@ -46,12 +47,29 @@ import {
   scheduleAllPrayerNotifications,
   arePrayerNotificationsEnabled,
 } from "@/Utils/prayerNotifications";
-import { usePostHog, PostHogProvider } from 'posthog-react-native'
-import ThemeSection from "./components/ThemeSection/ThemeSection"
+import { PostHogProvider } from "posthog-react-native";
+import ThemeSection from "@/components/ThemeSection/ThemeSection";
 const queryClient = new QueryClient();
 
 // Prevent the splash screen from auto-hiding before asset loading is complete
 SplashScreen.preventAutoHideAsync();
+
+function AnalyticsProvider({ children }: { children: ReactNode }) {
+  if (Platform.OS === "web") {
+    return <>{children}</>;
+  }
+
+  return (
+    <PostHogProvider
+      apiKey={process.env.EXPO_PUBLIC_POSTHOG_PROJECT_API || ""}
+      options={{
+        host: "https://us.i.posthog.com",
+      }}
+    >
+      {children}
+    </PostHogProvider>
+  );
+}
 
 export default function RootLayout() {
   // Load fonts first - using the correct import method
@@ -113,8 +131,7 @@ export default function RootLayout() {
 
   return (
     <>
-    <PostHogProvider apiKey={process.env.EXPO_PUBLIC_POSTHOG_PROJECT_API || ""} options={{
-            host: 'https://us.i.posthog.com'}}>
+    <AnalyticsProvider>
       <QueryClientProvider client={queryClient}>
         <StatusBar backgroundColor="#F8F5FF" barStyle="dark-content" />
         <GestureHandlerRootView style={{ flex: 1, backgroundColor: "" }}>
@@ -314,7 +331,7 @@ export default function RootLayout() {
         </Stack>
       </GestureHandlerRootView> */}
       </QueryClientProvider>
-      </PostHogProvider>
+      </AnalyticsProvider>
     </>
   );
 }

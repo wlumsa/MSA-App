@@ -124,18 +124,15 @@ export async function getNextPrayerTime(): Promise<NextPrayerResponse | null> {
       if (!validateNextPrayerResponse(result)) {
         throw new Error("Invalid next prayer response");
       }
-      
 
       return result;
-    
+    }
 
     return null;
-    }
   } catch (error) {
     console.error("Error in getNextPrayerTime:", error);
     throw error; // Re-throw to let React Query handle it
   }
-
 }
 
 export async function getPrayerTimingsForDay(
