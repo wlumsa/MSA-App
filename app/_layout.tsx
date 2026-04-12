@@ -46,6 +46,7 @@ import { useColorScheme } from "nativewind";
 import {
   scheduleAllPrayerNotifications,
   arePrayerNotificationsEnabled,
+  getScheduledPrayerNotifications,
 } from "@/Utils/prayerNotifications";
 import { PostHogProvider } from "posthog-react-native";
 import ThemeSection from "@/components/ThemeSection/ThemeSection";
@@ -101,25 +102,25 @@ export default function RootLayout() {
     }
   }, [loaded, error]);
 
-  // Initialize prayer notifications on app start (non-blocking)
+  // Auto-reschedule prayer notifications on app open if running low
   useEffect(() => {
     const initializeNotifications = async () => {
       try {
-        console.log("Checking notification permissions...");
         const enabled = await arePrayerNotificationsEnabled();
-        if (enabled) {
-          console.log("Permissions granted, but skipping auto-scheduling for now");
-          // Temporarily disabled auto-scheduling to improve app load time
-          // Users can manually schedule notifications from the Prayer Times screen
-        } else {
-          console.log("Notification permissions not granted");
+        if (!enabled) return;
+
+        const scheduled = await getScheduledPrayerNotifications();
+        // Reschedule if fewer than 10 notifications remain (~2 days of prayers)
+        if (scheduled.length < 10) {
+          console.log(`Only ${scheduled.length} prayer notifications remain, rescheduling...`);
+          await scheduleAllPrayerNotifications(7);
         }
       } catch (error) {
-        console.log("Error checking notification permissions:", error);
+        console.log("Error initializing prayer notifications:", error);
       }
     };
 
-    // Delay initialization to let app load first
+    // Delay to let app finish loading first
     const timer = setTimeout(initializeNotifications, 1000);
     return () => clearTimeout(timer);
   }, []);

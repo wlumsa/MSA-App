@@ -75,41 +75,36 @@ export async function registerForPushNotificationsAsync() {
   return token;
 }
 
-// Convert time string to Date object for today
-function getPrayerDateTime(timeString: string, ampm: string): Date {
-  const today = new Date();
+// Convert time string to Date object for a specific date
+function getPrayerDateTime(timeString: string, ampm: string, date: Date): Date {
   const [hours, minutes] = timeString.split(':').map(Number);
-  
+
   let hour = hours;
   if (ampm === 'PM' && hours !== 12) {
     hour += 12;
   } else if (ampm === 'AM' && hours === 12) {
     hour = 0;
   }
-  
-  const prayerTime = new Date(today);
+
+  const prayerTime = new Date(date);
   prayerTime.setHours(hour, minutes, 0, 0);
-  
-  // If prayer time has passed today, schedule for tomorrow
-  if (prayerTime <= new Date()) {
-    prayerTime.setDate(prayerTime.getDate() + 1);
-  }
-  
+
   return prayerTime;
 }
-
 // Schedule notification for a specific prayer
 export async function schedulePrayerNotification(
   prayerKey: keyof typeof PRAYER_INFO,
   timeString: string,
-  ampm: string
+  ampm: string,
+  date: Date
 ) {
   try {
     const prayerInfo = PRAYER_INFO[prayerKey];
-    const notificationTime = getPrayerDateTime(timeString, ampm);
+    const notificationTime = getPrayerDateTime(timeString, ampm, date);
+    if (notificationTime <= new Date()) return;
     
     // Cancel any existing notification for this prayer
-    await cancelPrayerNotification(prayerKey);
+    // await cancelPrayerNotification(prayerKey);
     
     // Schedule new notification
     const notificationId = await Notifications.scheduleNotificationAsync({
@@ -117,7 +112,7 @@ export async function schedulePrayerNotification(
         title: prayerInfo.title,
         body: prayerInfo.body,
         sound: 'default',
-        data: { prayer: prayerKey, type: 'iqama' },
+        data: { prayer: prayerKey, type: 'iqama', date: date.toDateString() },
       },
       trigger: {
         type: Notifications.SchedulableTriggerInputTypes.DATE,
@@ -149,39 +144,35 @@ export async function cancelPrayerNotification(prayerKey: keyof typeof PRAYER_IN
   }
 }
 
-// Schedule all prayer notifications for today
-export async function scheduleAllPrayerNotifications() {
+// Schedule all prayer notifications for the next N days (default 7)
+export async function scheduleAllPrayerNotifications(daysAhead = 7) {
+  await cancelAllPrayerNotifications();
   try {
-    console.log('Fetching prayer times for today...');
-    const todayPrayers = await getPrayerTimingsForDay(0);
-    
-    if (!todayPrayers) {
-      console.log('No prayer times found for today');
-      return;
+    console.log(`Scheduling prayer notifications for the next ${daysAhead} days...`);
+
+    for (let i = 0; i < daysAhead; i++) {
+      const targetDate = new Date();
+      targetDate.setDate(targetDate.getDate() + i);
+      targetDate.setHours(0, 0, 0, 0);
+
+      const prayers = await getPrayerTimingsForDay(i);
+      if (!prayers) {
+        console.log(`No prayer times found for day offset ${i}, skipping`);
+        continue;
+      }
+
+      await Promise.all([
+        schedulePrayerNotification('fajr',    prayers.fajr,    'AM', targetDate),
+        schedulePrayerNotification('dhuhr',   prayers.dhuhr,   'PM', targetDate),
+        schedulePrayerNotification('asr',     prayers.asr,     'PM', targetDate),
+        schedulePrayerNotification('maghrib', prayers.maghrib, 'PM', targetDate),
+        schedulePrayerNotification('isha',    prayers.isha,    'PM', targetDate),
+      ]);
+
+      console.log(`Scheduled prayers for ${targetDate.toDateString()}`);
     }
-    
-    console.log('Prayer times fetched, scheduling notifications...');
-    
-    // Schedule notifications for each prayer with timeout protection
-    const schedulePromises = [
-      schedulePrayerNotification('fajr', todayPrayers.fajr, 'AM'),
-      schedulePrayerNotification('dhuhr', todayPrayers.dhuhr, 'PM'),
-      schedulePrayerNotification('asr', todayPrayers.asr, 'PM'),
-      schedulePrayerNotification('maghrib', todayPrayers.maghrib, 'PM'),
-      schedulePrayerNotification('isha', todayPrayers.isha, 'PM')
-    ];
-    
-    // Add timeout to prevent hanging
-    const timeoutPromise = new Promise((_, reject) => 
-      setTimeout(() => reject(new Error('Scheduling timeout')), 10000)
-    );
-    
-    await Promise.race([
-      Promise.all(schedulePromises),
-      timeoutPromise
-    ]);
-    
-    console.log('All prayer notifications scheduled for today');
+
+    console.log(`All prayer notifications scheduled for the next ${daysAhead} days`);
   } catch (error) {
     console.error('Error scheduling prayer notifications:', error);
   }
