@@ -10,9 +10,6 @@ export const IconComponent:React.FC<IconButtonProps> = ({icon, link, text}: Icon
 
 
     const [isPressed, setIsPressed] = useState(false);
-    const onPress = () => {
-      setIsPressed(!isPressed);
-    };
 
   
 
@@ -22,8 +19,8 @@ export const IconComponent:React.FC<IconButtonProps> = ({icon, link, text}: Icon
         <View className="items-center text-center">
           <Link href={link as any} asChild>
             <Pressable
-            onPressIn={onPress}
-            onPressOut={onPress}
+            onPressIn={() => setIsPressed(true)}
+            onPressOut={() => setIsPressed(false)}
 
             className={`items-center w-16 h-16 p-4 text-center shadow-md shadow-slate-200 bg-foreground dark:shadow-none  justify-center  rounded-xl ${isPressed ? "dark:bg-[#4b4b4b]" : "foreground"}`}>
                 {icon}
