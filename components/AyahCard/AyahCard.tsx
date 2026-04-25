@@ -4,9 +4,9 @@ import { getDailyReminder } from "@/Utils/api";
 import { useState, useEffect } from "react";
 import { Reminder } from "@/Utils/types";
 import { useQuery } from "@tanstack/react-query";
-const reminderId =  getReminderId();
 
 const AyahCard = () => {
+  const reminderId = getReminderId();
   const highlightPhrases = [
     "We have indeed established you",
     "seldom give any thanks",
@@ -48,13 +48,9 @@ const AyahCard = () => {
     }
     return elements;
   };
-  async function fetchReminder() {
-   return await getDailyReminder(reminderId)
-
-  }
   const {data: ayah , isLoading, error} = useQuery({
-    queryKey: ['ayah'],
-    queryFn: fetchReminder,
+    queryKey: ['ayah', reminderId],
+    queryFn: () => getDailyReminder(reminderId),
   })
 
 

@@ -6,7 +6,7 @@ import { useQuery } from '@tanstack/react-query'
 
 import { Screen } from "@/components/Screen/Screen";
 
-const events = () => {
+const Events = () => {
 
   const {data: events, isLoading, error} = useQuery({
     queryKey: ['events'],
@@ -64,4 +64,4 @@ const events = () => {
   )
 }
 
-export default events
+export default Events

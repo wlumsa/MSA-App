@@ -21,13 +21,9 @@ const Event:React.FC<EventType> = ({name, description, date, time,location, link
     }, [image_id])
   
       const [isPressed, setIsPressed] = useState(false);
-      const onPress = () => {
-        setIsPressed(!isPressed);
-      };
 
   const handleClick = (link:string) => {
     Linking.openURL(link);
-    setIsPressed(!isPressed);
     posthog.capture('button_clicked', {name: 'example' })
   }
 
@@ -54,7 +50,7 @@ const Event:React.FC<EventType> = ({name, description, date, time,location, link
                 <Text className="text-md  text-textGray ">{location} | {time}</Text>
             </View>
            <View className='flex flex-row justify-end'>
-            {link && <Pressable className={`bg-[#5636A7] w-fit p-2  rounded-xl text-center mt-2 flex flex-row items-center justify-center ${isPressed ? " bg-[#3e2778] dark:bg-[#3e2778]" : ""}`} onPress={() => {handleClick(link);}} onPressIn={onPress} onPressOut={onPress}>
+            {link && <Pressable className={`bg-[#5636A7] w-fit p-2  rounded-xl text-center mt-2 flex flex-row items-center justify-center ${isPressed ? " bg-[#3e2778] dark:bg-[#3e2778]" : ""}`} onPress={() => {handleClick(link);}} onPressIn={() => setIsPressed(true)} onPressOut={() => setIsPressed(false)}>
                         <Text className="text-white text-center font-semibold ">Register here</Text>
                         <ChevronRight size={18} color="#ffffff" strokeWidth={2.5}/>
                 </Pressable>}

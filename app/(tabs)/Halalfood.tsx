@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import {
   ScrollView,
   Text,
@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { Pressable } from 'react-native';
 import { ChevronDown, ChevronUp, Search } from 'lucide-react-native';
+import { useQuery } from '@tanstack/react-query';
 
 import HalalfoodCard from "@/components/HalalFood/HalalfoodCard";
 import { fetchHalalDirectory } from '@/Utils/api';
@@ -56,9 +57,12 @@ const HalalFood = () => {
   const [locationValue, setLocationValue] = useState('All Locations');
   const [cuisineValue, setCuisineValue] = useState('All Cuisines');
   const [openFilters, setOpenFilters] = useState(false);
-  const [halalDirectory, setHalalDirectory] = useState<Place[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
+
+  const { data: halalDirectory = [], isLoading } = useQuery({
+    queryKey: ['halalDirectory'],
+    queryFn: fetchHalalDirectory,
+  });
 
   const handleSearch = (query: string) => setSearch(query);
   const onFiltersPress = () => setOpenFilters(!openFilters);
@@ -70,20 +74,6 @@ const HalalFood = () => {
     setCuisineValue('All Cuisines');
     setCurrentPage(1);
   };
-
-  useEffect(() => {
-    const load = async () => {
-      try {
-        const data = await fetchHalalDirectory();
-        setHalalDirectory(data);
-      } catch (err) {
-        console.error('Error fetching halal directory:', err);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    load();
-  }, []);
 
   const filteredData = useMemo(() => {
     return halalDirectory
