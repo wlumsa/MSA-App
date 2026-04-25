@@ -146,9 +146,13 @@ export async function cancelPrayerNotification(prayerKey: keyof typeof PRAYER_IN
 
 // Schedule all prayer notifications for the next N days (default 7)
 export async function scheduleAllPrayerNotifications(daysAhead = 7) {
-  await cancelAllPrayerNotifications();
   try {
     console.log(`Scheduling prayer notifications for the next ${daysAhead} days...`);
+
+    // Fetch all prayer data BEFORE cancelling existing notifications.
+    // If any fetch fails the catch block runs and existing notifications are preserved.
+    type PendingDay = { targetDate: Date; prayers: Awaited<ReturnType<typeof getPrayerTimingsForDay>> };
+    const pending: PendingDay[] = [];
 
     for (let i = 0; i < daysAhead; i++) {
       const targetDate = new Date();
@@ -160,15 +164,19 @@ export async function scheduleAllPrayerNotifications(daysAhead = 7) {
         console.log(`No prayer times found for day offset ${i}, skipping`);
         continue;
       }
+      pending.push({ targetDate, prayers });
+    }
 
+    await cancelAllPrayerNotifications();
+
+    for (const { targetDate, prayers } of pending) {
       await Promise.all([
-        schedulePrayerNotification('fajr',    prayers.fajr,    'AM', targetDate),
-        schedulePrayerNotification('dhuhr',   prayers.dhuhr,   'PM', targetDate),
-        schedulePrayerNotification('asr',     prayers.asr,     'PM', targetDate),
-        schedulePrayerNotification('maghrib', prayers.maghrib, 'PM', targetDate),
-        schedulePrayerNotification('isha',    prayers.isha,    'PM', targetDate),
+        schedulePrayerNotification('fajr',    prayers!.fajr,    'AM', targetDate),
+        schedulePrayerNotification('dhuhr',   prayers!.dhuhr,   'PM', targetDate),
+        schedulePrayerNotification('asr',     prayers!.asr,     'PM', targetDate),
+        schedulePrayerNotification('maghrib', prayers!.maghrib, 'PM', targetDate),
+        schedulePrayerNotification('isha',    prayers!.isha,    'PM', targetDate),
       ]);
-
       console.log(`Scheduled prayers for ${targetDate.toDateString()}`);
     }
 
