@@ -52,7 +52,7 @@ const NotificationDebug: React.FC = () => {
       // Schedule Fajr notification for 10 seconds from now
       const testTime = new Date(Date.now() + 10000);
       const [hours, minutes] = testTime.toTimeString().split(":");
-      await schedulePrayerNotification("fajr", `${hours}:${minutes}`, "AM");
+      await schedulePrayerNotification("fajr", `${hours}:${minutes}`, "AM", testTime);
       Alert.alert(
         "Test Prayer",
         "Fajr notification scheduled for 10 seconds from now"

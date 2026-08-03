@@ -28,7 +28,7 @@ import {
   AlignStartHorizontal,
   Clock3,
 } from "lucide-react-native";
-import { DrawerContentScrollView } from "@react-navigation/drawer";
+import { DrawerContentScrollView } from "expo-router/drawer";
 import "../global.css";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { ButtonComponent } from "@/components/ButtonComponent/ButtonComponent";
