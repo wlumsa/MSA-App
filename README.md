@@ -63,9 +63,8 @@ A comprehensive mobile application for Muslim Student Associations (MSA) built w
 ## Getting Started 🚀
 
 1. **Prerequisites**
-   - Node.js (LTS version)
+   - Node.js 20 or newer
    - pnpm (`npm install -g pnpm`)
-   - Expo CLI (`pnpm add -g expo-cli`)
 
 2. **Installation**
    ```bash
@@ -78,30 +77,58 @@ A comprehensive mobile application for Muslim Student Associations (MSA) built w
    ```
 
 3. **Environment Setup**
-   Create a `.env` file in the root directory with:
+   Copy the included environment template:
+
+   ```bash
+   cp .env.example .env
+   ```
+
+   Then add your project values to `.env`:
+
    ```
    EXPO_PUBLIC_SUPABASE_URL=your_supabase_url
    EXPO_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+   EXPO_PUBLIC_S3_BUCKET=your_storage_bucket
+   EXPO_PUBLIC_POSTHOG_PROJECT_API=your_posthog_key
    ```
+
+   `EXPO_PUBLIC_POSTHOG_PROJECT_API` is optional. The remaining values are
+   required for Supabase data and images to load correctly.
 
 4. **Running the App**
    ```bash
    # Start the development server
-   pnpm expo start
+   pnpm start
    ```
 
    Then choose your preferred method to run the app:
    - Press `a` for Android emulator
    - Press `i` for iOS simulator
+   - Press `w` for the web app
    - Scan QR code with Expo Go app on your device
+
+### Available Commands
+
+```bash
+pnpm start                 # Start the Expo development server
+pnpm android               # Build and run the Android app
+pnpm ios                   # Build and run the iOS app (macOS required)
+pnpm web                   # Start the web app
+pnpm lint                  # Run lint checks
+pnpm exec tsc --noEmit     # Run TypeScript checks
+pnpm test                  # Run Jest in watch mode
+```
+
+Push notifications require a physical device. Native development builds may
+also require the platform-specific Android or iOS development tools.
 
 ## Project Structure 📁
 
 ```
 MSA-App/
 ├── app/                 # Main application code
-│   ├── components/     # Reusable UI components
-│   └── (tabs)/        # Tab-based navigation screens
+│   └── (tabs)/         # Tab-based navigation screens
+├── components/          # Reusable UI components
 ├── Utils/             # Utility functions and types
 ├── lib/               # Library configurations
 └── assets/            # Static assets (images, fonts)
