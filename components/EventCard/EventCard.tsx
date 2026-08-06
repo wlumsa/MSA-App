@@ -15,9 +15,6 @@ const EventCard= () => {
   })
 
     const [isPressed, setIsPressed] = useState(false);
-        const onPress = () => {
-          setIsPressed(!isPressed);
-        };
     
 
 
@@ -56,8 +53,8 @@ const EventCard= () => {
         </Text>
         <Link href="/events">
           <Pressable onPress={() => router.navigate('/events')} 
-          onPressIn={onPress}
-          onPressOut={onPress}
+          onPressIn={() => setIsPressed(true)}
+          onPressOut={() => setIsPressed(false)}
           className={`bg-[#5636A7] w-36 p-2  rounded-xl text-center mt-2 flex flex-row items-center justify-center   ` }
             
             >

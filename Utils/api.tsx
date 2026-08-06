@@ -66,7 +66,7 @@ export async function getNextPrayerTime(): Promise<NextPrayerResponse | null> {
     let elapsedTime = 0;
     const currentTimeMins = timeToMinutes(
       currentTimeString,
-      parseInt(currentTimeString.substring(0, 1)) >= 12 ? "PM" : "AM"
+      currentHour >= 12 ? "PM" : "AM"
     );
     console.log("next prayer time is: ", nextPrayer);
 
@@ -91,12 +91,32 @@ export async function getNextPrayerTime(): Promise<NextPrayerResponse | null> {
     }
 
     //get fajr time for next day
-    if (nextPrayer == null || "") {
+    if (nextPrayer === null) {
+      const tomorrow = new Date(today);
+      tomorrow.setDate(today.getDate() + 1);
+      const tomorrowMonthName = tomorrow.toLocaleString("default", { month: "long" });
+      const tomorrowDay = tomorrow.getDate();
+
+      // At month boundaries tomorrow falls in a different month — fetch its id
+      let tomorrowMonthId = monthData.id;
+      if (tomorrowMonthName !== monthName) {
+        const { data: tomorrowMonthData, error: tomorrowMonthError } = await supabase
+          .from("prayer_timings_month")
+          .select("id")
+          .eq("month", tomorrowMonthName)
+          .single();
+        if (tomorrowMonthError) {
+          console.error("Error fetching next month:", tomorrowMonthError);
+          throw new Error("Failed to fetch next month data");
+        }
+        tomorrowMonthId = tomorrowMonthData.id;
+      }
+
       const { data: nextDayData, error: nextDayError } = await supabase
         .from("prayer_timings_month_days")
         .select("*")
-        .eq("_parent_id", monthData.id)
-        .eq("day", day + 1)
+        .eq("_parent_id", tomorrowMonthId)
+        .eq("day", tomorrowDay)
         .single();
       if (nextDayError) {
         console.error("Error fetching next day:", nextDayError);
@@ -140,9 +160,11 @@ export async function getPrayerTimingsForDay(
 ): Promise<PrayerTiming | null> {
   try {
     const today = new Date();
-    //get the current month and day
-    const monthName = today.toLocaleString("default", { month: "long" });
-    const day = today.getDate() + index;
+    // Compute the actual target date so month boundaries are handled correctly
+    const targetDate = new Date(today);
+    targetDate.setDate(today.getDate() + index);
+    const monthName = targetDate.toLocaleString("default", { month: "long" });
+    const day = targetDate.getDate();
 
     console.log(`Fetching prayer times for ${monthName} ${day}...`);
 

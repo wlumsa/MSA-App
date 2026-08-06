@@ -8,9 +8,6 @@ import { Place } from '@/Utils/types';
 const HalalfoodCard: React.FC<Place> = ({ name, description, location, link, image_id, method, category }) => {
   const [image, setImage] = useState<string | null>(null);
   const [isPressed, setIsPressed] = useState(false);
-   const onPress = () => {
-        setIsPressed(!isPressed);
-      };
   const [loadingImage, setLoadingImage] = useState(true);
 
   useEffect(() => {
@@ -62,9 +59,9 @@ const HalalfoodCard: React.FC<Place> = ({ name, description, location, link, ima
         <View className='flex flex-row justify-end'>
           {link && (
             <Pressable
-              onPressIn={() => onPress()}
-              onPressOut={() => onPress()}
-              onPress={() => { Linking.openURL(link); setIsPressed(!isPressed); }}
+              onPressIn={() => setIsPressed(true)}
+              onPressOut={() => setIsPressed(false)}
+              onPress={() => Linking.openURL(link)}
               className={`w-36 p-2 rounded-xl text-center mt-2 flex flex-row items-center justify-center bg-[#5636A7]  ${isPressed ? "bg-[#3c2674] dark:bg-[#3c2674] " : ""}`}
 
               accessibilityLabel={`Order from ${name}`}

@@ -41,8 +41,8 @@ export const DarkTheme:Theme = {
         text: "#FFFFFF",
         primary: "#9D71FF",
         border: "#595a5b",
-        card: '#fff',
-        notification: '#fff'
+        card: '#242323',
+        notification: '#242323'
     },
     fonts: {
         regular: {

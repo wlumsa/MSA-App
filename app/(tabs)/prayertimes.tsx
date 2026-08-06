@@ -17,18 +17,9 @@ import NotificationDebug from "@/components/NotificationDebug/NotificationDebug"
 import { getPrayerTimingsForDay } from "@/Utils/api";
 import { useQuery } from "@tanstack/react-query";
 import { Screen } from "@/components/Screen/Screen";
-const prayertimes = () => {
+const Prayertimes = () => {
   const [isPressedInc, setIsPressedInc] = useState(false);
-
-  const onPressInc = () => {
-    setIsPressedInc(!isPressedInc);
-  };
-
   const [isPressedDec, setIsPressedDec] = useState(false);
-
-  const onPressDec = () => {
-    setIsPressedDec(!isPressedDec);
-  };
 
   const [date, setDate] = useState(0);
   const incrementDate = () => {
@@ -100,8 +91,8 @@ const prayertimes = () => {
           <Pressable
             className="px-4"
             onPress={decrementDate}
-            onPressIn={onPressDec}
-            onPressOut={onPressDec}
+            onPressIn={() => setIsPressedDec(true)}
+            onPressOut={() => setIsPressedDec(false)}
           >
             <ChevronLeft
               color={`${isPressedDec ? "#3c2674" : "#5636A7"}`}
@@ -118,8 +109,8 @@ const prayertimes = () => {
           <Pressable
             className="px-4"
             onPress={incrementDate}
-            onPressIn={onPressInc}
-            onPressOut={onPressInc}
+            onPressIn={() => setIsPressedInc(true)}
+            onPressOut={() => setIsPressedInc(false)}
           >
             <ChevronRight
               color={`${isPressedInc ? "#3c2674" : "#5636A7"}`}
@@ -184,4 +175,4 @@ const prayertimes = () => {
   );
 };
 
-export default prayertimes;
+export default Prayertimes;
